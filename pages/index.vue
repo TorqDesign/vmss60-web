@@ -58,11 +58,11 @@
           <h2>Events</h2>
           <div class="schedule-box">
             <h6>Saturday Banquet</h6>
-            <p>Fashion show of the decades featuring Massey alumni</p>
+            <p>Fashion show of the decades featuring Massey alumni!</p>
           </div>
           <div class="schedule-box">
             <h6>Car and Antiques Show</h6>
-            <p>Come see cars and antiques?</p>
+            <p>Come see cars and antiques!</p>
           </div>
           <div class="schedule-box">
             <h6>Battle of the Bands</h6>
