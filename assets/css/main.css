@@ -265,7 +265,7 @@ nav:hover {
 
 .hero {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 5vw;
   color: #212529;
 }
@@ -289,8 +289,15 @@ nav:hover {
   border-radius: 0.5em;
   background: #eeeeee;
   padding: 20px;
-  vertical-align: center;
   margin-bottom: 1.1em;
+}
+
+#contact {
+  font-size: 0.5em;
+}
+
+#contact form {
+  font-size: 0.8em;
 }
 
 /* Info sections */
@@ -303,7 +310,7 @@ nav:hover {
 }
 
 .row-tb-margin {
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
 }
 
 @media (min-height: 1601px) {

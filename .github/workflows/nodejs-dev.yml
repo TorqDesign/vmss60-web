@@ -1,6 +1,9 @@
-name: Node CI
+name: Deploy to Development
 
-on: [push]
+on:
+  push:
+    branches:
+      - development
 
 jobs:
   build:
@@ -24,7 +27,7 @@ jobs:
      - name: Deploy to server
        uses: garygrossgarten/github-action-ssh@release
        with:
-         command: bash deploySite.sh
+         command: bash deploySiteDev.sh
          host: ${{ secrets.HOST }}
          username: ${{ secrets.USER }}
          privateKey: ${{ secrets.PRIVATE_KEY }}
