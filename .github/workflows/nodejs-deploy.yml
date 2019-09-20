@@ -1,6 +1,8 @@
-name: Node CI
+name: Deploy to Production
 
-on: [push]
+on:
+  push:
+    - master
 
 jobs:
   build:
