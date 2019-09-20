@@ -1,4 +1,4 @@
-body {
+html {
   font-size: calc(0.85em + 1vw);
 }
 
@@ -277,8 +277,20 @@ nav:hover {
 }
 
 #about {
-  transform: translateY(3em);
-  margin-top: 3em;
+  /*transform: translateY(3em);*/
+  /*margin-top: 3em;*/
+}
+
+#schedule {
+
+}
+
+.schedule-box {
+  border-radius: 0.5em;
+  background: #eeeeee;
+  padding: 20px;
+  vertical-align: center;
+  margin-bottom: 1.1em;
 }
 
 /* Info sections */
