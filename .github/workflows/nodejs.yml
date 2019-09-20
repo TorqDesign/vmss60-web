@@ -18,6 +18,7 @@ jobs:
       env:
         CI: true
   deploy:
+     runs-on: ubuntu-latest
      steps:
        - name: Deploy to server
        uses: garygrossgarten/github-action-ssh@release
