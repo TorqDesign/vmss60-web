@@ -27,7 +27,7 @@ jobs:
      - name: Deploy to server
        uses: garygrossgarten/github-action-ssh@release
        with:
-         command: bash deploySite.sh ${GITHUB_SHA}
+         command: bash deploySite.sh
          host: ${{ secrets.HOST }}
          username: ${{ secrets.USER }}
          privateKey: ${{ secrets.PRIVATE_KEY }}
