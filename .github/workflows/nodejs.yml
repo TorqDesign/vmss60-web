@@ -20,7 +20,7 @@ jobs:
   deploy:
      runs-on: ubuntu-latest
      steps:
-       - name: Deploy to server
+     - name: Deploy to server
        uses: garygrossgarten/github-action-ssh@release
        with:
          command: bash deploySite.sh
