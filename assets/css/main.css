@@ -6,6 +6,7 @@ body {
   /*font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Roboto', sans-serif;*/
   font-family: 'Open Sans', sans-serif;
   margin: 0;
+  /*font-size: calc(0.85em + 1vw);*/
 }
 
 p {
@@ -294,11 +295,16 @@ nav:hover {
   margin-bottom: 1.1em;
 }
 
-#contact {
-  font-size: 0.5em;
+#contact-form input {
+  font-size: 0.8em;
+}
+
+#contact-form textarea {
+  font-size: 0.8em;
 }
 
 #contact form {
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.8em;
 }
 
