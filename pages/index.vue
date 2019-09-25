@@ -3,11 +3,24 @@
     <div class="hero-background">
       <div class="hero">
         <h1>VMSS 60th Reunion</h1>
-        <h6>October 9th - 10th, 2020 @ Vincent Massey S.S.</h6>
+        <h6>October 9th & 10th / 2020</h6>
+        <p>(To be held at Vincent Massey S.S. & Caboto Club)</p>
       </div>
       <!--Content before waves-->
       <div class="inner-header flex">
       </div>
+      <div class="filter"></div>
+      <div class="slideshow">
+        <div class="images">
+        </div>
+      </div>
+      <!--<div class="video-wrapper">
+
+        <video autoplay muted loop id="myVideo">
+          <source src="~/assets/bgvid.mp4" type="video/mp4">
+        </video>
+      </div>-->
+
     </div>
     <div class="container" id="about">
       <div class="row align-items-center justify-content-center">

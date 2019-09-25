@@ -259,10 +259,11 @@ nav:hover {
 
 .hero-background {
   min-height: 100vh;
-  background-size: 30%;
+  overflow: hidden;
+  /*background-size: 30%;*/
   z-index: 500;
-  background-image: url("../images/orange_blob.svg");
-  background-repeat: no-repeat;
+  /*background-image: url("../images/orange_blob.svg");
+  background-repeat: no-repeat;*/
   /*background-image: url("../assets/images/_MG_1959.jpg");*/
 }
 
@@ -270,7 +271,11 @@ nav:hover {
   position: absolute;
   top: 50%;
   left: 5vw;
-  color: #212529;
+  color: #fefefe;
+}
+
+.hero h6{
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -620,4 +625,61 @@ footer {
   padding-top: 3em;
   padding-bottom: 3em;
   /*background-color: rgb(247, 247, 247);*/
+}
+
+.video-wrapper {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.filter {
+  background-color: #000;
+  opacity: 0.7;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -98;
+}
+
+#myVideo {
+  min-width: 100%;
+  min-height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  z-index: -99;
+}
+
+.slideshow {
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: -99;
+  transform: translate3d(0, 0, 0);
+}
+.images {
+  background: url('~assets/images/vmss60testslide.png');
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5120px;
+  animation: slideshow 180s linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+@keyframes slideshow {
+  100% {
+    transform: translateX(-50%);
+  }
 }
