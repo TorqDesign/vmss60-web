@@ -134,7 +134,6 @@
                     Swal.fire({
                         title: 'Message Sent!',
                         type: 'success',
-                        text: 'data'
                     })
                 }).catch(error => {
                     console.log(error);
