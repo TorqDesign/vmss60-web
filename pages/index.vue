@@ -80,8 +80,8 @@
       <div class="row-tb-margin row align-items-center justify-content-center">
         <div class="col-md-10">
           <h2>Contact</h2>
-          <p>Have a question? Feel free to use the contact form below or email <a href="mailto:hello@masseyhacks.ca"
-                                                                                  class="expand-link">hello@masseyhacks.ca</a>.
+          <p>Have a question? Feel free to use the contact form below or email <a href="mailto:masseymustangs2020@gmail.com"
+                                                                                  class="expand-link">masseymustangs2020@gmail.com</a>.
           </p>
           <form id="contact-form" v-on:submit.prevent="submitContactForm">
             <div class="form-group">
