@@ -307,7 +307,8 @@ nav:hover {
 
 .hero {
   position: absolute;
-  top: 40%;
+  transform: translateY(-50%);
+  top: 50%;
   color: #fefefe;
   padding: 10px;
 }
