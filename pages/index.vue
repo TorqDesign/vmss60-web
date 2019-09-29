@@ -66,8 +66,8 @@
             <p>Fashion show of the decades featuring Massey alumni!</p>
           </div>
           <div class="schedule-box">
-            <h6>Car and Antiques Show</h6>
-            <p>Come see cars and antiques!</p>
+            <h6>Classic/Antique Car Show</h6>
+            <p>View the beautiful collection of cars as you take a walk down memory lane.</p>
           </div>
           <div class="schedule-box">
             <h6>Battle of the Bands</h6>
