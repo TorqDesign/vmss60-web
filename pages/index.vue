@@ -125,7 +125,7 @@
         },
         methods: {
             submitContactForm: function submitContactForm() {
-                this.$axios.post('/email/contact-form', {
+                this.$axios.post('/contact-form', {
                     message: this.message,
                     name: this.name,
                     email: this.email
