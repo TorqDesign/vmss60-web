@@ -1,22 +1,7 @@
-# vmss60-web
+# VMSS 60 Web
 
-> My fabulous Nuxt.js project
+Web interface for the website of the Vincent Massey Secondary School 50th anniversary reunion.
 
-## Build Setup
+Powered by Nuxt.js.
 
-``` bash
-# install dependencies
-$ npm run install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+The text on and the code of this site is licensed under the MIT license. However, any audiovisual assets are not to be used on any other site without our written permission.
