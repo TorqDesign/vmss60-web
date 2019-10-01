@@ -3,41 +3,46 @@
     <div class="hero-background">
       <div class="hero">
         <h1>VMSS 60th Reunion</h1>
-        <h6>October 9th - 10th, 2020 @ Vincent Massey S.S.</h6>
+        <h6>October 9th &amp; 10th / 2020</h6>
+        <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
+        <!-- Begin Mailchimp Signup Form -->
+        <!-- Begin Mailchimp Signup Form -->
+<!--        <style type="text/css">-->
+<!--          #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}-->
+<!--          /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.-->
+<!--             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */-->
+<!--        </style>-->
+        <div id="mc_embed_signup">
+          <form action="https://gmail.us20.list-manage.com/subscribe/post?u=c259260007eff16ec9e630d39&amp;id=7fcb56d7d3" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+              <label for="mce-EMAIL">Our site is constantly being updated, subscribe for updates!</label>
+              <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c259260007eff16ec9e630d39_7fcb56d7d3" tabindex="-1" value=""></div>
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </div>
+          </form>
+        </div>
+  
+        <!--End mc_embed_signup-->
+  
+        <!--End mc_embed_signup-->
       </div>
       <!--Content before waves-->
       <div class="inner-header flex">
       </div>
-      
-      <!--Waves Container-->
-<!--      <div>-->
-<!--        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"-->
-<!--             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">-->
-<!--          <defs>-->
-<!--            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>-->
-<!--          </defs>-->
-<!--          <g class="parallax">-->
-<!--            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(29,67,155,0.7)"/>-->
-<!--            <use fill="rgba(245, 164, 66,0.5)" x="48" xlink:href="#gentle-wave" y="3"/>-->
-<!--&lt;!&ndash;            <use fill="rgba(151,150,240,0.3)" x="48" xlink:href="#gentle-wave" y="5"/>&ndash;&gt;-->
-<!--&lt;!&ndash;            <use fill="rgba(167,215,197,0.9)" x="48" xlink:href="#gentle-wave" y="7"/>&ndash;&gt;-->
-<!--          </g>-->
-<!--        </svg>-->
-<!--      </div>-->
-<!--      <div style="transform: rotate(180deg)">-->
-<!--        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"-->
-<!--             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">-->
-<!--          <defs>-->
-<!--            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>-->
-<!--          </defs>-->
-<!--          <g class="parallax">-->
-<!--            <use xlink:href="#gentle-wave" x="28" y="0" fill="rgba(248,169,120,0.5)"/>-->
-<!--            <use xlink:href="#gentle-wave" x="28" y="3" fill="rgba(186,223,219,0.7)"/>-->
-<!--            <use xlink:href="#gentle-wave" x="28" y="5" fill="rgba(252,249,0,0.3)"/>-->
-<!--            <use fill="rgba(167,215,197,0.9)" x="28" xlink:href="#gentle-wave" y="7"/>-->
-<!--          </g>-->
-<!--        </svg>-->
-<!--      </div>-->
+      <div class="filter"></div>
+      <div class="slideshow">
+        <div class="images">
+        </div>
+      </div>
+      <!--<div class="video-wrapper">
+
+        <video autoplay muted loop id="myVideo">
+          <source src="~/assets/bgvid.mp4" type="video/mp4">
+        </video>
+      </div>-->
+
     </div>
     <div class="container" id="about">
       <div class="row align-items-center justify-content-center">
@@ -61,8 +66,8 @@
             <p>Fashion show of the decades featuring Massey alumni!</p>
           </div>
           <div class="schedule-box">
-            <h6>Car and Antiques Show</h6>
-            <p>Come see cars and antiques!</p>
+            <h6>Classic/Antique Car Show</h6>
+            <p>View the beautiful collection of cars as you take a walk down memory lane.</p>
           </div>
           <div class="schedule-box">
             <h6>Battle of the Bands</h6>
@@ -72,16 +77,31 @@
       </div>
     </div>
     <div class="container" id="contact">
-      <div class="row-tb-margin row">
-        <div class="col">
-          <form>
-            <label for="email">Email</label>
-            <input type="email" class="" id="email" placeholder="example@email.com">
+      <div class="row-tb-margin row align-items-center justify-content-center">
+        <div class="col-md-10">
+          <h2>Contact</h2>
+          <p>Have a question? Feel free to use the contact form below or email <a href="mailto:masseymustangs2020@gmail.com"
+                                                                                  class="expand-link">masseymustangs2020@gmail.com</a>.
+          </p>
+          <form id="contact-form" v-on:submit.prevent="submitContactForm">
+            <div class="form-group">
+              <label for="nameInput">Name</label>
+              <input type="text" class="form-control" id="nameInput" placeholder="John Smith" v-model="name">
+            </div>
+            <div class="form-group">
+              <label for="emailInput">Email address</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" v-model="email">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Message</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
-
+      
       </div>
-
+    
     </div>
   </div>
 
@@ -90,10 +110,39 @@
 <script>
     import Logo from '~/components/Logo.vue'
     import Swal from 'sweetalert2'
+    import axios from '@nuxtjs/axios'
 
     export default {
         components: {
             Logo
+        },
+        data() {
+            return {
+                message: '',
+                name: '',
+                email: ''
+            }
+        },
+        methods: {
+            submitContactForm: function submitContactForm() {
+                this.$axios.post('/contact-form', {
+                    message: this.message,
+                    name: this.name,
+                    email: this.email
+                }).then(data => {
+                    Swal.fire({
+                        title: 'Message Sent!',
+                        type: 'success',
+                    })
+                }).catch(error => {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'There was an error!',
+                        type: 'error',
+                        text: error
+                    })
+                })
+            }
         }
     }
 </script>
