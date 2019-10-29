@@ -44,6 +44,7 @@
       </div>-->
 
     </div>
+    <!--
     <div class="container" id="about">
       <div class="row align-items-center justify-content-center">
         <div class="col-md-10">
@@ -56,8 +57,8 @@
             amet aliquam id diam.</p>
         </div>
       </div>
-    </div>
-    <div class="container" id="schedule">
+    </div>-->
+    <div class="container" id="schedule" style="margin-top: 3em">
       <div class="row align-items-center justify-content-center">
         <div class="col-md-10">
           <h2>Events</h2>
