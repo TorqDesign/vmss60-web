@@ -49,7 +49,7 @@ export default {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        baseURL: 'https://formhandler.vmss60.workers.dev'
+        baseURL: 'https://vmss60.com/api'
     },
     /*
     ** Build configuration
