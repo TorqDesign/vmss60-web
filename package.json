@@ -16,7 +16,9 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "nuxt": "^2.0.0",
     "nuxt-start": "^2.9.2",
-    "sweetalert2": "^8.17.6"
+    "recaptcha-v3": "^1.7.0",
+    "sweetalert2": "^8.17.6",
+    "vue-recaptcha-v3": "^1.7.0"
   },
   "devDependencies": {}
 }
