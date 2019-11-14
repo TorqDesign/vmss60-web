@@ -157,10 +157,18 @@
                 })
             },
             recaptcha: function recaptcha() {
-                this.$recaptcha('homepage').then((token) => {
-                    console.log(token);
-                    this.submitContactForm(token)
-                })
+                if (!this.message || !this.name || !this.email) {
+                    Swal.fire({
+                        title: 'Please fill out all fields!',
+                        type: 'error',
+                        text: 'To ensure your contact request is received and processed, please fill our your message, name, and email.'
+                    })
+                } else {
+                    this.$recaptcha('homepage').then((token) => {
+                        console.log(token);
+                        this.submitContactForm(token)
+                    })
+                }
             }
         }
     }
