@@ -106,7 +106,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Message</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                      v-model="message"></textarea>
+                                      v-model="message"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
