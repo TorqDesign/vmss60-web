@@ -3,6 +3,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-md-10">
                 <h2>Events</h2>
+                <h5>Saturday</h5>
                 <div class="schedule-box">
                     <h6>Saturday Banquet</h6>
                     <p>Fashion show of the decades featuring Massey alumni!</p>
