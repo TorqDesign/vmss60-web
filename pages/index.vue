@@ -1,5 +1,6 @@
 <template>
     <div class="">
+        <Navbar></Navbar>
         <div class="hero-background">
             <div class="hero">
                 <h1>VMSS 60th Reunion</h1>
@@ -123,9 +124,11 @@
     import Logo from '~/components/Logo.vue'
     import Swal from 'sweetalert2'
     import axios from '@nuxtjs/axios'
+    import Navbar from '../components/Navbar'
 
     export default {
         components: {
+            Navbar,
             Logo
         },
         data() {
