@@ -471,6 +471,10 @@ footer {
     color: black;
 }
 
+#full-page-2 .section-action-button:before {
+    color: black;
+}
+
 #full-page-2 img {
     max-height: 90vh;
     max-width: 90vw;
