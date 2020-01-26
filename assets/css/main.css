@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'axiforma';
+    src: url('~assets/Axiforma.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
 html {
     /*font-size: calc(0.85em + 1vw);*/
 }
@@ -16,14 +23,14 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
     /*font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Roboto', sans-serif;*/
-    font-family: 'Playfair Display', serif;
+    font-family: 'axiforma', serif;
     font-weight: bold;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
 h1 {
-    font-size: 4.5em;
+    font-size: 6.5em;
 }
 
 h2 {
@@ -433,7 +440,7 @@ footer {
 
 .full-page {
     height: 100vh;
-    z-index: -2;
+    z-index: 2;
 }
 
 #full-page-1 {
@@ -486,7 +493,7 @@ footer {
 
 @media (min-width: 1200px) {
     #full-page-1-text {
-        width: 30vw;
+        width: 45vw;
         top: 50%;
         left: 50%;
         padding: 0;
@@ -505,9 +512,39 @@ footer {
         color: white;
         width: 30vw;
         top: 50%;
-        left: 70%;
+        left: 75%;
         transform: translate(-50%, -50%);
         position: relative;
         text-align: right;
     }
+}
+
+.section-action-button {
+    color: white;
+    display: inline;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-action-button:hover {
+    color: white;
+}
+
+.section-action-button:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    bottom: -4px;
+    background: #fff;
+    height: 2px;
+    transition-property: left right;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+.section-action-button:hover:after,
+.section-action-button:focus:after,
+.section-action-button:active:after {
+    right: 0;
 }
