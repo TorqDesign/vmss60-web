@@ -28,10 +28,10 @@
         </div>
         
         <div class="full-page" id="full-page-3">
-            <img src="../assets/images/vmss602.svg" alt="tes" style="z-index: -2; height: 100vh; position: absolute">
-            <img src="../assets/images/edin.png" alt="uhh" style="z-index: -1; height: 90vh; position: absolute; top: 5%;">
+            <img src="../assets/images/vmss604-01.svg" alt="tes" style="z-index: -2; height: 100vh; position: absolute">
+            <img src="../assets/images/edin.png" alt="uhh" style="z-index: -1; height: 88vh; position: absolute; top: 5%;">
             <div id="full-page-3-text">
-                <h1>Events.</h1>
+                <h1>Be Entertained.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh venenatis
                     cras sed felis eget velit aliquet.</p>
