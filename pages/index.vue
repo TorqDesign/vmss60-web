@@ -7,6 +7,7 @@
                 <h1>VMSS 60th Reunion</h1>
                 <h6>October 9th &amp; 10th / 2020</h6>
                 <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
+                <h5>TEMPORARY DEVELOPMENT NOTE: Best viewed on a computer</h5>
             </div>
         </div>
         <div class="full-page" id="full-page-1">
