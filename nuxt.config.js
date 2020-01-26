@@ -44,6 +44,10 @@ export default {
         'bootstrap-vue/nuxt',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
+        ['nuxt-gmaps', {
+            key: 'AIzaSyA2D42yA4tDFK7vNP8RCC-2RQK_MeZq6Mc',
+            //you can use libraries: ['places']
+        }],
     ],
     /*
     ** Axios module configuration

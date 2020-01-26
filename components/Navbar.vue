@@ -12,6 +12,9 @@
                 <li class="nav-item">
                     <nuxt-link class="nav-link" to="/events">Events</nuxt-link>
                 </li>
+                <li class="nav-item">
+                    <nuxt-link class="nav-link" to="/hotels">Hotels</nuxt-link>
+                </li>
             </ul>
         </div>
     </nav>
