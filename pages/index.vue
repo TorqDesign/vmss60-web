@@ -20,18 +20,19 @@
         </div>
         
         <div class="full-page" id="full-page-2">
+            <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" style="">
             <div id="full-page-2-text">
-                <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" style="z-index: -1; position: absolute; height: 90vh; top: 50%; left: 50%; transform: translate(-50%, -50%)">
                 <h1>Hotels.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh venenatis
                     cras sed felis eget velit aliquet.</p>
+                <nuxt-link to="/hotels" class="section-action-button">Check them out →</nuxt-link>
             </div>
         </div>
 
         <div class="full-page" id="full-page-3">
-            <img src="../assets/images/vmss604-01.svg" alt="tes" style="z-index: 1; height: 100vh; position: absolute">
-            <img src="../assets/images/edin.png" alt="uhh" style="z-index: 2; height: 90vh; position: absolute; top: 5%; left: 2%;">
+            <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back">
+            <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front">
             <div id="full-page-3-text">
                 <h1>Events.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
