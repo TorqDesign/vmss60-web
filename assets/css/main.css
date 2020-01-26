@@ -471,7 +471,7 @@ footer {
     color: black;
 }
 
-#full-page-2 .section-action-button:before {
+#full-page-2 .section-action-button:after {
     background: black;
 }
 
