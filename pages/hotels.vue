@@ -37,10 +37,10 @@
                     <ul class="list-group">
                         <li v-for="location in locations" :key="location.id" class="list-group-item">
                             <div class="row" @click="changeMapView(location, $event)">
-                                <div class="col-sm-2">
-                                    <img class="img-fluid" src="~/assets/images/comf_inn_reg_color_bib.jpg">
+                                <div class="col-2">
+                                    <img class="img-fluid" src="../assets/images/comf_inn_reg_color_bib.jpg">
                                 </div>
-                                <div class="col-sm-10">
+                                <div class="col-10">
                                     <strong>{{location.name}}</strong>
                                     <p>{{location.address}}</p>
                                     <p>Rate: ${{location.price}} per night</p>
