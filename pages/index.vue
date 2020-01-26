@@ -35,7 +35,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh venenatis
                     cras sed felis eget velit aliquet.</p>
-                <a href="#" class="section-action-button">Check them out →</a>
+                <nuxt-link to="/events" class="section-action-button">Check them out →</nuxt-link>
             </div>
         </div>
         
