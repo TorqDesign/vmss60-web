@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'axiforma';
-    src: url('~assets/Axiforma.ttf') format('truetype');
+    src: url('../Axiforma.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -132,7 +132,7 @@ a:hover {
 
 .schedule-box {
     border-radius: 0.5em;
-    background: #eeeeee;
+    background: #6d8876;
     padding: 20px;
     margin-bottom: 1.1em;
 }
@@ -440,7 +440,7 @@ footer {
 
 .full-page {
     height: 100vh;
-    z-index: 2;
+    /*z-index: 2;*/
 }
 
 #full-page-1 {
@@ -462,7 +462,7 @@ footer {
 }
 
 #full-page-2-text {
-    color: white;
+    color: #ffffff;
     width: 100vw;
     top: 50%;
     left: 50%;
@@ -501,12 +501,15 @@ footer {
         position: relative;
     }
     #full-page-2-text {
-        color: white;
+        color: rgb(73, 80, 103);
         width: 30vw;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         position: relative;
+    }
+    #full-page-2-text p {
+        color: rgb(255, 255, 255);
     }
     #full-page-3-text {
         color: white;
@@ -539,7 +542,7 @@ footer {
     bottom: -4px;
     background: #fff;
     height: 2px;
-    transition-property: left right;
+    transition-property: left, right;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
 }

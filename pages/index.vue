@@ -17,16 +17,17 @@
                     et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh venenatis
                     cras sed felis eget velit aliquet.</p>
             </div>
-        </div><!--
+        </div>
         
         <div class="full-page" id="full-page-2">
             <div id="full-page-2-text">
+                <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" style="z-index: -1; position: absolute; height: 90vh; top: 50%; left: 50%; transform: translate(-50%, -50%)">
                 <h1>Hotels.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh venenatis
                     cras sed felis eget velit aliquet.</p>
             </div>
-        </div>-->
+        </div>
 
         <div class="full-page" id="full-page-3">
             <img src="../assets/images/vmss604-01.svg" alt="tes" style="z-index: 1; height: 100vh; position: absolute">
