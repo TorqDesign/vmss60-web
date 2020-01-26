@@ -1,8 +1,8 @@
 <template>
-    <div class="">
+    <div id="main">
         <!--        <Navbar></Navbar>-->
         
-        <div class="hero-background">
+        <div class="hero-background full-page">
             <div class="hero">
                 <h1>VMSS 60th Reunion</h1>
                 <h6>October 9th &amp; 10th / 2020</h6>
@@ -151,5 +151,6 @@
         }
     }
 </script>
-<style>
+<style scoped>
+
 </style>
