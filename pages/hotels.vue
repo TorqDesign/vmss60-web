@@ -87,15 +87,18 @@
         components: {Navbar},
         methods: {
             changeMapView(location, event) {
+                for (let marker in this.$refs.gMap.markers) {
+                    this.$refs.gMap.markers[marker].infoWindow.close()
+                }
                 this.$refs.gMap.google.maps.event.trigger(this.$refs.gMap.markers[location.id], 'click');
-
                 //this.$refs.marker[location.id].$el.click();
                 //this.$refs.gMap.markers[0];
                 //this.$refs.gMap.
-            },
+            }
         },
         data() {
             return {
+                markers: {},
                 currentLocation: {},
                 locations: [
                     {
