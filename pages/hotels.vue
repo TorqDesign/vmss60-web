@@ -26,9 +26,9 @@
                                 <b>{{ location.name }}</b>
                                 <br>
                                 <br>
-                                <code>
+                                <p>
                                     {{location.address}}
-                                </code>
+                                </p>
                             </GMapInfoWindow>
                         </GMapMarker>
                     </GMap>
