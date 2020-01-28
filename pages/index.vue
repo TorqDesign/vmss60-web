@@ -54,7 +54,7 @@
         </div>
         <div :class="'navbar-overlay' + (mobileNavOpen ? ' open' : '')"></div>
         <full-page ref="fullpage" id="fullpage" :options="options">
-            <div class="hero-background full-page section">
+            <div class="hero-background full-page section fp-auto-height">
                 <div class="hero">
                     <h1>VMSS 60th Reunion</h1>
                     <h6>October 9th &amp; 10th / 2020</h6>
@@ -68,7 +68,7 @@
                     <h5>TEMPORARY DEVELOPMENT NOTE: Best viewed on a computer</h5>
                 </div>
             </div>
-            <div class="full-page section" id="full-page-1">
+            <div class="full-page section fp-auto-height" id="full-page-1">
                 <div id="full-page-1-text">
                     <h1>Welcoming <span class="emphasis-span">60 years</span> of alumni back</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -79,7 +79,7 @@
                 </div>
             </div>
             
-            <div class="full-page section" id="full-page-2"
+            <div class="full-page section fp-auto-height" id="full-page-2"
                  v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
                 <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" style="">
                 <div id="full-page-2-text">
@@ -93,7 +93,7 @@
                 </div>
             </div>
             
-            <div class="full-page section" id="full-page-3">
+            <div class="full-page section fp-auto-height" id="full-page-3">
                 <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back">
                 <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front">
                 <div id="full-page-3-text">
@@ -107,7 +107,7 @@
                 </div>
             </div>
             
-            <div class="full-page section" id="full-page-4"
+            <div class="full-page section fp-auto-height" id="full-page-4"
                  v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
                 <div id="full-page-4-text">
                     <h1>Questions?</h1>
