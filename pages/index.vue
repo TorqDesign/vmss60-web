@@ -5,50 +5,50 @@
 <!--        <div class="navbar-icon mobile black" @click="toggleMobileNavbar()"></div>-->
         <div class="vmss60-navbar mobile">
             <div class="vmss60-navbar-item-container d-none d-lg-flex">
-                <a href="#top" :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'">
+                <button :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'" @click="$refs.fullpage.api.moveTo('home')">
                     VMSS60
-                </a>
+                </button>
                 <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
-                <a href="#full-page-2" :class="'vmss60-navbar-item ' + getNavAddClass()">
+                <button :class="'vmss60-navbar-item ' + getNavAddClass()" @click="$refs.fullpage.api.moveTo('hotels')">
                     Hotels
-                </a>
+                </button>
                 <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
-                <a href="#full-page-3" :class="'vmss60-navbar-item ' + getNavAddClass()">
+                <button :class="'vmss60-navbar-item ' + getNavAddClass()" @click="$refs.fullpage.api.moveTo('events')">
                     Events
-                </a>
+                </button>
                 <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
-                <a href="#full-page-4" :class="'vmss60-navbar-item ' + getNavAddClass()">
+                <button :class="'vmss60-navbar-item ' + getNavAddClass()" @click="$refs.fullpage.api.moveTo('contact')">
                     Contact
-                </a>
+                </button>
             </div>
             <div :class="'vmss60-navbar-item-container d-block d-lg-none' + (mobileNavOpen ? ' open' : '')">
                 <ul>
                     <li>
-                        <a href="#top" class="vmss60-navbar-item mobile">
+                        <button class="vmss60-navbar-item mobile" @click="$refs.fullpage.api.moveTo('home')">
                             VMSS60
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a href="#full-page-2" class="vmss60-navbar-item mobile">
+                        <button class="vmss60-navbar-item mobile" @click="$refs.fullpage.api.moveTo('hotels')">
                             Hotels
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a href="#full-page-3" class="vmss60-navbar-item mobile">
+                        <button class="vmss60-navbar-item mobile" @click="$refs.fullpage.api.moveTo('events')">
                             Events
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a href="#full-page-4" class="vmss60-navbar-item mobile">
+                        <button class="vmss60-navbar-item mobile" @click="$refs.fullpage.api.moveTo('contact')">
                             Contact
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
         <div :class="'navbar-overlay' + (mobileNavOpen ? ' open' : '')"></div>
         <full-page ref="fullpage" id="fullpage" :options="options">
-            <div class="hero-background full-page section fp-auto-height" id="top">
+            <div class="hero-background full-page section" id="top" data-anchor="home">
                 <div class="hero">
                     <h1>VMSS 60th Reunion</h1>
                     <h6>October 9th &amp; 10th / 2020</h6>
@@ -62,7 +62,7 @@
                     <h5>TEMPORARY DEVELOPMENT NOTE: Best viewed on a computer</h5>
                 </div>
             </div>
-            <div class="full-page section fp-auto-height" id="full-page-1">
+            <div class="full-page section" id="full-page-1" data-anchor="welcome">
                 <div id="full-page-1-text">
                     <h1>Welcoming <span class="emphasis-span">60 years</span> of alumni back</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -73,8 +73,8 @@
                 </div>
             </div>
             
-            <div class="full-page section fp-auto-height" id="full-page-2"
-                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
+            <div class="full-page section" id="full-page-2"
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }" data-anchor="hotels">
                 <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" style="">
                 <div id="full-page-2-text">
                     <h1>Hotels.</h1>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             
-            <div class="full-page section fp-auto-height" id="full-page-3">
+            <div class="full-page section" id="full-page-3" data-anchor="events">
                 <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back">
                 <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front">
                 <div id="full-page-3-text">
@@ -101,11 +101,11 @@
                 </div>
             </div>
             
-            <div class="full-page section fp-auto-height" id="full-page-4"
-                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
+            <div class="full-page section" id="full-page-4"
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }" data-anchor="contact">
                 <div id="full-page-4-text">
                     <h1>Questions?</h1>
-                    <p>Feel free to use the contact form below or email <a
+                    <p id="contact-desc">Feel free to use the contact form below or email <a
                             href="mailto:masseymustangs2020@gmail.com"
                             class="expand-link">masseymustangs2020@gmail.com</a>.
                     </p>
@@ -133,10 +133,10 @@
                     
                     </form>
                 </div>
-                <div class="vmss60-footer">
+                <div class="vmss60-footer-desktop">
                     <div class="quarter-circle-bottom-right">
                     </div>
-                    <div class="vmss60-footer vmss60-footer-text">
+                    <div class="vmss60-footer-text-desktop">
                         <p>Copyright &copy; 2020 Vincent Massey Secondary School.<br>Design by <a class="expand-link"
                                                                                                   href="https://davidhui.ca"
                                                                                                   target="_blank">David
@@ -145,6 +145,17 @@
                     </div>
                 </div>
             
+            </div>
+            <div class="vmss60-footer section d-block d-lg-none" data-anchor="footer" v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
+                <div class="quarter-circle-bottom-right">
+                </div>
+                <div class="vmss60-footer-text">
+                    <p>Copyright &copy; 2020 Vincent Massey Secondary School.<br>Design by <a class="expand-link"
+                                                                                              href="https://davidhui.ca"
+                                                                                              target="_blank">David
+                        Hui</a> and <a class="expand-link" href="https://jamesxu.ca" target="_blank">James Xu</a>
+                    </p>
+                </div>
             </div>
         </full-page>
         
@@ -224,11 +235,11 @@
                 counter: -1,
                 intersectionOptions: {threshold: 0.95},
                 mobileNavOpen: false,
-                lightBack: false, // First toggle is on page load, so technically the lightBack is set to false
+                lightBack: true, // First toggle is on page load, so technically the lightBack is set to false
                 time: event - now,
                 options: {
                     licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd',
-                    anchors: ['top','full-page-1','full-page-2','full-page-3','full-page-4']
+                    // anchors: ['home','welcome','hotels','events','contact']
                 }
             }
         },
