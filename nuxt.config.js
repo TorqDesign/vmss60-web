@@ -31,6 +31,7 @@ export default {
     */
     plugins: [
         {src: '~/plugins/vue-recaptcha-v3.js', ssr: false},
+        {src: '~/plugins/vue-countdown.js', ssr: false},
         { src: "~/plugins/v-waypoint.client.js",
             mode: 'client'
         }
