@@ -1,31 +1,53 @@
 <template>
     <div id="main">
         <!--        <Navbar></Navbar>-->
-        
-        <div class="navbar">
-            <nuxt-link to="#main" :class="'navbar-item ' + getNavAddClass() + ' first'">
-                VMSS60
-            </nuxt-link>
-            <div class="navbar-line-container">
-                <div :class="'navbar-line ' + getNavAddClass()"></div>
+        <div :class="'navbar-icon mobile '  + getNavAddClass()" @click="toggleMobileNavbar()"></div>
+<!--        <div class="navbar-icon mobile black" @click="toggleMobileNavbar()"></div>-->
+        <div class="navbar mobile">
+            <div class="navbar-item-container d-none d-md-flex">
+                <nuxt-link to="#main" :class="'navbar-item ' + getNavAddClass() + ' first'">
+                    VMSS60
+                </nuxt-link>
+                <div class="navbar-line-container"><div :class="'navbar-line ' + getNavAddClass()"></div></div>
+                <nuxt-link to="#full-page-2" :class="'navbar-item ' + getNavAddClass()">
+                    Hotels
+                </nuxt-link>
+                <div class="navbar-line-container"><div :class="'navbar-line ' + getNavAddClass()"></div></div>
+                <nuxt-link to="#full-page-3" :class="'navbar-item ' + getNavAddClass()">
+                    Events
+                </nuxt-link>
+                <div class="navbar-line-container"><div :class="'navbar-line ' + getNavAddClass()"></div></div>
+                <nuxt-link to="#full-page-4" :class="'navbar-item ' + getNavAddClass()">
+                    Contact
+                </nuxt-link>
             </div>
-            <nuxt-link to="#full-page-2" :class="'navbar-item ' + getNavAddClass()">
-                Hotels
-            </nuxt-link>
-            <div class="navbar-line-container">
-                <div :class="'navbar-line ' + getNavAddClass()"></div>
+            <div :class="'navbar-item-container d-block d-md-none' + (mobileNavOpen ? ' open' : '')">
+                <ul>
+                    <li>
+                        <nuxt-link to="#main" class="navbar-item mobile">
+                            VMSS60
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link to="#full-page-2" class="navbar-item mobile">
+                            Hotels
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link to="#full-page-3" class="navbar-item mobile">
+                            Events
+                        </nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link to="#full-page-4" class="navbar-item mobile">
+                            Contact
+                        </nuxt-link>
+                    </li>
+                </ul>
             </div>
-            <nuxt-link to="#full-page-3" :class="'navbar-item ' + getNavAddClass()">
-                Events
-            </nuxt-link>
-            <div class="navbar-line-container">
-                <div :class="'navbar-line ' + getNavAddClass()"></div>
-            </div>
-            <nuxt-link to="#full-page-4" :class="'navbar-item ' + getNavAddClass()">
-                Contact
-            </nuxt-link>
         </div>
-        
+        <div :class="'navbar-overlay' + (mobileNavOpen ? ' open' : '')"></div>
+
         <div class="hero-background full-page">
             <div class="hero">
                 <h1>VMSS 60th Reunion</h1>
@@ -60,7 +82,7 @@
                 <nuxt-link to="/hotels" class="section-action-button">Check them out →</nuxt-link>
             </div>
         </div>
-        
+
         <div class="full-page" id="full-page-3">
             <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back">
             <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front">
@@ -72,7 +94,7 @@
                 <nuxt-link to="/events" class="section-action-button">Check them out →</nuxt-link>
             </div>
         </div>
-        
+
         <div class="full-page" id="full-page-4"
              v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
             <div id="full-page-4-text">
@@ -101,7 +123,7 @@
                         <a class="expand-link" href="https://policies.google.com/privacy">Privacy Policy</a> and
                         <a class="expand-link" href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                
+
                 </form>
             </div>
             <div class="vmss60-footer">
@@ -114,7 +136,7 @@
                         Hui</a> and <a class="expand-link" href="https://jamesxu.ca" target="_blank">James Xu</a></p>
                 </div>
             </div>
-        
+
         </div>
         
         <!--        <div id="mc_embed_signup">-->
@@ -192,6 +214,7 @@
                 email: '',
                 counter: -1,
                 intersectionOptions: {threshold: 0.95},
+                mobileNavOpen: false,
                 lightBack: false, // First toggle is on page load, so technically the lightBack is set to false
                 time: event - now
             }
@@ -237,12 +260,14 @@
                     })
                 }
             },
-            toggleNavbar: function toggleNavbar() {
-                console.log("hello");
-                this.lightBack = !this.lightBack;
+            toggleNavbar: function toggleNavbar(){
+              this.lightBack = !this.lightBack;
             },
             getNavAddClass: function getNavAddClass() {
-                return this.lightBack ? "black" : "";
+                return this.mobileNavOpen ? "" : this.lightBack ? "black" : "";
+            },
+            toggleMobileNavbar: function toggleMobileNavbar() {
+                this.mobileNavOpen = !this.mobileNavOpen;
             }
         }
     }
