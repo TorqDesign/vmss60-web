@@ -53,7 +53,7 @@
             </div>
         </div>
         <div :class="'navbar-overlay' + (mobileNavOpen ? ' open' : '')"></div>
-        <full-page ref="fullpage" id="fullpage">
+        <full-page ref="fullpage" id="fullpage" :options="options">
             <div class="hero-background full-page section">
                 <div class="hero">
                     <h1>VMSS 60th Reunion</h1>
