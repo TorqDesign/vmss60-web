@@ -537,16 +537,13 @@ footer {
 }
 
 @media (min-width: 1200px) {
-    html {
-        scroll-snap-type: y mandatory;
-    }
 
     .full-page {
         height: 100vh;
         position: relative;
         /*z-index: 2;*/
         overflow-x: hidden;
-        scroll-snap-align: start;
+        overflow-y: hidden;
     }
 
     #full-page-1-text {
