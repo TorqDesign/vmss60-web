@@ -2,21 +2,28 @@
     <div id="main">
         <!--        <Navbar></Navbar>-->
         <div :class="'vmss60-navbar-icon mobile '  + getNavAddClass()" @click="toggleMobileNavbar()"></div>
-<!--        <div class="navbar-icon mobile black" @click="toggleMobileNavbar()"></div>-->
+        <!--        <div class="navbar-icon mobile black" @click="toggleMobileNavbar()"></div>-->
         <div class="vmss60-navbar mobile">
             <div class="vmss60-navbar-item-container d-none d-lg-flex">
-                <button :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'" @click="$refs.fullpage.api.moveTo('home')">
+                <button :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'"
+                        @click="$refs.fullpage.api.moveTo('home')">
                     VMSS60
                 </button>
-                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <div class="vmss60-navbar-line-container">
+                    <div :class="'vmss60-navbar-line ' + getNavAddClass()"></div>
+                </div>
                 <button :class="'vmss60-navbar-item ' + getNavAddClass()" @click="$refs.fullpage.api.moveTo('hotels')">
                     Hotels
                 </button>
-                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <div class="vmss60-navbar-line-container">
+                    <div :class="'vmss60-navbar-line ' + getNavAddClass()"></div>
+                </div>
                 <button :class="'vmss60-navbar-item ' + getNavAddClass()" @click="$refs.fullpage.api.moveTo('events')">
                     Events
                 </button>
-                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <div class="vmss60-navbar-line-container">
+                    <div :class="'vmss60-navbar-line ' + getNavAddClass()"></div>
+                </div>
                 <button :class="'vmss60-navbar-item ' + getNavAddClass()" @click="$refs.fullpage.api.moveTo('contact')">
                     Contact
                 </button>
@@ -65,25 +72,22 @@
             <div class="full-page section" id="full-page-1" data-anchor="welcome">
                 <div id="full-page-1-text">
                     <h1>Welcoming <span class="emphasis-span">60 years</span> of alumni back</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore
-                        et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh
-                        venenatis
-                        cras sed felis eget velit aliquet.</p>
+                    <p>We are excited to invite back sixty years of proud Massey alumni for a weekend of fun and
+                        enjoyment. VMSS 60 has
+                        many exciting events planned for you to reunite with your former classmates and catch up. </p>
                 </div>
             </div>
             
             <div class="full-page section" id="full-page-2"
-                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }" data-anchor="hotels">
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }"
+                 data-anchor="hotels">
                 <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" style="">
                 <div id="full-page-2-text">
                     <h1>Hotels.</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore
-                        et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh
-                        venenatis
-                        cras sed felis eget velit aliquet.</p>
-                    <nuxt-link to="/hotels" class="section-action-button">Check them out →</nuxt-link>
+                    <p>Traveling from out of town? We have worked with multiple local hotel partners to provide discount
+                        group rates for this reunion. Each hotel has unique instructions for redeeming this special
+                        rate, so please follow the link below for more information.</p>
+                    <nuxt-link to="/hotels" class="section-action-button">View hotels →</nuxt-link>
                 </div>
             </div>
             
@@ -92,17 +96,16 @@
                 <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front">
                 <div id="full-page-3-text">
                     <h1>Events.</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore
-                        et dolore magna aliqua. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nibh
-                        venenatis
-                        cras sed felis eget velit aliquet.</p>
+                    <p>We have worked hard to plan exciting and enjoyable weekend for all of you! Events will be running
+                        from Friday evening throughout the entire day of Saturday. Check out a detailed listing of
+                        events below.</p>
                     <nuxt-link to="/events" class="section-action-button">Check them out →</nuxt-link>
                 </div>
             </div>
             
             <div class="full-page section" id="full-page-4"
-                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }" data-anchor="contact">
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }"
+                 data-anchor="contact">
                 <div id="full-page-4-text">
                     <h1>Questions?</h1>
                     <p id="contact-desc">Feel free to use the contact form below or email <a
@@ -146,7 +149,8 @@
                 </div>
             
             </div>
-            <div class="vmss60-footer section d-block d-lg-none" data-anchor="footer" v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
+            <div class="vmss60-footer section d-block d-lg-none" data-anchor="footer"
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
                 <div class="quarter-circle-bottom-right">
                 </div>
                 <div class="vmss60-footer-text">
@@ -239,6 +243,7 @@
                 time: event - now,
                 options: {
                     licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd',
+                    continuousVertical: false
                     // anchors: ['home','welcome','hotels','events','contact']
                 }
             }
