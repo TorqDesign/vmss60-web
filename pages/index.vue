@@ -33,7 +33,7 @@
                 <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
                 <p>Page views so far: {{this.counter}}</p>
                 <countdown :time="this.time" tag="p">
-                    <template slot-scope="props">Countdown: {{ props.days }} days, {{ props.hours }} hours, {{
+                    <template slot-scope="props">Countdow: {{ props.days }} days, {{ props.hours }} hours, {{
                         props.minutes }} minutes, {{ props.seconds }} seconds.
                     </template>
                 </countdown>
@@ -175,10 +175,7 @@
     import Swal from 'sweetalert2'
     import axios from '@nuxtjs/axios'
     import Navbar from '../components/Navbar'
-    import Vue from 'vue';
-    import VueCountdown from '@chenfengyuan/vue-countdown';
-
-    Vue.component(VueCountdown.name, VueCountdown);
+    import VueCountdown from '@chenfengyuan/vue-countdown'
 
     export default {
         components: {
