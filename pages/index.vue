@@ -119,7 +119,6 @@
                 </div>
             </full-page>
         </no-ssr>
-        
         <!--        <div id="mc_embed_signup">-->
         <!--            <form action="https://gmail.us20.list-manage.com/subscribe/post?u=c259260007eff16ec9e630d39&amp;id=7fcb56d7d3"-->
         <!--                  method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"-->
