@@ -202,10 +202,10 @@
             }
         },
         mounted() {
-            // this.$axios.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
-            //     console.log(response)
-            //     this.counter = parseInt(response.data.$numberLong)
-            // })
+            this.$axios.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
+                console.log(response)
+                this.counter = parseInt(response.data.$numberLong)
+            })
         },
         methods: {
             submitContactForm: function submitContactForm(token) {
