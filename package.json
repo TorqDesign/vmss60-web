@@ -19,7 +19,8 @@
     "nuxt-start": "^2.11.0",
     "recaptcha-v3": "^1.7.0",
     "sweetalert2": "^8.17.6",
-    "vue-recaptcha-v3": "^1.7.0"
+    "vue-recaptcha-v3": "^1.7.0",
+    "vue-waypoint": "^3.2.2"
   },
   "devDependencies": {}
 }

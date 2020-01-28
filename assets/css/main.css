@@ -510,7 +510,7 @@ footer {
 
 #full-page-3-front {
     z-index: 0;
-    max-width: 100vw;
+    max-width: 95vw;
     max-height: 100vh;
     position: relative;
     left: 50%;
@@ -524,6 +524,12 @@ footer {
     top: 5%;
     left: 2%;
     display: none;
+}
+
+#full-page-4-text {
+    position: relative;
+    top: 20%;
+    padding: 2em;
 }
 
 .emphasis-span {
@@ -589,6 +595,9 @@ footer {
     #full-page-3-front {
         z-index: 1;
         height: 40em;
+        min-height: 80vh;
+        max-height: 94vh;
+        max-width: 60vw;
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
@@ -598,10 +607,18 @@ footer {
     #full-page-3-back {
         z-index: 0;
         height: 45em;
+        min-height: 80vh;
+        max-height: 94vh;
+        max-width: 60vw;
         position: absolute;
         top: 5%;
         left: 2%;
         display: inline;
+    }
+
+    #full-page-4-text {
+        max-width: 45vw;
+        left: 5%;
     }
 }
 
@@ -634,4 +651,79 @@ footer {
 .section-action-button:focus:after,
 .section-action-button:active:after {
     right: 0;
+}
+
+.grecaptcha-badge { visibility: hidden; }
+
+.vmss60-footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    color: white;
+}
+
+.vmss60-footer-text {
+    bottom: 3em;
+    right: 3em;
+}
+
+.quarter-circle-bottom-right{
+    width: 25vw;
+    height: 25vw;
+    background: orange;
+    border-radius: 25vw 0 0 0;
+    -moz-border-radius: 25vw 0 0 0;
+    -webkit-border-radius: 25vw 0 0 0;
+}
+
+.navbar {
+    position: fixed;
+    top: 2em;
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    z-index: 999;
+}
+.navbar-item {
+    border: 1px solid white;
+    color: white;
+    padding: 0.25em 1em;
+    border-radius: 1em;
+    transition: color ease 0.25s, border ease 0.25s;
+    margin-bottom: 1em;
+}
+.navbar-item.first {
+    border-radius: 0;
+}
+
+.navbar-item:hover {
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.75);
+}
+
+.navbar-line-container {
+    width: 3em;
+    margin-bottom: 1em;
+}
+
+.navbar-line {
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid white;
+}
+
+/* Invert */
+.navbar-line.black {
+    border-top: 1px solid black;
+}
+
+.navbar-item.black:hover {
+    color: rgba(0,0,0,0.5);
+    border: 1px solid rgba(0,0,0,0.5);
+}
+.navbar-item.black {
+    color: black;
+    border: 1px solid black;
 }
