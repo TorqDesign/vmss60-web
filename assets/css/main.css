@@ -683,11 +683,11 @@ footer {
     .quarter-circle-bottom-right{
         width: 25vw;
         height: 25vw;
-        background: orange;
+        background: #ff8927;
         border-radius: 25vw 0 0 0;
         -moz-border-radius: 25vw 0 0 0;
         -webkit-border-radius: 25vw 0 0 0;
-        display: inline;
+        display: block;
     }
 }
 
