@@ -1,6 +1,7 @@
 <template>
     <div id="main">
         <!--        <Navbar></Navbar>-->
+
         <div class="navbar">
             <nuxt-link to="#main" :class="'navbar-item ' + getNavAddClass() + ' first'">
                 VMSS60
@@ -24,6 +25,7 @@
                 <h1>VMSS 60th Reunion</h1>
                 <h6>October 9th &amp; 10th / 2020</h6>
                 <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
+                <p>Page views so far: {{this.counter}}</p>
                 <h5>TEMPORARY DEVELOPMENT NOTE: Best viewed on a computer</h5>
             </div>
         </div>
@@ -46,7 +48,7 @@
                 <nuxt-link to="/hotels" class="section-action-button">Check them out →</nuxt-link>
             </div>
         </div>
-
+        
         <div class="full-page" id="full-page-3">
             <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back">
             <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front">
@@ -168,9 +170,16 @@
                 message: '',
                 name: '',
                 email: '',
+                counter: -1,
                 intersectionOptions: {threshold: 0.95},
                 lightBack: false // First toggle is on page load, so technically the lightBack is set to false
             }
+        },
+        mounted() {
+            // this.$axios.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
+            //     console.log(response)
+            //     this.counter = parseInt(response.data.$numberLong)
+            // })
         },
         methods: {
             submitContactForm: function submitContactForm(token) {
