@@ -691,13 +691,13 @@ footer {
     }
 }
 
-.navbar {
+.vmss60-navbar {
     position: fixed;
     width: 100%;
     z-index: 999;
     top: 2em;
 }
-.navbar-icon {
+.vmss60-navbar-icon {
     position: fixed;
     right: 2em;
     top: 2em;
@@ -705,17 +705,17 @@ footer {
     display: none;
     z-index: 999
 }
-.navbar-icon.black {
+.vmss60-navbar-icon.black {
     background-image: url(~assets/images/menu_black.svg);
 }
-.navbar-item-container {
+.vmss60-navbar-item-container {
     display: flex;
     width: 100%;
     align-content: center;
     justify-content: center;
 }
 
-.navbar-item {
+.vmss60-navbar-item {
     border: 1px solid white;
     color: white;
     padding: 0.25em 1em;
@@ -724,16 +724,16 @@ footer {
     margin-bottom: 1em;
 }
 
-.navbar-item.first {
+.vmss60-navbar-item.first {
     border-radius: 0;
 }
 
-.navbar-item:hover {
+.vmss60-navbar-item:hover {
     color: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.75);
 }
 
-.navbar-line-container {
+.vmss60-navbar-line-container {
     width: 3em;
     margin-bottom: 1em;
     display: flex;
@@ -741,64 +741,64 @@ footer {
     align-items: center;
 }
 
-.navbar-line {
+.vmss60-navbar-line {
     height: 1px;
     width: 100%;
     border-top: 1px solid white;
 }
 
 /* Invert */
-.navbar-line.black {
+.vmss60-navbar-line.black {
     border-top: 1px solid black;
 }
 
-.navbar-item.black:hover {
+.vmss60-navbar-item.black:hover {
     color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.navbar-item.black {
+.vmss60-navbar-item.black {
     color: black;
     border: 1px solid black;
 }
 
 @media (max-width: 768px) {
-    .navbar.mobile {
+    .vmss60-navbar.mobile {
         position: fixed;
         top: 5em;
-        right: 0;
+        right: 1em;
         display: block;
         width: 100%;
     }
 
-    .navbar-icon {
+    .vmss60-navbar-icon {
         display: block;
         height: 2em;
         width: 2em;
     }
 
-    .navbar-item-container {
+    .vmss60-navbar-item-container {
         opacity: 0;
         display: none;
         color: white;
         width: 100%;
         transition: opacity ease 0.25s;
     }
-    .navbar-item-container ul{
+    .vmss60-navbar-item-container ul{
         list-style: none;
         padding: 0;
         margin-left: 2em;
     }
-    .navbar-item-container ul li{
+    .vmss60-navbar-item-container ul li{
         margin-bottom: 1em;
         text-align: right;
     }
-    .navbar-item-container.open {
+    .vmss60-navbar-item-container.open {
         opacity: 1;
         display: block;
     }
 
-    .navbar-item {
+    .vmss60-navbar-item.mobile {
         border: none;
     }
 }
