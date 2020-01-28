@@ -12,7 +12,8 @@ export default {
         ],
         link: [
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-            {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap'}
+            {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap'},
+            {rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap"}
         ]
     },
     /*
@@ -29,7 +30,12 @@ export default {
     ** Plugins to load before mounting the App
     */
     plugins: [
-        {src: '~/plugins/vue-recaptcha-v3.js', ssr: false}
+        {src: '~/plugins/vue-recaptcha-v3.js', ssr: false},
+        {src: '~/plugins/vue-countdown.js', mode: "client"},
+        {src: '~/plugins/vue-fullpage.js', mode: "client"},
+        { src: "~/plugins/v-waypoint.client.js",
+            mode: 'client'
+        }
     ],
     /*
     ** Nuxt.js dev-modules
@@ -43,6 +49,10 @@ export default {
         'bootstrap-vue/nuxt',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
+        ['nuxt-gmaps', {
+            key: '',
+            //you can use libraries: ['places']
+        }],
     ],
     /*
     ** Axios module configuration
@@ -60,5 +70,37 @@ export default {
         */
         extend(config, ctx) {
         }
+    },
+    /*
+  ** Router configuration
+  */
+    router: {
+        scrollBehavior: async (to, from, savedPosition) => {
+            if (savedPosition) {
+                return savedPosition
+            }
+
+            const findEl = async (hash, x) => {
+                return document.querySelector(hash) ||
+                    new Promise((resolve, reject) => {
+                        if (x > 50) {
+                            return resolve()
+                        }
+                        setTimeout(() => { resolve(findEl(hash, ++x || 1)) }, 100)
+                    })
+            }
+
+            if (to.hash) {
+                let el = await findEl(to.hash)
+                if ('scrollBehavior' in document.documentElement.style) {
+                    return window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
+                } else {
+                    return window.scrollTo(0, el.offsetTop)
+                }
+            }
+
+            return { x: 0, y: 0 }
+        }
     }
+
 }

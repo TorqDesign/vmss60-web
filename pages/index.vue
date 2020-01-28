@@ -1,94 +1,62 @@
 <template>
-    <div class="">
-        <div class="hero-background">
-            <div class="hero">
-                <h1>VMSS 60th Reunion</h1>
-                <h6>October 9th &amp; 10th / 2020</h6>
-                <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
-                <!-- Begin Mailchimp Signup Form -->
-                <!-- Begin Mailchimp Signup Form -->
-                <!--        <style type="text/css">-->
-                <!--          #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}-->
-                <!--          /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.-->
-                <!--             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */-->
-                <!--        </style>-->
-                <div id="mc_embed_signup">
-                    <form action="https://gmail.us20.list-manage.com/subscribe/post?u=c259260007eff16ec9e630d39&amp;id=7fcb56d7d3"
-                          method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                          class="validate" target="_blank" novalidate>
-                        <div id="mc_embed_signup_scroll">
-                            <label for="mce-EMAIL">Our site is constantly being updated, subscribe for updates!</label>
-                            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
-                                   placeholder="Email Address" required>
-                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
-                                                                                                      name="b_c259260007eff16ec9e630d39_7fcb56d7d3"
-                                                                                                      tabindex="-1"
-                                                                                                      value=""></div>
-                            <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
-                                                      id="mc-embedded-subscribe" class="button"></div>
-                        </div>
-                    </form>
-                </div>
-                
-                <!--End mc_embed_signup-->
-                
-                <!--End mc_embed_signup-->
-            </div>
-            <!--Content before waves-->
-            <div class="inner-header flex">
-            </div>
-            <div class="filter"></div>
-            <div class="slideshow">
-                <div class="images">
+    <div id="main">
+        <Navbar ref="navbar" @navTo="navTo"></Navbar>
+
+        <full-page ref="fullpage" id="fullpage" :options="options">
+            <div class="hero-background full-page section" id="top" data-anchor="home">
+                <div class="hero">
+                    <h1>VMSS 60th Reunion</h1>
+                    <h6>October 9th &amp; 10th / 2020</h6>
+                    <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
+                    <p>Page views so far: {{this.counter}}</p>
+                    <countdown :time="this.time" tag="p">
+                        <template slot-scope="props">Countdown: {{ props.days }} days, {{ props.hours }} hours, {{
+                            props.minutes }} minutes, {{ props.seconds }} seconds.
+                        </template>
+                    </countdown>
+                    <h5>TEMPORARY DEVELOPMENT NOTE: Best viewed on a computer</h5>
                 </div>
             </div>
-            <!--<div class="video-wrapper">
-      
-              <video autoplay muted loop id="myVideo">
-                <source src="~/assets/bgvid.mp4" type="video/mp4">
-              </video>
-            </div>-->
-        
-        </div>
-        <!--
-        <div class="container" id="about">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-10">
-              <h2>Our History</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua. Elit pellentesque habitant morbi tristique senectus et netus et malesuada. Porttitor lacus
-                luctus accumsan tortor posuere ac. Eget nunc lobortis mattis aliquam faucibus. Diam vulputate ut pharetra
-                sit
-                amet aliquam id diam.</p>
-            </div>
-          </div>
-        </div>-->
-        <div class="container" id="schedule" style="margin-top: 3em">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-10">
-                    <h2>Events</h2>
-                    <div class="schedule-box">
-                        <h6>Saturday Banquet</h6>
-                        <p>Fashion show of the decades featuring Massey alumni!</p>
-                    </div>
-                    <div class="schedule-box">
-                        <h6>Classic/Antique Car Show</h6>
-                        <p>View the beautiful collection of cars as you take a walk down memory lane.</p>
-                    </div>
-                    <div class="schedule-box">
-                        <h6>Battle of the Bands</h6>
-                        <p>Band names to be announced!</p>
-                    </div>
+            <div class="full-page section" id="full-page-1" data-anchor="welcome">
+                <div id="full-page-1-text">
+                    <h1>Welcoming <span class="emphasis-span">60 years</span> of alumni back</h1>
+                    <p>We are excited to invite back sixty years of proud Massey alumni for a weekend of fun and
+                        enjoyment. VMSS 60 has
+                        many exciting events planned for you to reunite with your former classmates and catch up. </p>
                 </div>
             </div>
-        </div>
-        <div class="container" id="contact">
-            <div class="row-tb-margin row align-items-center justify-content-center">
-                <div class="col-md-10">
-                    <h2>Contact</h2>
-                    <p>Have a question? Feel free to use the contact form below or email <a
+            
+            <div class="full-page section" id="full-page-2"
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }"
+                 data-anchor="hotels">
+                <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" style="">
+                <div id="full-page-2-text">
+                    <h1>Hotels.</h1>
+                    <p>Traveling from out of town? We have worked with multiple local hotel partners to provide discount
+                        group rates for this reunion. Each hotel has unique instructions for redeeming this special
+                        rate, so please follow the link below for more information.</p>
+                    <nuxt-link to="/hotels" class="section-action-button">View hotels →</nuxt-link>
+                </div>
+            </div>
+            
+            <div class="full-page section" id="full-page-3" data-anchor="events">
+                <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back">
+                <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front">
+                <div id="full-page-3-text">
+                    <h1>Events.</h1>
+                    <p>We have worked hard to plan exciting and enjoyable weekend for all of you! Events will be running
+                        from Friday evening throughout the entire day of Saturday. Check out a detailed listing of
+                        events below.</p>
+                    <nuxt-link to="/events" class="section-action-button">Check them out →</nuxt-link>
+                </div>
+            </div>
+            
+            <div class="full-page section" id="full-page-4"
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }"
+                 data-anchor="contact">
+                <div id="full-page-4-text">
+                    <h1>Questions?</h1>
+                    <p id="contact-desc">Feel free to use the contact form below or email <a
                             href="mailto:masseymustangs2020@gmail.com"
                             class="expand-link">masseymustangs2020@gmail.com</a>.
                     </p>
@@ -108,13 +76,90 @@
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                       v-model="message"></textarea>
                         </div>
+                        <p>This site is protected by reCAPTCHA and the Google
+                            <a class="expand-link" href="https://policies.google.com/privacy">Privacy Policy</a> and
+                            <a class="expand-link" href="https://policies.google.com/terms">Terms of Service</a> apply.
+                        </p>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                    
                     </form>
+                </div>
+                <div class="vmss60-footer-desktop">
+                    <div class="quarter-circle-bottom-right">
+                    </div>
+                    <div class="vmss60-footer-text-desktop">
+                        <p>Copyright &copy; 2020 Vincent Massey Secondary School.<br>Design by <a class="expand-link"
+                                                                                                  href="https://davidhui.ca"
+                                                                                                  target="_blank">David
+                            Hui</a> and <a class="expand-link" href="https://jamesxu.ca" target="_blank">James Xu</a>
+                        </p>
+                    </div>
                 </div>
             
             </div>
+            <div class="vmss60-footer section d-block d-lg-none" data-anchor="footer"
+                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
+                <div class="quarter-circle-bottom-right">
+                </div>
+                <div class="vmss60-footer-text">
+                    <p>Copyright &copy; 2020 Vincent Massey Secondary School.<br>Design by <a class="expand-link"
+                                                                                              href="https://davidhui.ca"
+                                                                                              target="_blank">David
+                        Hui</a> and <a class="expand-link" href="https://jamesxu.ca" target="_blank">James Xu</a>
+                    </p>
+                </div>
+            </div>
+        </full-page>
         
-        </div>
+        <!--        <div id="mc_embed_signup">-->
+        <!--            <form action="https://gmail.us20.list-manage.com/subscribe/post?u=c259260007eff16ec9e630d39&amp;id=7fcb56d7d3"-->
+        <!--                  method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"-->
+        <!--                  class="validate" target="_blank" novalidate>-->
+        <!--                <div id="mc_embed_signup_scroll">-->
+        <!--                    <label for="mce-EMAIL">Our site is constantly being updated, subscribe for updates!</label>-->
+        <!--                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"-->
+        <!--                           placeholder="Email Address" required>-->
+        <!--                    &lt;!&ndash; real people should not fill this in and expect good things - do not remove this or risk form bot signups&ndash;&gt;-->
+        <!--                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"-->
+        <!--                                                                                              name="b_c259260007eff16ec9e630d39_7fcb56d7d3"-->
+        <!--                                                                                              tabindex="-1"-->
+        <!--                                                                                              value=""></div>-->
+        <!--                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe"-->
+        <!--                                              id="mc-embedded-subscribe" class="button"></div>-->
+        <!--                </div>-->
+        <!--            </form>-->
+        <!--        </div>-->
+        <!--        <div class="container" id="contact">-->
+        <!--            <div class="row-tb-margin row align-items-center justify-content-center">-->
+        <!--                <div class="col-md-10">-->
+        <!--                    <h2>Contact</h2>-->
+        <!--                    <p>Have a question? Feel free to use the contact form below or email <a-->
+        <!--                            href="mailto:masseymustangs2020@gmail.com"-->
+        <!--                            class="expand-link">masseymustangs2020@gmail.com</a>.-->
+        <!--                    </p>-->
+        <!--                    <form id="contact-form" v-on:submit.prevent="recaptcha">-->
+        <!--                        <div class="form-group">-->
+        <!--                            <label for="nameInput">Name</label>-->
+        <!--                            <input type="text" class="form-control" id="nameInput" placeholder="John Smith"-->
+        <!--                                   v-model="name">-->
+        <!--                        </div>-->
+        <!--                        <div class="form-group">-->
+        <!--                            <label for="emailInput">Email address</label>-->
+        <!--                            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com"-->
+        <!--                                   v-model="email">-->
+        <!--                        </div>-->
+        <!--                        <div class="form-group">-->
+        <!--                            <label for="exampleFormControlTextarea1">Message</label>-->
+        <!--                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"-->
+        <!--                                      v-model="message"/>-->
+        <!--                        </div>-->
+        <!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+        <!--                    </form>-->
+        <!--                </div>-->
+        <!--            -->
+        <!--            </div>-->
+        <!--        -->
+        <!--        </div>-->
     </div>
 
 </template>
@@ -123,17 +168,36 @@
     import Logo from '~/components/Logo.vue'
     import Swal from 'sweetalert2'
     import axios from '@nuxtjs/axios'
+    import Navbar from '../components/Navbar'
+    import VueCountdown from '@chenfengyuan/vue-countdown'
 
     export default {
         components: {
-            Logo
+            Navbar,
+            Logo,
+            VueCountdown
         },
         data() {
+            let now = new Date();
+            let event = new Date(2020, 10, 9);
             return {
                 message: '',
                 name: '',
-                email: ''
+                email: '',
+                counter: -1,
+                intersectionOptions: {threshold: 0.95},
+                time: event - now,
+                options: {
+                    licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd'
+                    // anchors: ['home','welcome','hotels','events','contact']
+                }
             }
+        },
+        mounted() {
+            // this.$axios.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
+            //     console.log(response)
+            //     this.counter = parseInt(response.data.$numberLong)
+            // })
         },
         methods: {
             submitContactForm: function submitContactForm(token) {
@@ -169,9 +233,16 @@
                         this.submitContactForm(token)
                     })
                 }
+            },
+            toggleNavbar: function toggleNavbar() {
+                this.$refs.navbar.toggleNavbar();
+            },
+            navTo: function navTo(location){
+                this.$refs.fullpage.api.moveTo(location);
             }
         }
     }
 </script>
-<style>
+<style scoped>
+
 </style>
