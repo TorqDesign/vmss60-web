@@ -14,7 +14,6 @@
                             props.minutes }} minutes, {{ props.seconds }} seconds.
                         </template>
                     </countdown>
-                    <h5>TEMPORARY DEVELOPMENT NOTE: Best viewed on a computer</h5>
                 </div>
             </div>
             <div class="mustang-container d-none d-md-block">
@@ -214,7 +213,7 @@
                     
                     </form>
                 </div>
-                <div class="vmss60-footer-desktop">
+                <div class="vmss60-footer-desktop d-none d-lg-block">
                     <div class="quarter-circle-bottom-right">
                     </div>
                     <div class="vmss60-footer-text-desktop">
