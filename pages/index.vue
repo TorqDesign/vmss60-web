@@ -1,67 +1,61 @@
 <template>
     <div id="main">
         <!--        <Navbar></Navbar>-->
-        <div :class="'navbar-icon mobile '  + getNavAddClass()" @click="toggleMobileNavbar()"></div>
-        <!--        <div class="navbar-icon mobile black" @click="toggleMobileNavbar()"></div>-->
-        <div class="navbar mobile">
-            <div class="navbar-item-container d-none d-md-flex">
-                <nuxt-link to="#main" :class="'navbar-item ' + getNavAddClass() + ' first'">
+        <div :class="'vmss60-navbar-icon mobile '  + getNavAddClass()" @click="toggleMobileNavbar()"></div>
+<!--        <div class="navbar-icon mobile black" @click="toggleMobileNavbar()"></div>-->
+        <div class="vmss60-navbar mobile">
+            <div class="vmss60-navbar-item-container d-none d-lg-flex">
+                <a href="#top" :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'">
                     VMSS60
-                </nuxt-link>
-                <div class="navbar-line-container">
-                    <div :class="'navbar-line ' + getNavAddClass()"></div>
-                </div>
-                <nuxt-link to="#full-page-2" :class="'navbar-item ' + getNavAddClass()">
+                </a>
+                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <a href="#full-page-2" :class="'vmss60-navbar-item ' + getNavAddClass()">
                     Hotels
-                </nuxt-link>
-                <div class="navbar-line-container">
-                    <div :class="'navbar-line ' + getNavAddClass()"></div>
-                </div>
-                <nuxt-link to="#full-page-3" :class="'navbar-item ' + getNavAddClass()">
+                </a>
+                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <a href="#full-page-3" :class="'vmss60-navbar-item ' + getNavAddClass()">
                     Events
-                </nuxt-link>
-                <div class="navbar-line-container">
-                    <div :class="'navbar-line ' + getNavAddClass()"></div>
-                </div>
-                <nuxt-link to="#full-page-4" :class="'navbar-item ' + getNavAddClass()">
+                </a>
+                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <a href="#full-page-4" :class="'vmss60-navbar-item ' + getNavAddClass()">
                     Contact
-                </nuxt-link>
+                </a>
             </div>
-            <div :class="'navbar-item-container d-block d-md-none' + (mobileNavOpen ? ' open' : '')">
+            <div :class="'vmss60-navbar-item-container d-block d-lg-none' + (mobileNavOpen ? ' open' : '')">
                 <ul>
                     <li>
-                        <nuxt-link to="#main" class="navbar-item mobile">
+                        <a href="#top" class="vmss60-navbar-item mobile">
                             VMSS60
-                        </nuxt-link>
+                        </a>
                     </li>
                     <li>
-                        <nuxt-link to="#full-page-2" class="navbar-item mobile">
+                        <a href="#full-page-2" class="vmss60-navbar-item mobile">
                             Hotels
-                        </nuxt-link>
+                        </a>
                     </li>
                     <li>
-                        <nuxt-link to="#full-page-3" class="navbar-item mobile">
+                        <a href="#full-page-3" class="vmss60-navbar-item mobile">
                             Events
-                        </nuxt-link>
+                        </a>
                     </li>
                     <li>
-                        <nuxt-link to="#full-page-4" class="navbar-item mobile">
+                        <a href="#full-page-4" class="vmss60-navbar-item mobile">
                             Contact
-                        </nuxt-link>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
         <div :class="'navbar-overlay' + (mobileNavOpen ? ' open' : '')"></div>
         <full-page ref="fullpage" id="fullpage" :options="options">
-            <div class="hero-background full-page section fp-auto-height">
+            <div class="hero-background full-page section fp-auto-height" id="top">
                 <div class="hero">
                     <h1>VMSS 60th Reunion</h1>
                     <h6>October 9th &amp; 10th / 2020</h6>
                     <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
                     <p>Page views so far: {{this.counter}}</p>
                     <countdown :time="this.time" tag="p">
-                        <template slot-scope="props">Countdow: {{ props.days }} days, {{ props.hours }} hours, {{
+                        <template slot-scope="props">Countdown: {{ props.days }} days, {{ props.hours }} hours, {{
                             props.minutes }} minutes, {{ props.seconds }} seconds.
                         </template>
                     </countdown>
@@ -234,6 +228,7 @@
                 time: event - now,
                 options: {
                     licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd',
+                    anchors: ['top','full-page-1','full-page-2','full-page-3','full-page-4']
                 }
             }
         },
