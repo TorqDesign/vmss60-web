@@ -242,8 +242,7 @@
                 lightBack: true, // First toggle is on page load, so technically the lightBack is set to false
                 time: event - now,
                 options: {
-                    licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd',
-                    continuousVertical: false
+                    licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd'
                     // anchors: ['home','welcome','hotels','events','contact']
                 }
             }
