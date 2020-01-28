@@ -25,5 +25,7 @@
     "vue-recaptcha-v3": "^1.7.0",
     "vue-waypoint": "^3.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nuxtjs/google-analytics": "^2.2.3"
+  }
 }
