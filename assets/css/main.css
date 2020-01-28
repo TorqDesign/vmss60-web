@@ -656,11 +656,18 @@ footer {
 .grecaptcha-badge { visibility: hidden; }
 
 .vmss60-footer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    text-align: right;
-    color: white;
+    position: static;
+    text-align: center;
+}
+
+@media (min-width: 1200px) {
+    .vmss60-footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        text-align: right;
+        color: white;
+    }
 }
 
 .vmss60-footer-text {
@@ -668,13 +675,20 @@ footer {
     right: 3em;
 }
 
-.quarter-circle-bottom-right{
-    width: 25vw;
-    height: 25vw;
-    background: orange;
-    border-radius: 25vw 0 0 0;
-    -moz-border-radius: 25vw 0 0 0;
-    -webkit-border-radius: 25vw 0 0 0;
+.quarter-circle-bottom-right {
+    display: none;
+}
+
+@media (min-width: 576px) {
+    .quarter-circle-bottom-right{
+        width: 25vw;
+        height: 25vw;
+        background: orange;
+        border-radius: 25vw 0 0 0;
+        -moz-border-radius: 25vw 0 0 0;
+        -webkit-border-radius: 25vw 0 0 0;
+        display: inline;
+    }
 }
 
 .navbar {
