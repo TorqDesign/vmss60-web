@@ -540,6 +540,7 @@ footer {
     html {
         scroll-snap-type: y mandatory;
     }
+
     .full-page {
         height: 100vh;
         position: relative;
@@ -653,7 +654,9 @@ footer {
     right: 0;
 }
 
-.grecaptcha-badge { visibility: hidden; }
+.grecaptcha-badge {
+    visibility: hidden;
+}
 
 .vmss60-footer {
     position: static;
@@ -680,7 +683,7 @@ footer {
 }
 
 @media (min-width: 576px) {
-    .quarter-circle-bottom-right{
+    .quarter-circle-bottom-right {
         width: 25vw;
         height: 25vw;
         background: #ff8927;
@@ -700,6 +703,7 @@ footer {
     justify-content: center;
     z-index: 999;
 }
+
 .navbar-item {
     border: 1px solid white;
     color: white;
@@ -708,13 +712,14 @@ footer {
     transition: color ease 0.25s, border ease 0.25s;
     margin-bottom: 1em;
 }
+
 .navbar-item.first {
     border-radius: 0;
 }
 
 .navbar-item:hover {
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.75);
 }
 
 .navbar-line-container {
@@ -734,9 +739,10 @@ footer {
 }
 
 .navbar-item.black:hover {
-    color: rgba(0,0,0,0.5);
-    border: 1px solid rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
+
 .navbar-item.black {
     color: black;
     border: 1px solid black;
