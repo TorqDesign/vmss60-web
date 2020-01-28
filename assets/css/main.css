@@ -138,9 +138,26 @@ a:hover {
     margin-bottom: 1.1em;
 }
 
-#contact form {
+#contact-form {
     font-family: 'Open Sans', sans-serif;
+    font-size: 0.7em;
 }
+
+#contact-desc {
+    font-size: 0.7em;
+}
+
+@media (min-width: 768px) {
+    #contact-form {
+        font-size: inherit;
+    }
+
+    #contact-desc {
+        font-size: inherit;
+    }
+}
+
+
 
 .emphasis-title {
     text-align: center;
@@ -526,10 +543,14 @@ footer {
     display: none;
 }
 
+#full-page-4 {
+    min-height: 100vh;
+}
+
 #full-page-4-text {
     position: relative;
-    top: 20%;
     padding: 2em;
+    min-height: 100vh;
 }
 
 .emphasis-span {
@@ -614,9 +635,12 @@ footer {
         display: inline;
     }
 
+
+
     #full-page-4-text {
         max-width: 45vw;
         left: 5%;
+        top: 20%;
     }
 }
 
@@ -656,39 +680,36 @@ footer {
 }
 
 .vmss60-footer {
-    position: static;
-    text-align: center;
-}
-
-@media (min-width: 1200px) {
-    .vmss60-footer {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        text-align: right;
-        color: white;
-    }
+    height: 100vh;
 }
 
 .vmss60-footer-text {
-    bottom: 3em;
-    right: 3em;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
 }
 
-.quarter-circle-bottom-right {
-    display: none;
+.vmss60-footer-desktop {
+    position: absolute;
+    top: 50vh;
+    left: 70vw;
+    text-align: right;
+    transform: translateY(-50%);
+    /*background: #6d8876;*/
+    border-radius: 50%;
+    border: 2px solid #0c326e;
+    width: 23em;
+    height: 23em;
 }
 
-@media (min-width: 576px) {
-    .quarter-circle-bottom-right {
-        width: 25vw;
-        height: 25vw;
-        background: #ff8927;
-        border-radius: 25vw 0 0 0;
-        -moz-border-radius: 25vw 0 0 0;
-        -webkit-border-radius: 25vw 0 0 0;
-        display: block;
-    }
+.vmss60-footer-text-desktop {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .vmss60-navbar {
@@ -722,6 +743,8 @@ footer {
     border-radius: 1em;
     transition: color ease 0.25s, border ease 0.25s;
     margin-bottom: 1em;
+    background: none;
+    outline: none;
 }
 
 .vmss60-navbar-item.first {
