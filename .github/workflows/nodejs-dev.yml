@@ -14,10 +14,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - name: npm install and build
+    - name: npm install and generate
       run: |
         npm install
-        npm run build
+        npm run generate --fail-on-page-error
       env:
         CI: true
   deploy:
