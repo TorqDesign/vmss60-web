@@ -1,6 +1,6 @@
 <template>
-    <div style="background: #0c326e">
-        <Navbar></Navbar>
+    <div>
+        <Navbar light-back></Navbar>
         <div class="container" id="schedule" style="padding-top: 75px; min-height: 100vh">
             <h2>Events</h2>
             <div class="row">
@@ -51,6 +51,6 @@
 
 <style scoped>
     #schedule {
-        color: white;
+        color: black;
     }
 </style>
