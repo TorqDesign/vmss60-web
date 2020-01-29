@@ -1,9 +1,11 @@
 <template>
     <div id="main">
-        <Navbar ref="navbar" @navTo="navTo" navmode="front"></Navbar>
+        <Navbar ref="navbar" @navTo="navTo" @navDir="navDir" navmode="front" arrow></Navbar>
 <client-only>
         <full-page ref="fullpage" id="fullpage" :options="options">
-            <div class="hero-background full-page section" id="top" data-anchor="home">
+            <div class="hero-background full-page section" id="top"
+                 v-waypoint="{ active: true, callback: toggleArrowDirTop, options: intersectionOptions }"
+                 data-anchor="home">
                 <div class="hero">
                     <h1>VMSS 60th Reunion</h1>
                     <h6>October 9th &amp; 10th / 2020</h6>
@@ -179,10 +181,12 @@
                     <nuxt-link to="/events" class="section-action-button">Check them out →</nuxt-link>
                 </div>
             </div>
-            
+
+            <!-- toggleBoth should ONLY be used when the end is light -->
             <div class="full-page section" id="full-page-4"
-                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }"
+                 v-waypoint="{ active: true, callback: toggleBothEnd, options: intersectionOptions }"
                  data-anchor="contact">
+                <!-- toggleBoth should ONLY be used when the end is light -->
                 <div id="full-page-4-text">
                     <h1>Questions?</h1>
                     <p id="contact-desc">Feel free to use the contact form below or email <a
@@ -315,7 +319,7 @@
                 name: '',
                 email: '',
                 counter: -1,
-                intersectionOptions: {threshold: 0.95},
+                intersectionOptions: {threshold: 0.5},
                 time: event - now,
                 options: {
                     licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd'
@@ -330,6 +334,15 @@
                 //console.log(response)
                 this.counter = parseInt(response.data.$numberLong)
             })
+        },
+        head () {
+            return {
+                title: 'Home | Vincent Massey 60th Reunion | Windsor, Ontario',
+                meta: [
+                    // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+                    { hid: 'description', name: 'description', content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2029.' }
+                ]
+            }
         },
         methods: {
             submitContactForm: function submitContactForm(token) {
@@ -369,8 +382,30 @@
             toggleNavbar: function toggleNavbar({ going, direction }) {
                 this.$refs.navbar.toggleNavbar({going: going, direction: direction});
             },
+            toggleArrowDirTop: function toggleArrowDir({ going, direction }) {
+                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'top');
+            },
+            toggleArrowDirEnd: function toggleArrowDir({ going, direction }) {
+                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'end');
+            },
+            toggleBothTop: function toggleBoth({ going, direction }) {
+                this.$refs.navbar.toggleNavbar({going: going, direction: direction});
+                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'top');
+            },
+            toggleBothEnd: function toggleBoth({ going, direction }) {
+                this.$refs.navbar.toggleNavbar({going: going, direction: direction});
+                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'end');
+            },
             navTo: function navTo(location) {
                 this.$refs.fullpage.api.moveTo(location);
+            },
+            navDir: function navDir(direction){
+                if(direction === 'up'){
+                    this.$refs.fullpage.api.moveSectionUp();
+                }
+                else{
+                    this.$refs.fullpage.api.moveSectionDown();
+                }
             }
         }
     }

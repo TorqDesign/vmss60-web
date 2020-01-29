@@ -57,7 +57,7 @@ export default {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         ['nuxt-gmaps', {
-            key: '',
+            key: 'AIzaSyC_sWhSGaT5rxzZXeYtiQpNMmoJhCC1glE',
             //you can use libraries: ['places']
         }],
     ],

@@ -52,6 +52,8 @@
             </div>
         </div>
         <div :class="'navbar-overlay' + (mobileNavOpen ? ' open' : '')"></div>
+        <div :class="'page-move-arrow ' + getNavAddClass() + ' up'" @click="$emit('navDir', 'up')" v-if="arrow && upArrow"></div>
+        <div :class="'page-move-arrow ' + getNavAddClass()" @click="$emit('navDir', 'down')" v-if="arrow && downArrow"></div>
     </div>
 
 </template>
@@ -67,12 +69,18 @@
             lightBack: {
                 type: Boolean,
                 default: false
+            },
+            arrow: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
             return {
                 mobileNavOpen: false,
-                pageLightBack: this.lightBack
+                pageLightBack: this.lightBack,
+                upArrow: false,
+                downArrow: true
             }
         },
         methods: {
@@ -95,7 +103,32 @@
                 }
 
                 this.$router.push(this.$routerHistory.previous().path);
-            }
+            },
+            toggleArrowDir: function toggleArrowDir({ going, direction }, triggerLocation) {
+                if(direction !== undefined){
+                    if(triggerLocation === 'top'){
+                        if(direction === this.$waypointMap.DIRECTION_BOTTOM){ // coming in from the top, that means that use is about to enter first slide
+                            // disable top arrow
+                            this.upArrow = false;
+                        }
+                        else {
+                            // going out, enable top arrow
+                            this.upArrow = true;
+                        }
+                    }
+                    else {
+                        // bottom of page
+                        if(direction === this.$waypointMap.DIRECTION_TOP){ // coming in from the top, that means that use is about to enter last slide
+                            // disable bottom arrow
+                            this.downArrow = false;
+                        }
+                        else {
+                            // going out, enable bottom arrow
+                            this.downArrow = true;
+                        }
+                    }
+                }
+            },
         }
     }
 </script>
