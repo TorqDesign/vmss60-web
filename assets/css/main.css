@@ -572,120 +572,6 @@ footer {
     color: white;
 }
 
-.vmss60-navbar {
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-    top: 2em;
-}
-
-/*noinspection CssUnknownTarget,CssUnknownTarget,CssUnknownTarget*/
-.vmss60-navbar-icon {
-    position: fixed;
-    right: 2em;
-    top: 2em;
-    background-image: url(~assets/images/menu.svg);
-    display: none;
-    z-index: 999
-}
-
-/*noinspection CssUnknownTarget,CssUnknownTarget,CssUnknownTarget*/
-.vmss60-navbar-icon.black {
-    background-image: url(~assets/images/menu_black.svg);
-}
-
-/*noinspection CssUnknownTarget,CssUnknownTarget,CssUnknownTarget*/
-.vmss60-navbar-icon-back {
-    position: fixed;
-    left: 1em;
-    top: 1em;
-    background-image: url(~assets/images/back.svg);
-    display: none;
-    z-index: 999
-}
-
-/*noinspection CssUnknownTarget,CssUnknownTarget,CssUnknownTarget*/
-.vmss60-navbar-icon-back.black {
-    background-image: url(~assets/images/back_black.svg);
-}
-.vmss60-navbar-item-container {
-    display: flex;
-    width: 100%;
-    align-content: center;
-    justify-content: center;
-}
-
-.vmss60-navbar-item {
-    border: 1px solid white;
-    color: white;
-    padding: 0.25em 1em;
-    border-radius: 1em;
-    transition: color ease 0.25s, border ease 0.25s;
-    margin-bottom: 1em;
-    background: none;
-    outline: none;
-}
-
-.vmss60-navbar-item.first {
-    border-radius: 0;
-}
-
-.vmss60-navbar-item:hover {
-    color: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.75);
-}
-
-.vmss60-navbar-line-container {
-    width: 3em;
-    margin-bottom: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.vmss60-navbar-line {
-    height: 1px;
-    width: 100%;
-    border-top: 1px solid white;
-}
-
-/* Invert */
-.vmss60-navbar-line.black {
-    border-top: 1px solid black;
-}
-
-.vmss60-navbar-item.black:hover {
-    color: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.vmss60-navbar-item.black {
-    color: black;
-    border: 1px solid black;
-}
-
-@media (max-width: 768px) {
-    .vmss60-navbar.mobile {
-        position: fixed;
-        top: 5em;
-        right: 1em;
-        display: block;
-        width: 100%;
-    }
-
-    .vmss60-navbar-icon {
-        display: block;
-        height: 2em;
-        width: 2em;
-    }
-
-    .vmss60-navbar-icon-back {
-        display: block;
-        height: 2em;
-        width: 2em;
-    }
-}
-
 .section-action-button:after {
     content: "";
     position: absolute;
@@ -835,7 +721,7 @@ footer {
     border: 1px solid black;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
     .vmss60-navbar.mobile {
         position: fixed;
         top: 5em;
