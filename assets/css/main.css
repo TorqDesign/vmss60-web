@@ -75,15 +75,27 @@ a:hover {
     }
 }
 
+.hero-background::before {
+    background-image: url("../images/IMG_1433.jpg");
+    filter: blur(15px);
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    content: '';
+    transform: scale(1.1);
+}
+
 .hero-background {
     min-height: 100vh;
     overflow: hidden;
     /*background-size: 30%;*/
-    z-index: 500;
+    z-index: 0;
+    background: none;
     /*background-image: url("../images/orange_blob.svg");
     /*background-repeat: no-repeat;*!*/
-    background-image: url("../images/2.png");
-    background-size: cover;
 }
 
 .hero {
@@ -584,7 +596,7 @@ footer {
         top: 50%;
         /*left: 3%;*/
         transform: translate(0, -50%);
-        position: relative;
+        position: absolute;
         z-index: 5;
     }
 
