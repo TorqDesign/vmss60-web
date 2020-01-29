@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <Navbar ref="navbar" @navTo="navTo"></Navbar>
+        <Navbar ref="navbar" @navTo="navTo" navmode="front"></Navbar>
 <no-ssr>
         <full-page ref="fullpage" id="fullpage" :options="options">
             <div class="hero-background full-page section" id="top" data-anchor="home">
@@ -364,8 +364,9 @@
                     })
                 }
             },
-            toggleNavbar: function toggleNavbar() {
-                this.$refs.navbar.toggleNavbar();
+            toggleNavbar: function toggleNavbar({ going, direction }) {
+                console.log(going, direction);
+                this.$refs.navbar.toggleNavbar({going: going, direction: direction});
             },
             navTo: function navTo(location) {
                 this.$refs.fullpage.api.moveTo(location);

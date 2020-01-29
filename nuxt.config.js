@@ -36,7 +36,8 @@ export default {
         {
             src: "~/plugins/v-waypoint.client.js",
             mode: 'client'
-        }
+        },
+        { mode: 'client', src: '~plugins/vue-router-back-button.client.js' },
     ],
     /*
     ** Nuxt.js dev-modules
