@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <Navbar ref="navbar" @navTo="navTo" navmode="front"></Navbar>
-<no-ssr>
+<client-only>
         <full-page ref="fullpage" id="fullpage" :options="options">
             <div class="hero-background full-page section" id="top" data-anchor="home">
                 <div class="hero">
@@ -226,20 +226,20 @@
                 </div>
             
             </div>
-            <div class="vmss60-footer section d-block d-lg-none" data-anchor="footer"
-                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }">
-                <div class="quarter-circle-bottom-right">
-                </div>
-                <div class="vmss60-footer-text">
-                    <p>Copyright &copy; 2020 Vincent Massey Secondary School.<br>Design by <a class="expand-link"
-                                                                                              href="https://davidhui.ca"
-                                                                                              target="_blank">David
-                        Hui</a> and <a class="expand-link" href="https://jamesxu.ca" target="_blank">James Xu</a>
-                    </p>
-                </div>
-            </div>
+<!--            <div class="vmss60-footer section" data-anchor="footer"-->
+<!--                 v-waypoint="{ active: true, callback: toggleNavbar, options: intersectionOptions }" v-if="mobileFooter">-->
+<!--                <div class="quarter-circle-bottom-right">-->
+<!--                </div>-->
+<!--                <div class="vmss60-footer-text">-->
+<!--                    <p>Copyright &copy; 2020 Vincent Massey Secondary School.<br>Design by <a class="expand-link"-->
+<!--                                                                                              href="https://davidhui.ca"-->
+<!--                                                                                              target="_blank">David-->
+<!--                        Hui</a> and <a class="expand-link" href="https://jamesxu.ca" target="_blank">James Xu</a>-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
         </full-page>
-</no-ssr>
+</client-only>
         
         <!--        <div id="mc_embed_signup">-->
         <!--            <form action="https://gmail.us20.list-manage.com/subscribe/post?u=c259260007eff16ec9e630d39&amp;id=7fcb56d7d3"-->
@@ -320,10 +320,12 @@
                 options: {
                     licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd'
                     // anchors: ['home','welcome','hotels','events','contact']
-                }
+                },
             }
         },
         mounted() {
+ 
+
             this.$axios.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
                 //console.log(response)
                 this.counter = parseInt(response.data.$numberLong)
