@@ -734,6 +734,17 @@ footer {
 .vmss60-navbar-icon.black {
     background-image: url(~assets/images/menu_black.svg);
 }
+.vmss60-navbar-icon-back {
+    position: fixed;
+    left: 1em;
+    top: 1em;
+    background-image: url(~assets/images/back.svg);
+    display: none;
+    z-index: 999
+}
+.vmss60-navbar-icon-back.black {
+    background-image: url(~assets/images/back_black.svg);
+}
 .vmss60-navbar-item-container {
     display: flex;
     width: 100%;
@@ -800,6 +811,11 @@ footer {
     }
 
     .vmss60-navbar-icon {
+        display: block;
+        height: 2em;
+        width: 2em;
+    }
+    .vmss60-navbar-icon-back {
         display: block;
         height: 2em;
         width: 2em;

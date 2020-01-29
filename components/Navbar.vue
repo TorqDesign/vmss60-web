@@ -26,7 +26,7 @@
                     Back to Home
                 </button>
             </div>
-            <div :class="'vmss60-navbar-item-container d-block d-lg-none' + (mobileNavOpen ? ' open' : '')" v-if="navmode === 'front'"> <!-- Mobile Navbar -->
+            <div :class="'vmss60-navbar-item-container d-lg-none' + (mobileNavOpen ? ' open' : '')" v-if="navmode === 'front'"> <!-- Mobile Navbar -->
                 <ul>
                     <li>
                         <button class="vmss60-navbar-item mobile" @click="$emit('navTo','home')">
@@ -72,17 +72,18 @@
         data() {
             return {
                 mobileNavOpen: false,
+                pageLightBack: this.lightBack
             }
         },
         methods: {
             toggleNavbar: function toggleNavbar({ going, direction }) {
                 if(direction !== undefined){
-                    this.lightBack = !this.lightBack;
+                    this.pageLightBack = !this.pageLightBack;
                 }
 
             },
             getNavAddClass: function getNavAddClass() {
-                return this.mobileNavOpen ? "" : this.lightBack ? "black" : "";
+                return this.mobileNavOpen ? "" : this.pageLightBack ? "black" : "";
             },
             toggleMobileNavbar: function toggleMobileNavbar() {
                 this.mobileNavOpen = !this.mobileNavOpen;

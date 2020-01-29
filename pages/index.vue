@@ -325,7 +325,7 @@
         },
         mounted() {
             this.$axios.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
-                console.log(response)
+                //console.log(response)
                 this.counter = parseInt(response.data.$numberLong)
             })
         },
@@ -359,13 +359,12 @@
                     })
                 } else {
                     this.$recaptcha('homepage').then((token) => {
-                        console.log(token);
+                        //console.log(token);
                         this.submitContactForm(token)
                     })
                 }
             },
             toggleNavbar: function toggleNavbar({ going, direction }) {
-                console.log(going, direction);
                 this.$refs.navbar.toggleNavbar({going: going, direction: direction});
             },
             navTo: function navTo(location) {
