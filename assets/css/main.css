@@ -792,11 +792,13 @@ footer {
         height: 2em;
         width: 2em;
     }
+
     .vmss60-navbar-icon-back {
         display: block;
         height: 2em;
         width: 2em;
     }
+}
 
 .section-action-button:after {
     content: "";
