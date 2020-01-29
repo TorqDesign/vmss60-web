@@ -318,8 +318,7 @@
                 intersectionOptions: {threshold: 0.95},
                 time: event - now,
                 options: {
-                    licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd',
-                    scrollOverflow: false
+                    licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd'
                     // anchors: ['home','welcome','hotels','events','contact']
                 },
             }
