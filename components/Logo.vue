@@ -1,3 +1,4 @@
+<!--suppress CssFloatPxLength -->
 <template>
   <div class="VueToNuxtLogo">
     <div class="Triangle Triangle--two" />
