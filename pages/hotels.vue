@@ -38,7 +38,7 @@
                         <li v-for="location in locations" :key="location.id" class="list-group-item">
                             <div class="row" @click="changeMapView(location, $event)">
                                 <div class="col-2">
-                                    <img class="img-fluid" src="../assets/images/comf_inn_reg_color_bib.jpg">
+                                    <img class="img-fluid" src="../assets/images/comfort_inn.png">
                                 </div>
                                 <div class="col-10">
                                     <strong>{{location.name}}</strong>
