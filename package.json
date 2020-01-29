@@ -23,6 +23,7 @@
     "vue": "^2.6.11",
     "vue-fullpage.js": "^0.1.5",
     "vue-recaptcha-v3": "^1.7.0",
+    "vue-router-back-button": "^1.2.3",
     "vue-waypoint": "^3.2.2"
   },
   "devDependencies": {

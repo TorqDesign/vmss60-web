@@ -1,9 +1,10 @@
 <template>
     <div>
-        <div :class="'vmss60-navbar-icon mobile '  + getNavAddClass()" @click="toggleMobileNavbar()"></div>
+        <div :class="'vmss60-navbar-icon mobile '  + getNavAddClass()" @click="toggleMobileNavbar()" v-if="navmode === 'front'"></div>
+        <div :class="'vmss60-navbar-icon-back mobile '  + getNavAddClass()" @click="goBack()" v-else></div>
         <!--        <div class="navbar-icon mobile black" @click="toggleMobileNavbar()"></div>-->
         <div class="vmss60-navbar mobile">
-            <div class="vmss60-navbar-item-container d-none d-lg-flex">
+            <div class="vmss60-navbar-item-container d-none d-lg-flex" v-if="navmode === 'front'"> <!-- Desktop Navbar -->
                 <button :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'" @click="$emit('navTo','home')">
                     VMSS60
                 </button>
@@ -20,7 +21,12 @@
                     Contact
                 </button>
             </div>
-            <div :class="'vmss60-navbar-item-container d-block d-lg-none' + (mobileNavOpen ? ' open' : '')">
+            <div class="vmss60-navbar-item-container d-none d-lg-flex" v-else>
+                <button :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'" @click="goBack()">
+                    Back to Home
+                </button>
+            </div>
+            <div :class="'vmss60-navbar-item-container d-block d-lg-none' + (mobileNavOpen ? ' open' : '')" v-if="navmode === 'front'"> <!-- Mobile Navbar -->
                 <ul>
                     <li>
                         <button class="vmss60-navbar-item mobile" @click="$emit('navTo','home')">
@@ -53,21 +59,41 @@
 <script>
     export default {
         name: "Navbar",
+        props: {
+            navmode: {
+                type: String,
+                default: 'innerpage'
+            },
+            lightBack: {
+                type: Boolean,
+                default: false
+            }
+        },
         data() {
             return {
                 mobileNavOpen: false,
-                lightBack: true, // First toggle is on page load, so technically the lightBack is set to false
             }
         },
         methods: {
-            toggleNavbar: function toggleNavbar() {
-                this.lightBack = !this.lightBack;
+            toggleNavbar: function toggleNavbar({ going, direction }) {
+                if(direction !== undefined){
+                    this.lightBack = !this.lightBack;
+                }
+
             },
             getNavAddClass: function getNavAddClass() {
                 return this.mobileNavOpen ? "" : this.lightBack ? "black" : "";
             },
             toggleMobileNavbar: function toggleMobileNavbar() {
                 this.mobileNavOpen = !this.mobileNavOpen;
+            },
+            goBack: function goBack() {
+                if (this.client || !this.$routerHistory || !this.$routerHistory.hasPrevious()) {
+                    // probably ssr, or hasn't navigated yet.
+                    this.$router.push('/');
+                }
+
+                this.$router.push(this.$routerHistory.previous().path);
             }
         }
     }
