@@ -213,7 +213,7 @@
                     
                     </form>
                 </div>
-                <div class="vmss60-footer-desktop d-none d-lg-block">
+                <div class="vmss60-footer-desktop d-none d-xl-block">
                     <div class="quarter-circle-bottom-right">
                     </div>
                     <div class="vmss60-footer-text-desktop">
