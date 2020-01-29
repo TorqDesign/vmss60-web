@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Navbar></Navbar>
+        <Navbar light-back></Navbar>
         <div class="container" id="schedule" style="margin-top: 75px">
             <div class="row">
                 <div class="col-lg-12">

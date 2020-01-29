@@ -33,14 +33,21 @@ export default {
         {src: '~/plugins/vue-recaptcha-v3.js', ssr: false},
         {src: '~/plugins/vue-countdown.js', mode: "client"},
         {src: '~/plugins/vue-fullpage.js', mode: "client"},
-        { src: "~/plugins/v-waypoint.client.js",
+        {
+            src: "~/plugins/v-waypoint.client.js",
             mode: 'client'
-        }
+        },
+        { mode: 'client', src: '~plugins/vue-router-back-button.client.js' },
     ],
     /*
     ** Nuxt.js dev-modules
     */
-    buildModules: [],
+    buildModules: ['@nuxtjs/google-analytics'],
+
+    googleAnalytics: {
+        id: 'UA-157210382-1'
+    },
+
     /*
     ** Nuxt.js modules
     */
@@ -86,20 +93,22 @@ export default {
                         if (x > 50) {
                             return resolve()
                         }
-                        setTimeout(() => { resolve(findEl(hash, ++x || 1)) }, 100)
+                        setTimeout(() => {
+                            resolve(findEl(hash, ++x || 1))
+                        }, 100)
                     })
             }
 
             if (to.hash) {
                 let el = await findEl(to.hash)
                 if ('scrollBehavior' in document.documentElement.style) {
-                    return window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
+                    return window.scrollTo({top: el.offsetTop, behavior: 'smooth'})
                 } else {
                     return window.scrollTo(0, el.offsetTop)
                 }
             }
 
-            return { x: 0, y: 0 }
+            return {x: 0, y: 0}
         }
     }
 

@@ -75,24 +75,37 @@ a:hover {
     }
 }
 
+.hero-background::before {
+    background-image: url("../images/IMG_1433.jpg");
+    filter: blur(15px);
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    content: '';
+    transform: scale(1.1);
+}
+
 .hero-background {
     min-height: 100vh;
     overflow: hidden;
     /*background-size: 30%;*/
-    z-index: 500;
+    z-index: 0;
+    background: none;
     /*background-image: url("../images/orange_blob.svg");
     /*background-repeat: no-repeat;*!*/
-    background-image: url("../images/2.png");
-    background-size: cover;
 }
 
 .hero {
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
-    color: #ffd9a9;
+    /*color: #ffd9a9;*/
+    color: white;
     padding: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .hero h1 {
@@ -108,7 +121,7 @@ a:hover {
     .hero {
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-85%, -50%);
         padding: 0;
     }
 }
@@ -528,7 +541,7 @@ footer {
 #full-page-3-front {
     z-index: 0;
     max-width: 95vw;
-    max-height: 100vh;
+    height: 40vh;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -536,7 +549,7 @@ footer {
 
 #full-page-3-back {
     z-index: 0;
-    height: 50vh;
+    height: 100vh;
     position: absolute;
     top: 5%;
     left: 2%;
@@ -554,7 +567,7 @@ footer {
 }
 
 .emphasis-span {
-    color: #ffd9a9;
+    color: #ff7034;
 }
 
 @media (min-width: 1200px) {
@@ -583,7 +596,7 @@ footer {
         top: 50%;
         /*left: 3%;*/
         transform: translate(0, -50%);
-        position: relative;
+        position: absolute;
         z-index: 5;
     }
 
@@ -614,8 +627,7 @@ footer {
     #full-page-3-front {
         z-index: 1;
         height: 40em;
-        min-height: 80vh;
-        max-height: 94vh;
+        min-height: 55vh;
         max-width: 60vw;
         position: absolute;
         top: 50%;
@@ -627,7 +639,6 @@ footer {
         z-index: 0;
         height: 45em;
         min-height: 80vh;
-        max-height: 94vh;
         max-width: 60vw;
         position: absolute;
         top: 5%;
@@ -641,6 +652,12 @@ footer {
         max-width: 45vw;
         left: 5%;
         top: 20%;
+    }
+}
+
+@media (min-width: 2000px) {
+    #full-page-3-front {
+        min-height: 70vh;
     }
 }
 
@@ -729,6 +746,17 @@ footer {
 .vmss60-navbar-icon.black {
     background-image: url(~assets/images/menu_black.svg);
 }
+.vmss60-navbar-icon-back {
+    position: fixed;
+    left: 1em;
+    top: 1em;
+    background-image: url(~assets/images/back.svg);
+    display: none;
+    z-index: 999
+}
+.vmss60-navbar-icon-back.black {
+    background-image: url(~assets/images/back_black.svg);
+}
 .vmss60-navbar-item-container {
     display: flex;
     width: 100%;
@@ -799,6 +827,11 @@ footer {
         height: 2em;
         width: 2em;
     }
+    .vmss60-navbar-icon-back {
+        display: block;
+        height: 2em;
+        width: 2em;
+    }
 
     .vmss60-navbar-item-container {
         opacity: 0;
@@ -839,4 +872,92 @@ footer {
 
 .navbar-overlay.open{
     opacity: 1;
+}
+
+.mustang-container {
+    position: absolute;
+    height: 100vh;
+    right: 5vw;
+    top: 0;
+    z-index: 997;
+    display: flex;
+    align-items: center;
+}
+.mustang-container svg {
+    height: 100%;
+}
+
+.mustang-animate {
+    animation: dash 2s ease-out forwards;
+    animation-delay: 0.5s;
+    stroke:#fff;
+    stroke-width:0.53848601px;
+}
+
+.mustang-outline {
+    stroke-dasharray: 1317.074951171875;
+    stroke-dashoffset: 1317.074951171875;
+}
+
+.mustang-eye {
+    stroke-dasharray: 22.072803497314453;
+    stroke-dashoffset: 22.072803497314453;
+}
+
+.mustang-face {
+    stroke-dasharray: 260.1147766113281;
+    stroke-dashoffset: 260.1147766113281;
+}
+
+.mustang-mane {
+    stroke-dasharray: 206.59243774414062;
+    stroke-dashoffset: 206.59243774414062;
+}
+
+.mustang-neck {
+    stroke-dasharray: 357.15081787109375;
+    stroke-dashoffset: 357.15081787109375;
+}
+
+.mustang-chest {
+    stroke-dasharray: 573.0703125;
+    stroke-dashoffset: 573.0703125;
+}
+
+.mustang-leftleg {
+    stroke-dasharray: 156.7884979248047;
+    stroke-dashoffset: 156.7884979248047;
+}
+
+.mustang-torso {
+    stroke-dasharray: 582.1943969726562;
+    stroke-dashoffset: 582.1943969726562;
+}
+
+.mustang-rightbottomleg {
+    stroke-dasharray: 217.51173400878906;
+    stroke-dashoffset: 217.51173400878906;
+}
+
+.mustang-leftbottomleg {
+    stroke-dasharray: 233.2288055419922;
+    stroke-dashoffset: 233.2288055419922;
+}
+
+.mustang-fixpentagon {
+    stroke-dasharray: 62.61857604980469;
+    stroke-dashoffset: 62.61857604980469;
+    animation-delay: 0.8s;
+}
+
+.mustang-fixmane {
+    stroke-dasharray: 30.16499900817871;
+    stroke-dashoffset: 30.16499900817871;
+    animation-delay: 1.8s;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
