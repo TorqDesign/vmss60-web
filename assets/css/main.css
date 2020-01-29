@@ -515,26 +515,6 @@ footer {
     height: 100vh;
 }
 
-#full-page-2 .section-action-button {
-    color: black;
-}
-
-#full-page-2 .section-action-button:hover {
-    color: black;
-}
-
-#full-page-2 .section-action-button:after {
-    background: black;
-}
-
-#full-page-2 img {
-    max-height: 40vh;
-    max-width: 85vw;
-    left: 50%;
-    transform: translateX(-50%);
-    position: relative;
-}
-
 #full-page-2-text {
     color: black;
     /*top: 50%;*/
@@ -629,7 +609,8 @@ footer {
     #full-page-2 img {
         z-index: 0;
         position: absolute;
-        height: 90vh;
+        max-height: 90vh;
+        /*max-width: 90vh;*/
         top: 50%;
         left: 40%;
         transform: translate(0, -50%)
