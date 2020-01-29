@@ -2,7 +2,7 @@
     <div>
         <Navbar light-back></Navbar>
         <div class="container" id="schedule" style="padding-top: 75px; min-height: 100vh">
-            <h2>Events</h2>
+            <h2 style="text-align: center">Events</h2>
             <div class="row">
                 <div class="col-md-6">
                     <h5>Friday Oct 9th</h5>
