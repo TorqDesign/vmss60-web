@@ -490,7 +490,8 @@ footer {
 
 #full-page-2 {
     background: #ffffff;
-    padding-top: 5%;
+    /*padding-top: 5%;*/
+    height: 100vh;
 }
 
 #full-page-2 .section-action-button {
@@ -506,8 +507,8 @@ footer {
 }
 
 #full-page-2 img {
-    max-height: 90vh;
-    max-width: 90vw;
+    max-height: 40vh;
+    max-width: 85vw;
     left: 50%;
     transform: translateX(-50%);
     position: relative;
@@ -586,7 +587,7 @@ footer {
         left: 50%;
         padding: 0;
         transform: translate(-50%, -50%);
-        position: relative;
+        position: absolute;
     }
 
     #full-page-2-text {
@@ -619,7 +620,7 @@ footer {
         top: 50%;
         left: 75%;
         transform: translate(-50%, -50%);
-        position: relative;
+        position: absolute;
         text-align: right;
         z-index: 5;
     }
