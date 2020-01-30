@@ -2,7 +2,7 @@
     <div>
         <Navbar light-back></Navbar>
         <div class="container" id="schedule" style="padding-top: 75px; min-height: 100vh">
-            <h2>Events</h2>
+            <h2 style="text-align: center">Events</h2>
             <div class="row">
                 <div class="col-md-6">
                     <h5>Friday Oct 9th</h5>
@@ -45,7 +45,16 @@
 
     export default {
         name: "events",
-        components: {Navbar}
+        components: {Navbar},
+        head () {
+            return {
+                title: 'Events | Vincent Massey 60th Reunion | Windsor, Ontario',
+                meta: [
+                    // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+                    { hid: 'description', name: 'description', content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2029.' }
+                ]
+            }
+        },
     }
 </script>
 

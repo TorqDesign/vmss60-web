@@ -5,6 +5,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Hotels</h2>
+                    <p>If you have any questions or concerns, or need assistance booking, please email us at <a class="expand-link" href="mailto:masseymustangs2020@gmail.com?subject=Hotel book assistance">masseymustangs2020@gmail.com</a></p>
                 </div>
                 <div class="col-md-6">
                     <GMap
@@ -38,12 +39,15 @@
                         <li v-for="location in locations" :key="location.id" class="list-group-item">
                             <div class="row" @click="changeMapView(location, $event)">
                                 <div class="col-2">
-                                    <img class="img-fluid" src="../assets/images/comfort_inn.png">
+                                    <img class="img-fluid" :src="location.logo">
                                 </div>
                                 <div class="col-10">
                                     <strong>{{location.name}}</strong>
                                     <p>{{location.address}}</p>
-                                    <p>Rate: ${{location.price}} per night</p>
+                                    <p v-if="location.price">Rates: from ${{location.price}} per night</p>
+                                    <p v-else>Promotion: {{location.promo}}</p>
+                                    <a class="btn btn-outline-primary float-right" v-if="location.canOnlineBook" :href="location.booklink" target="_blank">Book</a>
+                                    <a class="btn btn-outline-primary float-right" v-else :href="location.booklink">Email to Reserve</a>
                                 </div>
                             </div>
                         </li>
@@ -96,6 +100,15 @@
                 //this.$refs.gMap.
             }
         },
+        head () {
+            return {
+                title: 'Hotels | Vincent Massey 60th Reunion | Windsor, Ontario',
+                meta: [
+                    // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+                    { hid: 'description', name: 'description', content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2029.' }
+                ]
+            }
+        },
         data() {
             return {
                 markers: {},
@@ -103,36 +116,49 @@
                 locations: [
                     {
                         id: 0,
-                        lat: 42.2817501,
-                        lng: -83.0582101,
-                        name: "Holiday Inn & Suites",
-                        address: "1855 Huron Church Rd, Windsor, ON, Canada",
-                        price: 400,
-                    },
-                    {
-                        id: 1,
-                        lat: 42.3187267,
-                        lng: -83.0452658,
-                        name: "Best Western Plus Waterfront Hotel",
-                        address: "277 Riverside Dr W, Windsor, ON N9A 5K4, Canada",
-                        price: 400,
-                    },
-                    {
-                        id: 2,
                         lat: 42.2737864,
                         lng: -83.017303,
                         name: "Comfort Inn (Dougall)",
-                        address: "2955 Dougall Ave., Windsor, ON, N9E 1S1, CA",
-                        price: 400,
+                        address: "2955 Dougall Ave, Windsor, ON, Canada N9E 1S1",
+                        promo: '20% off rates',
+                        logo: '/hotel-logos/comfort_inn.png',
+                        canOnlineBook: true,
+                        booklink: 'http://www.comfortinn.com/CN318?srp=LMASSY',
                     },
                     {
-                        id: 3,
+                        id: 1,
                         lat: 42.2733348,
                         lng: -83.0501988,
                         name: "Comfort Inn (Huron Church)",
                         address: "2330 Huron Church Rd, Windsor, ON, Canada",
-                        price: 400,
+                        price: 129.99,
+                        logo: '/hotel-logos/comfort_inn.png',
+                        canOnlineBook: false,
+                        booklink: 'mailto:masseymustangs2020@gmail.com?subject=Booking request for Comfort Inn (Huron Church)'
                     },
+                    {
+                        id: 2,
+                        lat: 42.3187267,
+                        lng: -83.0452658,
+                        name: "Best Western Plus Waterfront Hotel",
+                        address: "277 Riverside Dr W, Windsor, ON, Canada N9A 5K4",
+                        price: 132,
+                        logo: '/hotel-logos/bwp.png',
+                        canOnlineBook: false,
+                        booklink: 'mailto:masseymustangs2020@gmail.com?subject=Booking request for Best Western Plus Waterfront Hotel',
+                    },
+                    {
+                        id: 3,
+                        lat: 42.2817501,
+                        lng: -83.0582101,
+                        name: "Holiday Inn & Suites",
+                        address: "1855 Huron Church Rd, Windsor, ON, Canada",
+                        price: 139,
+                        logo: '/hotel-logos/holiday_inn.png',
+                        canOnlineBook: true,
+                        booklink: 'https://www.holidayinn.com/redirect?path=hd&brandCode=HI&localeCode=en&regionCode=1&hotelCode=YQGCA&_PMID=99801505&GPC=VMA&cn=no&viewfullsite=true'
+                    },
+
                 ],
                 pins: {
                     selected:
