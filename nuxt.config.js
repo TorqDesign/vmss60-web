@@ -55,7 +55,7 @@ export default {
         // Doc: https://bootstrap-vue.js.org/docs/
         'bootstrap-vue/nuxt',
         // Doc: https://axios.nuxtjs.org/usage
-        '@nuxtjs/axios',
+        // '@nuxtjs/axios',
         ['nuxt-gmaps', {
             key: 'AIzaSyC_sWhSGaT5rxzZXeYtiQpNMmoJhCC1glE',
             //you can use libraries: ['places']
@@ -65,9 +65,9 @@ export default {
     ** Axios module configuration
     ** See https://axios.nuxtjs.org/options
     */
-    axios: {
-        baseURL: 'https://vmss60.com/api'
-    },
+    // axios: {
+    //     baseURL: 'https://vmss60.com/api'
+    // },
     /*
     ** Build configuration
     */
