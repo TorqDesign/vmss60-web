@@ -134,7 +134,7 @@
                         price: 129.99,
                         logo: '/hotel-logos/comfort_inn.png',
                         canOnlineBook: false,
-                        booklink: 'mailto:masseymustangs2020@gmail.com?subject=Booking request for Comfort Inn (Huron Church)'
+                        booklink: 'https://www.choicehotels.com/en-ca/reservations/groups/YS99R9'
                     },
                     {
                         id: 2,
