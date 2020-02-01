@@ -566,12 +566,10 @@ footer {
         display: inline;
     }
 
-
-
     #full-page-4-text {
         max-width: 45vw;
         left: 5%;
-        top: 20%;
+        top: 10%;
     }
 }
 
