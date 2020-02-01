@@ -133,7 +133,7 @@
                         address: "2330 Huron Church Rd, Windsor, ON, Canada",
                         price: 129.99,
                         logo: '/hotel-logos/comfort_inn.png',
-                        canOnlineBook: false,
+                        canOnlineBook: true,
                         booklink: 'https://www.choicehotels.com/en-ca/reservations/groups/YS99R9'
                     },
                     {
