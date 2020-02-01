@@ -315,7 +315,7 @@
 <script>
     import Logo from '~/components/Logo.vue'
     import Swal from 'sweetalert2'
-    import axios from '@nuxtjs/axios'
+    import $ from 'jquery'
     import Navbar from '../components/Navbar'
     import VueCountdown from '@chenfengyuan/vue-countdown'
 
@@ -344,9 +344,9 @@
         mounted() {
 
 
-            this.$axios.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
-                //console.log(response)
-                this.counter = parseInt(response.data.$numberLong)
+            $.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
+                // console.log(response)
+                this.counter = parseInt(response.$numberLong)
             })
         },
         head() {
@@ -364,22 +364,22 @@
         },
         methods: {
             submitContactForm: function submitContactForm(token) {
-                this.$axios.post('/contact-form', {
+                $.post('/api/contact-form', {
                     message: this.message,
                     name: this.name,
                     email: this.email,
                     token: token
-                }).then(data => {
+                }).done(data => {
                     Swal.fire({
                         title: 'Message Sent!',
                         type: 'success',
                     })
-                }).catch(error => {
+                }).fail(error => {
                     console.log(error);
                     Swal.fire({
                         title: 'There was an error!',
                         type: 'error',
-                        text: error
+                        text: `Code: ${error.status}, Error: ${error.statusText}`
                     })
                 })
             },
@@ -391,8 +391,9 @@
                         text: 'To ensure your contact request is received and processed, please fill our your message, name, and email.'
                     })
                 } else {
+                    console.log(this.$recaptcha);
                     this.$recaptcha('homepage').then((token) => {
-                        //console.log(token);
+                        console.log(token);
                         this.submitContactForm(token)
                     })
                 }
