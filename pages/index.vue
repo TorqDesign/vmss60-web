@@ -355,7 +355,7 @@
                     {
                         hid: 'description',
                         name: 'description',
-                        content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2029.'
+                        content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.'
                     }
                 ]
             }
