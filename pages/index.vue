@@ -174,11 +174,11 @@
                 </div>
                 
                 <div class="full-page section" id="full-page-3" data-anchor="events">
-                    <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back" class="d-none d-xl-block">
+<!--                    <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back" class="d-none d-xl-block">-->
                     <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front" class="d-none d-xl-block">
                     <div id="full-page-3-text">
-                        <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back-mobile"
-                             class="d-sm-none d-md-block d-lg-block d-xl-none d-none">
+<!--                        <img src="../assets/images/bigglob.svg" alt="tes" id="full-page-3-back-mobile"-->
+<!--                             class="d-sm-none d-md-block d-lg-block d-xl-none d-none">-->
                         <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front-mobile"
                              class="d-block d-xl-none">
                         <div style="z-index: 200;">
