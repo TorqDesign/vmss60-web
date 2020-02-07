@@ -808,6 +808,7 @@ footer {
     z-index: 997;
     display: flex;
     align-items: center;
+    -webkit-transform: translate3d(0,0,0);
 }
 .mustang-container svg {
     height: 100%;
