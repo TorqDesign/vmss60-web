@@ -150,7 +150,7 @@
                 </div>
                 <div class="full-page section" id="full-page-1" data-anchor="welcome">
                     <div id="full-page-1-text">
-                        <h1>Welcoming <span class="emphasis-span">60 years</span> of alumni back</h1>
+                        <h1>Welcoming <span class="emphasis-span">60 years</span> of alumni</h1>
                         <p>We are excited to invite back sixty years of proud Massey alumni for a weekend of fun and
                             enjoyment. VMSS 60 has
                             many exciting events planned for you to reunite with your former classmates and catch
