@@ -105,7 +105,7 @@
                 title: 'Hotels | Vincent Massey 60th Reunion | Windsor, Ontario',
                 meta: [
                     // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-                    { hid: 'description', name: 'description', content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2029.' }
+                    { hid: 'description', name: 'description', content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.' }
                 ]
             }
         },

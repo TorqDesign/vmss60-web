@@ -475,7 +475,7 @@ footer {
 }
 
 #full-page-3-front-mobile {
-    height: 60vw;
+    height: 50vw;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -808,6 +808,7 @@ footer {
     z-index: 997;
     display: flex;
     align-items: center;
+    -webkit-transform: translate3d(0,0,0);
 }
 .mustang-container svg {
     height: 100%;
