@@ -27,13 +27,12 @@
   top: 1em;
   background-image: url(~assets/images/back.svg);
   display: none;
-  z-index: 999
+  z-index: 999;
+  &.black {
+    background-image: url(~assets/images/back_black.svg);
+  }
 }
 
-/*noinspection CssUnknownTarget,CssUnknownTarget,CssUnknownTarget*/
-.vmss60-navbar-icon-back.black {
-  background-image: url(~assets/images/back_black.svg);
-}
 .vmss60-navbar-item-container {
   display: flex;
   width: 100%;
@@ -50,15 +49,26 @@
   margin-bottom: 1em;
   background: none;
   outline: none;
-}
 
-.vmss60-navbar-item.first {
-  border-radius: 0;
-}
+  &:hover {
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+  }
 
-.vmss60-navbar-item:hover {
-  color: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  &.first {
+    border-radius: 0;
+  }
+
+  /* Invert */
+  &.black {
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+  }
 }
 
 .vmss60-navbar-line-container {
@@ -73,21 +83,11 @@
   height: 1px;
   width: 100%;
   border-top: 1px solid white;
-}
 
-/* Invert */
-.vmss60-navbar-line.black {
-  border-top: 1px solid black;
-}
-
-.vmss60-navbar-item.black:hover {
-  color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.vmss60-navbar-item.black {
-  color: black;
-  border: 1px solid black;
+  /* Invert */
+  &.black {
+    border-top: 1px solid black;
+  }
 }
 
 @media (max-width: 991px) {
@@ -116,21 +116,23 @@
     color: white;
     width: 100%;
     transition: opacity ease 0.25s;
-  }
-  .vmss60-navbar-item-container ul{
-    list-style: none;
-    padding: 0;
-    margin-left: 2em;
-  }
-  .vmss60-navbar-item-container ul li{
-    margin-bottom: 1em;
-    text-align: right;
-  }
-  .vmss60-navbar-item-container.open {
-    opacity: 1;
-    display: block;
-  }
 
+    ul{
+      list-style: none;
+      padding: 0;
+      margin-left: 2em;
+
+      li{
+        margin-bottom: 1em;
+        text-align: right;
+      }
+    }
+
+    &.open {
+      opacity: 1;
+      display: block;
+    }
+  }
   .vmss60-navbar-item.mobile {
     border: none;
   }
@@ -145,8 +147,8 @@
   opacity: 0;
   transition: opacity ease 0.25s;
   pointer-events: none;
-}
 
-.navbar-overlay.open{
-  opacity: 1;
+  &.open{
+    opacity: 1;
+  }
 }
