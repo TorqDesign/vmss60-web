@@ -106,7 +106,7 @@ a:hover {
 
 .hero h1 {
     font-family: "axiforma", serif;
-    font-size: 10vh;
+    font-size: 5vh;
 }
 
 .hero h6 {
@@ -119,6 +119,9 @@ a:hover {
         top: 50%;
         transform: translate(-85%, -50%);
         padding: 0;
+    }
+    .hero h1 {
+        font-size: 10vh;
     }
 }
 
@@ -381,7 +384,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: relative;
+    position: absolute;
     padding: 5%;
 }
 
@@ -409,15 +412,18 @@ footer {
     transform: translateX(-50%);
     position: relative;
     /*padding-top: 5%;*/
-    height: 100vh;
 }
 
 @media (max-width: 992px) {
+    #full-page-1-text {
+        width: 100vw;
+    }
     #full-page-2-text {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        position: relative;
+        position: absolute;
+        width: 100vw;
     }
 }
 
@@ -475,7 +481,7 @@ footer {
 }
 
 #full-page-3-front-mobile {
-    height: 50vw;
+    height: 50vh;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -487,6 +493,27 @@ footer {
     position: absolute;
     z-index: 0;
     height: 50vh;
+}
+
+@media (max-height: 480px) {
+    #full-page-1-text {
+        position: relative;
+    }
+    #full-page-3-front-mobile {
+        position: relative;
+        top: 0;
+        transform: translateX(-50%);
+    }
+    #full-page-3-text {
+        position: relative;
+        top: 0;
+        transform: translateX(-50%);
+    }
+    #full-page-2-text {
+        position: relative;
+        top: 0;
+        transform: translateX(-50%);
+    }
 }
 
 @media (min-width: 1200px) {
@@ -505,7 +532,7 @@ footer {
         left: 50%;
         padding: 0;
         transform: translate(-50%, -50%);
-        position: relative;
+        position: absolute;
     }
 
     #full-page-2-text {
@@ -526,7 +553,7 @@ footer {
     #full-page-2 img {
         z-index: 0;
         position: absolute;
-        max-height: 90vh;
+        max-height: 70vh;
         /*max-width: 90vh;*/
         top: 50%;
         left: 40%;
@@ -539,7 +566,7 @@ footer {
         top: 50%;
         left: 75%;
         transform: translate(-50%, -50%);
-        position: relative;
+        position: absolute;
         text-align: right;
         z-index: 5;
     }
@@ -584,6 +611,7 @@ footer {
     display: inline;
     position: relative;
     overflow: hidden;
+    font-weight: bold;
 }
 
 .section-action-button:hover {
