@@ -10,12 +10,15 @@
                         <h1>VMSS 60th Reunion</h1>
                         <h6>October 9th &amp; 10th / 2020</h6>
                         <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
-                        <p>Page views so far: {{this.counter}}</p>
-                        <countdown :time="this.time" tag="p">
-                            <template slot-scope="props">Countdown: {{ props.days }} days, {{ props.hours }} hours, {{
-                                props.minutes }} minutes, {{ props.seconds }} seconds.
-                            </template>
-                        </countdown>
+                        <p>Page views: {{this.counter}}</p>
+<!--                        <countdown :time="this.time" tag="p">-->
+<!--                            <template slot-scope="props"><p style="font-weight: bold; font-size: 1.6em">Countdown: {{ props.days }} days, {{ props.hours }} hours, {{-->
+<!--                                props.minutes }} minutes, {{ props.seconds }} seconds.</p>-->
+<!--                            </template>-->
+<!--                        </countdown>-->
+                        <div>
+                            <flip-countdown deadline="2020-10-09 00:00:00" style="text-align: left; margin: 0; padding: 0"></flip-countdown>
+                        </div>
                     </div>
                 </div>
                 <div class="mustang-container d-none d-md-block">
@@ -318,12 +321,14 @@
     import $ from 'jquery'
     import Navbar from '../components/Navbar'
     import VueCountdown from '@chenfengyuan/vue-countdown'
+    import FlipCountdown from 'vue2-flip-countdown'
 
     export default {
         components: {
             Navbar,
             Logo,
-            VueCountdown
+            VueCountdown,
+            FlipCountdown
         },
         data() {
             let now = new Date();
