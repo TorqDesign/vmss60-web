@@ -164,7 +164,7 @@
                     <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" class="d-none d-xl-block">
                     <div id="full-page-2-text">
                         <img src="../assets/images/vmss60-hotelArtboard1.png" alt="blob" class="d-block d-xl-none" id="full-page-2-image-mobile">
-                        <h1>Hotels.</h1>
+                        <h1>Hotels</h1>
                         <p>Traveling from out of town? We have worked with multiple local hotel partners to provide
                             discount
                             group rates for this reunion. Each hotel has unique instructions for redeeming this special
@@ -182,7 +182,7 @@
                         <img src="../assets/images/edin.png" alt="uhh" id="full-page-3-front-mobile"
                              class="d-block d-xl-none">
                         <div style="z-index: 200;">
-                            <h1>Events.</h1>
+                            <h1>Events</h1>
                             <p>We have worked hard to plan exciting and enjoyable weekend for all of you! Events will be
                                 running
                                 from Friday evening throughout the entire day of Saturday. Check out a detailed listing
@@ -336,12 +336,19 @@
                 intersectionOptions: {threshold: 0.5},
                 time: event - now,
                 options: {
-                    licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd'
+                    licenseKey: 'dddddddd-dddddddd-dddddddd-dddddddd',
+                    responsiveHeight: 480
                     // anchors: ['home','welcome','hotels','events','contact']
                 },
             }
         },
         mounted() {
+            // window.addEventListener('resize', () => {
+            //     if (window.innerHeight < 480) {
+            //         this.$refs.fullpage.api.destroy('all');
+            //         console.log('destroying')
+            //     }
+            // });
             $.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
                 // console.log(response)
                 this.counter = parseInt(response.$numberLong)
