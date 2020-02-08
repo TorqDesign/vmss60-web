@@ -1,0 +1,11 @@
+@mixin transformToCenter {
+  transform: translate(-50%, -50%);
+}
+
+@mixin tfCenterX {
+  transform: translateX(-50%);
+}
+
+@mixin tfCenterY {
+  transform: translateY(-50%);
+}

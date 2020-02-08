@@ -1,0 +1,127 @@
+@font-face {
+  font-family: 'axiforma';
+  src: url('~assets/Axiforma.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+html {
+  /*font-size: calc(0.85em + 1vw);*/
+}
+
+body {
+  /*font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Roboto', sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  /*font-size: calc(0.85em + 1vw);*/
+}
+
+p {
+  /*line-height: 1.6em;*/
+  /*font-size: 0.6em;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /*font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Roboto', sans-serif;*/
+  font-family: 'axiforma', serif;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-size: 6.5em;
+}
+
+h2 {
+  font-size: 3.5em;
+}
+
+h4 {
+  font-size: 2.5em;
+}
+
+h5 {
+  font-size: 2em;
+}
+
+h6 {
+  font-size: 1.5em;
+}
+
+a {
+  color: #212529;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h4 {
+    font-size: 1.75em;
+  }
+
+  h6 {
+    font-size: 1.5em;
+  }
+}
+
+.emphasis-span {
+  color: $mustangOrange;
+}
+
+.section-action-button {
+  color: white;
+  display: inline;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+
+}
+
+.section-action-button:hover {
+  color: white;
+}
+
+.section-action-button:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 100%;
+  bottom: -4px;
+  background: #fff;
+  height: 2px;
+  transition-property: left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.section-action-button:hover:after,
+.section-action-button:focus:after,
+.section-action-button:active:after {
+  right: 0;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

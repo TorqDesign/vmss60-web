@@ -1,0 +1,231 @@
+.full-page {
+  position: relative;
+  /*z-index: 2;*/
+}
+
+#full-page-1 {
+  background: $mustangBlue;
+  height: 100vh;
+}
+
+#full-page-1-text {
+  color: white;
+  top: 50%;
+  left: 50%;
+  @include transformToCenter;
+  position: absolute;
+  padding: 5%;
+}
+
+#full-page-2 {
+  background: #ffffff;
+  padding-top: 5%;
+
+  .section-action-button {
+    color: black;
+    &:hover {
+      color: black;
+    }
+    &:after {
+      background: black;
+    }
+  }
+
+  img {
+    max-height: 40vh;
+    max-width: 85vw;
+    left: 50%;
+    @include tfCenterX;
+    position: relative;
+    /*padding-top: 5%;*/
+  }
+}
+
+
+@media (max-width: 992px) {
+  #full-page-1-text {
+    width: 100vw;
+  }
+  #full-page-2-text {
+    top: 50%;
+    left: 50%;
+    @include transformToCenter;
+    position: absolute;
+    width: 100vw;
+  }
+}
+
+#full-page-2-text {
+  color: black;
+  padding: 5%;
+  z-index: 3;
+}
+
+#full-page-3 {
+  background: $mustangBlue;
+  position: relative;
+}
+
+#full-page-3-text {
+  color: white;
+  width: 100vw;
+  top: 50%;
+  left: 50%;
+  @include transformToCenter;
+  position: absolute;
+  padding: 5%;
+}
+
+#full-page-3-front {
+  z-index: 0;
+  max-width: 95vw;
+  height: 40vh;
+  position: relative;
+  left: 50%;
+  @include tfCenterX;
+}
+
+#full-page-3-back {
+  z-index: 0;
+  height: 100vh;
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  display: none;
+}
+
+#full-page-4 {
+  min-height: 100vh;
+}
+
+#full-page-4-text {
+  position: relative;
+  padding: 2em;
+  min-height: 100vh;
+}
+
+#full-page-3-front-mobile {
+  height: 50vh;
+  position: relative;
+  left: 50%;
+  @include tfCenterX;
+  padding: 2%;
+  z-index: 0;
+}
+
+#full-page-3-back-mobile {
+  position: absolute;
+  z-index: 0;
+  height: 50vh;
+}
+
+@media (max-height: 480px) {
+  #full-page-1-text {
+    position: relative;
+  }
+  #full-page-3-front-mobile {
+    position: relative;
+    top: 0;
+    @include tfCenterX;
+  }
+  #full-page-3-text {
+    position: relative;
+    top: 0;
+    @include tfCenterX;
+  }
+  #full-page-2-text {
+    position: relative;
+    top: 0;
+    @include tfCenterX;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .full-page {
+    height: 100vh;
+    position: relative;
+    /*z-index: 2;*/
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  #full-page-1-text {
+    width: 45vw;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    @include transformToCenter;
+    position: absolute;
+  }
+
+  #full-page-2-text {
+    /*color: rgb(73, 80, 103);*/
+    color: black;
+    width: 40em;
+    top: 50%;
+    /*left: 3%;*/
+    @include tfCenterY;
+    position: absolute;
+    z-index: 5;
+  }
+
+  #full-page-2-text p {
+    color: rgb(0, 0, 0);
+  }
+
+  #full-page-2 img {
+    z-index: 0;
+    position: absolute;
+    max-height: 70vh;
+    /*max-width: 90vh;*/
+    top: 50%;
+    left: 40%;
+    @include tfCenterY;
+  }
+
+  #full-page-3-text {
+    color: white;
+    width: 40em;
+    top: 50%;
+    left: 75%;
+    @include transformToCenter;
+    position: absolute;
+    text-align: right;
+    z-index: 5;
+  }
+
+  #full-page-3-front {
+    z-index: 1;
+    height: 40em;
+    min-height: 55vh;
+    max-width: 60vw;
+    position: absolute;
+    top: 50%;
+    @include tfCenterY;
+    left: 5%;
+  }
+
+  #full-page-3-back {
+    z-index: 0;
+    height: 45em;
+    min-height: 80vh;
+    max-width: 60vw;
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    display: inline;
+  }
+
+  #full-page-4-text {
+    max-width: 45vw;
+    left: 5%;
+    top: 10%;
+  }
+}
+
+@media (min-width: 2000px) {
+  #full-page-3-front {
+    min-height: 70vh;
+  }
+}

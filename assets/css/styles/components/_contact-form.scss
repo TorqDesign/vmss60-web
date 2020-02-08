@@ -1,0 +1,18 @@
+#contact-form {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.7em;
+}
+
+#contact-desc {
+  font-size: 0.7em;
+}
+
+@media (min-width: 768px) {
+  #contact-form {
+    font-size: inherit;
+  }
+
+  #contact-desc {
+    font-size: inherit;
+  }
+}

@@ -1,0 +1,89 @@
+.mustang-container {
+  position: absolute;
+  height: 100vh;
+  right: 5vw;
+  top: 0;
+  z-index: 997;
+  display: flex;
+  align-items: center;
+  -webkit-transform: translate3d(0,0,0);
+
+  svg {
+    height: 100%;
+  }
+}
+
+.mustang-animate {
+  animation: dash 2s ease-out forwards;
+  animation-delay: 0.5s;
+  stroke:#fff;
+  stroke-width:0.53848601px;
+}
+
+.mustang-outline {
+  stroke-dasharray: 1317.074951171875;
+  stroke-dashoffset: 1317.074951171875;
+}
+
+.mustang-eye {
+  stroke-dasharray: 22.072803497314453;
+  stroke-dashoffset: 22.072803497314453;
+}
+
+.mustang-face {
+  stroke-dasharray: 260.1147766113281;
+  stroke-dashoffset: 260.1147766113281;
+}
+
+.mustang-mane {
+  stroke-dasharray: 206.59243774414062;
+  stroke-dashoffset: 206.59243774414062;
+}
+
+.mustang-neck {
+  stroke-dasharray: 357.15081787109375;
+  stroke-dashoffset: 357.15081787109375;
+}
+
+.mustang-chest {
+  stroke-dasharray: 573.0703125;
+  stroke-dashoffset: 573.0703125;
+}
+
+.mustang-leftleg {
+  stroke-dasharray: 156.7884979248047;
+  stroke-dashoffset: 156.7884979248047;
+}
+
+.mustang-torso {
+  stroke-dasharray: 582.1943969726562;
+  stroke-dashoffset: 582.1943969726562;
+}
+
+.mustang-rightbottomleg {
+  stroke-dasharray: 217.51173400878906;
+  stroke-dashoffset: 217.51173400878906;
+}
+
+.mustang-leftbottomleg {
+  stroke-dasharray: 233.2288055419922;
+  stroke-dashoffset: 233.2288055419922;
+}
+
+.mustang-fixpentagon {
+  stroke-dasharray: 62.61857604980469;
+  stroke-dashoffset: 62.61857604980469;
+  animation-delay: 0.8s;
+}
+
+.mustang-fixmane {
+  stroke-dasharray: 30.16499900817871;
+  stroke-dashoffset: 30.16499900817871;
+  animation-delay: 1.8s;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
