@@ -12,6 +12,7 @@
                     <div class="schedule-box">
                         <h6>Classic/Antique Car Show (All-Night)</h6>
                         <p>View the beautiful collection of cars as you take a walk down memory lane.</p>
+                        <p><b>Want to volunteer your car?</b> Please email <a href="mailto:masseymustangs2020@gmail.com?subject=Car%20Volunteer%20Request" class="expand-link">masseymustangs2020@gmail.com</a> to find out more.</p>
                     </div>
                     <div class="schedule-box">
                         <h6>Battle of the Bands</h6>
