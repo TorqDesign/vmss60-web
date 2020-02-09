@@ -11,12 +11,18 @@
                         <h6>October 9th &amp; 10th / 2020</h6>
                         <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
                         <p>Page views: {{this.counter}}</p>
-                        <div>
+                        <div class="d-none d-sm-block">
                             <flip-countdown deadline="2020-10-09 00:00:00"
                                             style="text-align: left; margin: 0; padding: 0"></flip-countdown>
                         </div>
+                        <div class="d-block d-sm-none">
+                            <countdown :time="this.time" tag="p">
+                                <template slot-scope="props"><p style="font-weight: bold; font-size: 1.2em">Countdown: {{ props.days }} days, {{ props.hours }} hours, {{
+                                    props.minutes }} minutes, {{ props.seconds }} seconds.</p>
+                                </template>
+                            </countdown>
+                        </div>
                         <!-- Begin Mailchimp Signup Form -->
-                        <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
                         <style type="text/css">
                             #mc_embed_signup{background:none; clear:left; font-family: "Open Sans", sans-serif; width:100%;}
                             #mc_embed_signup form {text-align: left}
@@ -36,11 +42,7 @@
                         </div>
     
                         <!--End mc_embed_signup-->
-                        <!--                        <countdown :time="this.time" tag="p">-->
-                        <!--                            <template slot-scope="props"><p style="font-weight: bold; font-size: 1.6em">Countdown: {{ props.days }} days, {{ props.hours }} hours, {{-->
-                        <!--                                props.minutes }} minutes, {{ props.seconds }} seconds.</p>-->
-                        <!--                            </template>-->
-                        <!--                        </countdown>-->
+
 
                     </div>
                 </div>
@@ -176,7 +178,7 @@
                 </div>
                 <div class="full-page section" id="full-page-1" data-anchor="welcome">
                     <div id="full-page-1-text">
-                        <h1>Welcoming <span class="emphasis-span">60 years</span> of alumni</h1>
+                        <h1>Welcoming <br><span class="emphasis-span">60 years</span><br> of alumni</h1>
                         <p>We are excited to invite back sixty years of proud Massey alumni for a weekend of fun and
                             enjoyment. VMSS 60 has
                             many exciting events planned for you to reunite with your former classmates and catch
@@ -376,6 +378,12 @@
                         content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.'
                     }
                 ],
+                link: [
+                    {
+                        rel: 'stylesheet',
+                        href: '//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css'
+                    }
+                ]
             }
         },
         methods: {

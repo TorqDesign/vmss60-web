@@ -1,0 +1,29 @@
+.page-move-arrow {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  z-index: 998;
+  height: 2em;
+  width: 2em;
+  background-image: url("~assets/images/back.svg");
+  transform: rotate(-90deg);
+}
+
+.page-move-arrow.black {
+  background-image: url("~assets/images/back_black.svg");
+}
+
+.page-move-arrow.up {
+  transform: rotate(90deg);
+  bottom: 4em;
+}
+
+@media (min-width: 768px) {
+  .page-move-arrow {
+    right: 3em;
+    bottom: 3em;
+  }
+  .page-move-arrow.up {
+    bottom: 6em;
+  }
+}

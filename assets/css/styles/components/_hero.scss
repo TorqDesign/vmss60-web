@@ -1,0 +1,54 @@
+.hero-background::before {
+  background-image: url("~assets/images/IMG_1433.jpg");
+  filter: blur(15px);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: '';
+  transform: scale(1.1);
+}
+
+.hero-background {
+  min-height: 100vh;
+  overflow: hidden;
+  /*background-size: 30%;*/
+  z-index: 0;
+  background: none;
+  /*background-image: url("../images/orange_blob.svg");
+  /*background-repeat: no-repeat;*!*/
+}
+
+.hero {
+  position: absolute;
+  @include tfCenterY;
+  top: 50%;
+  /*color: #ffd9a9;*/
+  color: white;
+  padding: 10px;
+  text-align: left;
+
+  h1 {
+    font-family: "axiforma", serif;
+    font-size: 2em;
+  }
+
+  h6 {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    left: 50%;
+    top: 50%;
+    transform: translate(-85%, -50%);
+    padding: 0;
+
+    h1 {
+      font-size: 10vh;
+    }
+  }
+}

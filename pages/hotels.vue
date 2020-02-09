@@ -46,8 +46,9 @@
                                     <p>{{location.address}}</p>
                                     <p v-if="location.price">Rates: from ${{location.price}} per night</p>
                                     <p v-else>Promotion: {{location.promo}}</p>
+                                    <p v-if="location.specialInstruction"><b>{{location.specialInstruction}}</b></p>
                                     <a class="btn btn-outline-primary float-right" v-if="location.canOnlineBook" :href="location.booklink" target="_blank">Book</a>
-                                    <a class="btn btn-outline-primary float-right" v-else :href="location.booklink">Email to Reserve</a>
+                                    <a class="btn btn-outline-primary float-right" v-else :href="location.booklink">Call {{location.phone}} to reserve</a>
                                 </div>
                             </div>
                         </li>
@@ -145,7 +146,9 @@
                         price: 132,
                         logo: '/hotel-logos/bwp.png',
                         canOnlineBook: false,
-                        booklink: 'mailto:masseymustangs2020@gmail.com?subject=Booking request for Best Western Plus Waterfront Hotel',
+                        booklink: 'tel:1-519-973-5555',
+                        phone: '+1 (519) 973-5555',
+                        specialInstruction: 'Please mention "Vincent Massey 60th Reunion" when booking to use the group rate'
                     },
                     {
                         id: 3,
