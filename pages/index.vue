@@ -1,6 +1,8 @@
 <template>
     <div id="main">
         <Navbar ref="navbar" @navTo="navTo" @navDir="navDir" navmode="front" arrow></Navbar>
+        <div v-if="$auth.loggedIn">Hello {{$auth.user.nickname}}</div>
+        <div v-else>darn it</div>
         <client-only>
             <full-page ref="fullpage" id="fullpage" :options="options">
                 <div class="hero-background full-page section" id="top"

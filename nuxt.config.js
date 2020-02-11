@@ -54,7 +54,8 @@ export default {
         // Doc: https://bootstrap-vue.js.org/docs/
         'bootstrap-vue/nuxt',
         // Doc: https://axios.nuxtjs.org/usage
-        // '@nuxtjs/axios',
+        '@nuxtjs/axios',
+        '@nuxtjs/auth',
         ['nuxt-gmaps', {
             key: 'AIzaSyC_sWhSGaT5rxzZXeYtiQpNMmoJhCC1glE',
             //you can use libraries: ['places']
@@ -144,6 +145,17 @@ export default {
 
             return {x: 0, y: 0}
         }
+    },
+    auth: {
+        redirect: {
+            login: '/store/login',
+            callback: '/store/portal/'
+        },
+        strategies: {
+            auth0: {
+                domain: 'vmss60-dev.auth0.com',
+                client_id: 'BHCmPq4Y1tAlnnRtKo0L5PBjqawbx06q',
+            }
+        }
     }
-
 }
