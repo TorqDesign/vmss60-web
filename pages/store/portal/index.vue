@@ -9,6 +9,9 @@
 
     export default {
         name: "index.vue",
+        mounted() {
+            console.log(this.$auth.getToken('auth0'))
+        }
     }
 </script>
 
