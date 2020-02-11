@@ -148,7 +148,8 @@ export default {
     },
     auth: {
         redirect: {
-            login: '/store/login',
+            home: '/store/portal/',
+            login: '/store/portal/',
             callback: '/store/portal/'
         },
         strategies: {
