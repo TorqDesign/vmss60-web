@@ -152,14 +152,15 @@ export default {
     },
     auth: {
         redirect: {
-            home: '/store/portal/',
-            login: '/store/portal/',
-            callback: '/store/portal/'
+            home: '/',
+            login: '/store/login',
+            callback: '/store/'
         },
         strategies: {
             auth0: {
                 domain: 'vmss60.auth0.com',
                 client_id: 'da66CdZisDbTvTAdF4KvT87iVx8DvwHf',
+                audience: 'https://api.vmss60.com',
                 response_type: 'id_token token',
                 token_key: 'id_token'
             }
