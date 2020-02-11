@@ -153,8 +153,8 @@ export default {
         },
         strategies: {
             auth0: {
-                domain: 'vmss60-dev.auth0.com',
-                client_id: 'BHCmPq4Y1tAlnnRtKo0L5PBjqawbx06q',
+                domain: 'vmss60.auth0.com',
+                client_id: 'da66CdZisDbTvTAdF4KvT87iVx8DvwHf',
             }
         }
     }
