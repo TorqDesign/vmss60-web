@@ -15,6 +15,7 @@
 
             async buy() {
                 const token = await this.$auth.getToken('auth0');
+                console.log(token);
 
                 // Use Axios to make a call to the API
                 this.$axios.get("http://localhost:3005/createCheckoutSession", {
