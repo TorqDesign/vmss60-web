@@ -60,6 +60,10 @@ export default {
             key: 'AIzaSyC_sWhSGaT5rxzZXeYtiQpNMmoJhCC1glE',
             //you can use libraries: ['places']
         }],
+        ['nuxt-stripe-module', {
+            version: 'v3',
+            publishableKey: 'pk_test_vpi8zOYHwSCBPUpj4C5DQkNT00VL4HeoMn',
+        }]
     ],
     /*
     ** Axios module configuration
@@ -156,6 +160,8 @@ export default {
             auth0: {
                 domain: 'vmss60.auth0.com',
                 client_id: 'da66CdZisDbTvTAdF4KvT87iVx8DvwHf',
+                response_type: 'id_token token',
+                token_key: 'id_token'
             }
         }
     }
