@@ -24,12 +24,12 @@
                     }
                 }).then((res) =>{
                     console.log(res);
-                    /*
+
                     this.$stripe.import().redirectToCheckout({
-                        sessionId: res.id
+                        sessionId: res.data.id
                     }).then((res) => {
                         console.log(res);
-                    })*/
+                    })
                 });
 
             }
