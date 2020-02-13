@@ -219,7 +219,7 @@
                                 from Friday evening throughout the entire day of Saturday. Check out a detailed listing
                                 of
                                 events below.</p>
-                            <nuxt-link to="/events" class="section-action-button">Check them out →</nuxt-link>
+                            <nuxt-link to="/events" class="section-action-button">Check out our events →</nuxt-link>
                         </div>
                     </div>
                 </div>
