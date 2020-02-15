@@ -2,4 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+  position: relative;
+  left: 50%;
+  @include tfCenterX;
+  //justify-content: space-between;
 }
