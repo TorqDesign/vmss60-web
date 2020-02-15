@@ -2,7 +2,6 @@
     <div id="main">
         <Navbar ref="navbar" @navTo="navTo" @navDir="navDir" navmode="front" arrow></Navbar>
         <div v-if="$auth.loggedIn">Hello {{$auth.user.nickname}}</div>
-        <div v-else>darn it</div>
         <client-only>
             <full-page ref="fullpage" id="fullpage" :options="options">
                 <div class="hero-background full-page section" id="top"
@@ -200,7 +199,7 @@
                             discount
                             group rates for this reunion. Each hotel has unique instructions for redeeming this special
                             rate, so please follow the link below for more information.</p>
-                        <nuxt-link to="/hotels" class="section-action-button">View hotels →</nuxt-link>
+                        <nuxt-link to="/hotels" class="section-action-button" id="hotel-link">View hotels →</nuxt-link>
                     </div>
                 </div>
                 
@@ -219,7 +218,7 @@
                                 from Friday evening throughout the entire day of Saturday. Check out a detailed listing
                                 of
                                 events below.</p>
-                            <nuxt-link to="/events" class="section-action-button">Check out our events →</nuxt-link>
+                            <nuxt-link to="/events" class="section-action-button" id="event-link">Check out our events →</nuxt-link>
                         </div>
                     </div>
                 </div>
