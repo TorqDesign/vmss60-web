@@ -10,3 +10,18 @@ export const mutations = {
         state.list.splice(state.list.indexOf(item), 1)
     }
 }
+
+// export const getters = {
+//     cartItems(state, getters, rootState) {
+//         let final = [];
+//         for (let obj in state.list) {
+//             final.push({
+//                 name: obj.name,
+//                 price: obj.price,
+//                 description: obj.description,
+//                 image: obj.image
+//             })
+//         }
+//         return final;
+//     }
+// }

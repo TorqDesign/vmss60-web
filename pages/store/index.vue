@@ -35,47 +35,56 @@
         data() {
             return {
                 items: [
-                    {
-                        name: 'Event Ticket',
-                        description: 'Ticket for entry into main reunion event. Lots of fun. Please spend money.',
-                        image: 'https://developer.apple.com/wwdc19/images/wwdc19-og-twitter.jpg',
-                        price: 40
-                    },
-                    {
-                        name: 'T-Shirt',
-                        description: 'cotton shirt',
-                        image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                        price: 24.99
-                    },
-                    {
-                        name: 'T-Shirt',
-                        description: 'cotton shirt',
-                        image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                        price: 24
-                    },
-                    {
-                        name: 'T-Shirt',
-                        description: 'cotton shirt',
-                        image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                        price: 24
-                    },
-                    {
-                        name: 'T-Shirt',
-                        description: 'cotton shirt',
-                        image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                        price: 24
-                    },
-                    {
-                        name: 'T-Shirt',
-                        description: 'cotton shirt',
-                        image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                        price: 24
-                    }
+                    // {
+                    //     name: 'Event Ticket',
+                    //     description: 'Ticket for entry into main reunion event. Lots of fun. Please spend money.',
+                    //     image: 'https://developer.apple.com/wwdc19/images/wwdc19-og-twitter.jpg',
+                    //     price: 40
+                    // },
+                    // {
+                    //     name: 'T-Shirt',
+                    //     description: 'cotton shirt',
+                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
+                    //     price: 24.99
+                    // },
+                    // {
+                    //     name: 'T-Shirt',
+                    //     description: 'cotton shirt',
+                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
+                    //     price: 24
+                    // },
+                    // {
+                    //     name: 'T-Shirt',
+                    //     description: 'cotton shirt',
+                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
+                    //     price: 24
+                    // },
+                    // {
+                    //     name: 'T-Shirt',
+                    //     description: 'cotton shirt',
+                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
+                    //     price: 24
+                    // },
+                    // {
+                    //     name: 'T-Shirt',
+                    //     description: 'cotton shirt',
+                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
+                    //     price: 24
+                    // }
                 ]
             }
         },
+        async beforeMount() {
+            const token = await this.$auth.getToken('auth0');
+            const res = await this.$axios.get('http://localhost:3005/allProducts', {
+                headers: {
+                    Authorization: token    // send the access token through the 'Authorization' header
+                }
+            });
+            this.items = res.data;
+        },
         methods: {
-            addToCart(item) {
+            addToCart(item) { // TODO: authenticate products by storing cart item using an ID instead of whole object and signing the ID
                 this.$store.commit('cart/add', item)
             },
             removeFromCart(item) {
@@ -84,11 +93,24 @@
             async buy() {
                 const token = await this.$auth.getToken('auth0');
                 console.log(token);
-
+                let cartParsed = [];
+                for (let i = 0; i < this.$store.state.cart.list.length; i++) {
+                    console.log(i);
+                    cartParsed.push({
+                        name: this.$store.state.cart.list[i]['name'],
+                        description: this.$store.state.cart.list[i]['description'],
+                        image: this.$store.state.cart.list[i]['image'],
+                        price: this.$store.state.cart.list[i]['price']
+                    })
+                }
+                console.log(cartParsed);
                 // Use Axios to make a call to the API
-                this.$axios.get("http://localhost:3005/createCheckoutSession", {
+                this.$axios.post("http://localhost:3005/createCheckoutSession", {
                     headers: {
                         Authorization: token    // send the access token through the 'Authorization' header
+                    },
+                    data: {
+                        cart: JSON.stringify(cartParsed)
                     }
                 }).then((res) => {
                     console.log(res);
