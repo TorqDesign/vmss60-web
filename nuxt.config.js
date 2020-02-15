@@ -152,9 +152,9 @@ export default {
     },
     auth: {
         redirect: {
-            home: '/',
+            home: '/store/',
             login: '/store/login/',
-            callback: '/store/'
+            callback: '/store/login/'
         },
         strategies: {
             auth0: {

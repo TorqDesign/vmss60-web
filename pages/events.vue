@@ -19,6 +19,10 @@
                         <p>Band names to be announced!</p>
                     </div>
                     <div class="schedule-box">
+                        <h6>Music and Dancing of the Decades</h6>
+                        <p>Lorem ipsom dolor</p>
+                    </div>
+                    <div class="schedule-box">
                         <h6>Decade Rooms</h6>
                     </div>
                 </div>
