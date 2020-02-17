@@ -93,15 +93,14 @@
             async buy() {
                 const token = await this.$auth.getToken('auth0');
                 console.log(token);
-                let cartParsed = [];
+                let cartParsed = {};
                 for (let i = 0; i < this.$store.state.cart.list.length; i++) {
                     console.log(i);
-                    cartParsed.push({
-                        name: this.$store.state.cart.list[i]['name'],
-                        description: this.$store.state.cart.list[i]['description'],
-                        image: this.$store.state.cart.list[i]['image'],
-                        price: this.$store.state.cart.list[i]['price']
-                    })
+                    if (this.$store.state.cart.list[i]['_id'] in cartParsed) {
+                        cartParsed[this.$store.state.cart.list[i]['_id']]++;
+                    } else {
+                        cartParsed[this.$store.state.cart.list[i]['_id']] = 1
+                    }
                 }
                 console.log(cartParsed);
                 // Use Axios to make a call to the API
@@ -110,7 +109,7 @@
                         Authorization: token    // send the access token through the 'Authorization' header
                     },
                     data: {
-                        cart: JSON.stringify(cartParsed)
+                        cart: cartParsed
                     }
                 }).then((res) => {
                     console.log(res);
