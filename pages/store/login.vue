@@ -8,6 +8,19 @@
 <script>
     export default {
         name: "login.vue",
+        head() {
+            return {
+                title: 'Login' + process.env.pageTitleTail,
+                meta: [
+                    // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: process.env.metaDescription
+                    }
+                ]
+            }
+        },
         methods: {
             loginWithAuth0() {
                 this.$auth.loginWith('auth0');

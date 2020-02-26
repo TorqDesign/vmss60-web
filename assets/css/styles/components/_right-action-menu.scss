@@ -63,3 +63,19 @@
     right: 1.5em;
   }
 }
+
+.num-items-ind {
+  background-color: red;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  padding: 0.25rem;
+  font-size: 0.75em;
+  text-align: center;
+  font-weight: 900;
+  color: white;
+  transform: translateX(50%);
+}

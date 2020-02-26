@@ -27,7 +27,7 @@
             </div>
             <div class="vmss60-navbar-item-container d-none d-lg-flex" v-else>
                 <button :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'" @click="goBack()">
-                    Back to Home
+                    {{backName}}
                 </button>
             </div>
             <div :class="'vmss60-navbar-item-container d-lg-none' + (mobileNavOpen ? ' open' : '')" v-if="navmode === 'front'"> <!-- Mobile Navbar -->
@@ -65,7 +65,11 @@
         <div :class="'page-move-arrow ' + getNavAddClass()" @click="$emit('navDir', 'down')" v-if="arrow && downArrow"></div>
 
         <!-- Shopping -->
-        <div :class="'shopping-cart-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleShoppingCartMenu"></div>
+        <div :class="'shopping-cart-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleShoppingCartMenu">
+            <div class="num-items-ind">
+                {{$store.state.cart.list.length}}
+            </div>
+        </div>
         <div ref="shoppingCartMenu" :class="'right-menu shopping-cart-menu ' + getShoppingCartMenuClass()">
             <div v-if="$store.state.cart.list.length > 0">
                 <ul class="m-0 p-0 list-unstyled">
@@ -83,18 +87,19 @@
                         </div>
                     </li>
                     <li>
-                        <button class="btn btn-primary float-right">Checkout</button>
+                        <nuxt-link class="btn btn-primary float-right" to="/store/checkout">Checkout</nuxt-link>
                     </li>
                 </ul>
             </div>
             <div v-else>
-                Your cart is empty.
+                Your cart is empty.<br><br>
+                <nuxt-link class="btn btn-primary float-right" to="/store">Shop Now</nuxt-link>
             </div>
         </div>
         <div :class="'account-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleAccountMenu"></div>
         <div ref="accountMenu" :class="'right-menu account-menu ' + getAccountMenuClass()">
             <ul class="m-0 p-0 list-unstyled">
-                <li v-if="$auth.loggedIn">Hello {{$auth.username}}</li>
+                <li v-if="$auth.loggedIn">Hello {{$auth.user.nickname}}</li>
                 <li v-if="$auth.loggedIn"><button class="button-link" @click="logoutWithAuth0">Log Out</button></li>
                 <li v-else>
                     <button class="button-link" @click="loginWithAuth0">Log in</button>
@@ -124,9 +129,13 @@
                 type: Boolean,
                 default: false
             },
-            backToHome: {
-                type: Boolean,
-                default: false
+            backMode: {
+                type: String,
+                default: '<'
+            },
+            backName: {
+                type: String,
+                default: 'Back to Home'
             }
         },
         data() {
@@ -153,16 +162,16 @@
                 this.mobileNavOpen = !this.mobileNavOpen;
             },
             goBack: function () {
-                if(this.backToHome){
-                    this.$router.push('/');
-                }
-                else{
+                if(this.backMode === '<'){
                     if (this.client || !this.$routerHistory || !this.$routerHistory.hasPrevious()) {
                         // probably ssr, or hasn't navigated yet.
                         this.$router.push('/');
                     }
 
                     this.$router.push(this.$routerHistory.previous().path);
+                }
+                else {
+                    this.$router.push(this.backMode);
                 }
 
             },

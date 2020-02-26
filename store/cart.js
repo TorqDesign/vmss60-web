@@ -9,7 +9,8 @@ export const mutations = {
     remove(state, item) {
         state.list.splice(state.list.indexOf(item), 1)
     }
-}
+};
+
 
 // export const getters = {
 //     cartItems(state, getters, rootState) {

@@ -36,7 +36,8 @@ export default {
             src: "~/plugins/v-waypoint.client.js",
             mode: 'client'
         },
-        { mode: 'client', src: '~plugins/vue-router-back-button.client.js' }
+        { mode: 'client', src: '~plugins/vue-router-back-button.client.js' },
+        { src: '~/plugins/vuex-persistedstate.client.js', mode: 'client' }
     ],
     /*
     ** Nuxt.js dev-modules
@@ -116,6 +117,7 @@ export default {
         //         ['@babel/plugin-transform-runtime']
         //     ]
         // }
+        transpile: ['vuex-persist']
     },
     /*
   ** Router configuration
@@ -136,7 +138,7 @@ export default {
                             resolve(findEl(hash, ++x || 1))
                         }, 100)
                     })
-            }
+            };
 
             if (to.hash) {
                 let el = await findEl(to.hash)
@@ -153,7 +155,9 @@ export default {
     auth: {
         redirect: {
             home: '/store/',
-            login: '/store/login/',
+            //login: '/store/login/',
+            login: false,
+            logout: false,
             callback: '/store/login/'
         },
         strategies: {
@@ -166,7 +170,9 @@ export default {
     },
     env: {
         auth0LogoutUrl: 'https://vmss60.auth0.com/v2/logout?returnTo=',
-        defaultLogoutRef: 'http%3A%2F%2Flocalhost%3A3000%2Fstore%2Flogin%2F&client_id=da66CdZisDbTvTAdF4KvT87iVx8DvwHf'
+        defaultLogoutRef: 'http%3A%2F%2Flocalhost%3A3000%2Fstore%2F&client_id=da66CdZisDbTvTAdF4KvT87iVx8DvwHf',
+        metaDescription: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.',
+        pageTitleTail: ' | Vincent Massey 60th Reunion | Windsor, Ontario'
     }
 
 }
