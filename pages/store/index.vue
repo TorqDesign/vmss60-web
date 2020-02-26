@@ -97,16 +97,13 @@
             }
         },
         async beforeMount() {
-            if(this.$auth.loggedIn){
-                const token = await this.$auth.getToken('auth0');
-                const res = await this.$axios.get('http://localhost:3005/allProducts', {
-                    headers: {
-                        Authorization: token    // send the access token through the 'Authorization' header
-                    }
-                });
-                this.items = res.data;
-            }
-
+            const token = await this.$auth.getToken('auth0');
+            const res = await this.$axios.get('/api/allProducts', {
+                headers: {
+                    Authorization: token    // send the access token through the 'Authorization' header
+                }
+            });
+            this.items = res.data;
         },
         methods: {
             addToCart(item) { // TODO: authenticate products by storing cart item using an ID instead of whole object and signing the ID
@@ -114,6 +111,38 @@
             },
             removeFromCart(item) {
                 this.$store.commit('cart/remove', item)
+            },
+            async buy() {
+                const token = await this.$auth.getToken('auth0');
+                console.log(token);
+
+                let cartParsed = {};
+                for (let i = 0; i < this.$store.state.cart.list.length; i++) {
+                    console.log(i);
+                    if (this.$store.state.cart.list[i]['_id'] in cartParsed) {
+                        cartParsed[this.$store.state.cart.list[i]['_id']]++;
+                    } else {
+                        cartParsed[this.$store.state.cart.list[i]['_id']] = 1
+                    }
+                }
+                console.log(cartParsed);
+                // Use Axios to make a call to the API
+                this.$axios.post("/api/createCheckoutSession", {
+                    headers: {
+                        Authorization: token    // send the access token through the 'Authorization' header
+                    },
+                    data: {
+                        cart: cartParsed
+                    }
+                }).then((res) => {
+                    console.log(res);
+
+                    this.$stripe.import().redirectToCheckout({
+                        sessionId: res.data.id
+                    }).then((res) => {
+                        console.log(res);
+                    })
+                });
             },
             loginWithAuth0() {
                 this.$auth.loginWith('auth0');
