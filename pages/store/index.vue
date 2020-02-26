@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <TicketForm></TicketForm>
+<!--            <TicketForm></TicketForm>-->
         </div>
     </div>
 </template>
