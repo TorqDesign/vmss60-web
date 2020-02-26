@@ -125,3 +125,16 @@ a:hover {
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+.button-link {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*input has OS specific font-family*/
+  color: #000;
+  cursor: pointer;
+
+  &:hover {
+    color: #999999;
+  }
+}

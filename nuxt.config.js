@@ -36,7 +36,7 @@ export default {
             src: "~/plugins/v-waypoint.client.js",
             mode: 'client'
         },
-        { mode: 'client', src: '~plugins/vue-router-back-button.client.js' },
+        { mode: 'client', src: '~plugins/vue-router-back-button.client.js' }
     ],
     /*
     ** Nuxt.js dev-modules
@@ -163,5 +163,10 @@ export default {
                 audience: 'https://api.vmss60.com'
             }
         }
+    },
+    env: {
+        auth0LogoutUrl: 'https://vmss60.auth0.com/v2/logout?returnTo=',
+        defaultLogoutRef: 'http%3A%2F%2Flocalhost%3A3000%2Fstore%2Flogin%2F&client_id=da66CdZisDbTvTAdF4KvT87iVx8DvwHf'
     }
+
 }

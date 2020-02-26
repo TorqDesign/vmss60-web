@@ -1,14 +1,16 @@
 <template>
     <div>
-        <div v-if="$auth.loggedIn">
-            <button @click="buy">Buy</button>
-        </div>
-        <div class="container">
-            <div style="display: flex;">
+        <Navbar light-back back-to-home></Navbar>
+
+        <div class="container" style="padding-top: 75px; min-height: 100vh">
+            <div v-if="$auth.loggedIn">
+                <button @click="buy">Buy</button>
+            </div>
+           <!-- <div style="display: flex;">
                 <button v-for="cartItem in $store.state.cart.list" @click="removeFromCart(item)"
                         class="btn btn-secondary" style="margin-right: 10px">{{cartItem.name}}
                 </button>
-            </div>
+            </div>-->
             <div class="store-item-flex-grid">
                 <div class="card" style="width: 20rem; margin: 10px;" v-for="item in items">
                     <img :src="item.image" class="card-img-top" alt="...">
@@ -29,9 +31,11 @@
 
 <script>
     import $ from 'jquery';
+    import Navbar from "../../components/Navbar";
 
     export default {
         name: "index",
+        components: {Navbar},
         data() {
             return {
                 items: [
@@ -93,6 +97,7 @@
             async buy() {
                 const token = await this.$auth.getToken('auth0');
                 console.log(token);
+
                 let cartParsed = {};
                 for (let i = 0; i < this.$store.state.cart.list.length; i++) {
                     console.log(i);

@@ -20,6 +20,10 @@
                 <button :class="'vmss60-navbar-item ' + getNavAddClass()" @click="$emit('navTo','contact')">
                     Contact
                 </button>
+                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <a :class="'vmss60-navbar-item ' + getNavAddClass()" target="_blank" href="https://donorbox.org/vmss60">
+                    Donate
+                </a>
             </div>
             <div class="vmss60-navbar-item-container d-none d-lg-flex" v-else>
                 <button :class="'vmss60-navbar-item ' + getNavAddClass() + ' first'" @click="goBack()">
@@ -48,10 +52,56 @@
                             Contact
                         </button>
                     </li>
+                    <li>
+                        <a class="vmss60-navbar-item mobile" target="_blank" href="https://donorbox.org/vmss60">
+                            Donate
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
         <div :class="'navbar-overlay' + (mobileNavOpen ? ' open' : '')"></div>
+        <div :class="'page-move-arrow ' + getNavAddClass() + ' up'" @click="$emit('navDir', 'up')" v-if="arrow && upArrow"></div>
+        <div :class="'page-move-arrow ' + getNavAddClass()" @click="$emit('navDir', 'down')" v-if="arrow && downArrow"></div>
+
+        <!-- Shopping -->
+        <div :class="'shopping-cart-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleShoppingCartMenu"></div>
+        <div ref="shoppingCartMenu" :class="'right-menu shopping-cart-menu ' + getShoppingCartMenuClass()">
+            <div v-if="$store.state.cart.list.length > 0">
+                <ul class="m-0 p-0 list-unstyled">
+                    <li class="mt-2 mb-2"v-for="cartItem in $store.state.cart.list">
+                        <div class="row">
+                            <div class="col-12">
+                                {{cartItem.name}} - <strong>${{cartItem.price}}</strong>
+                                <div class="float-right" style="text-align: center; margin-left: 1em;">
+                                    <button class="button-link" @click="removeFromCart(item)">
+                                        &times;
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary float-right">Checkout</button>
+                    </li>
+                </ul>
+            </div>
+            <div v-else>
+                Your cart is empty.
+            </div>
+        </div>
+        <div :class="'account-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleAccountMenu"></div>
+        <div ref="accountMenu" :class="'right-menu account-menu ' + getAccountMenuClass()">
+            <ul class="m-0 p-0 list-unstyled">
+                <li v-if="$auth.loggedIn">Hello {{$auth.username}}</li>
+                <li v-if="$auth.loggedIn"><button class="button-link" @click="logoutWithAuth0">Log Out</button></li>
+                <li v-else>
+                    <button class="button-link" @click="loginWithAuth0">Log in</button>
+                </li>
+            </ul>
+        </div>
+
         <div :class="'page-move-arrow ' + getNavAddClass() + ' up'" @click="$emit('navDir', 'up')" v-if="arrow && upArrow"></div>
         <div :class="'page-move-arrow ' + getNavAddClass()" @click="$emit('navDir', 'down')" v-if="arrow && downArrow"></div>
     </div>
@@ -70,7 +120,11 @@
                 type: Boolean,
                 default: false
             },
-            arrow: {
+            arrow: { // page up and down arrow
+                type: Boolean,
+                default: false
+            },
+            backToHome: {
                 type: Boolean,
                 default: false
             }
@@ -80,31 +134,39 @@
                 mobileNavOpen: false,
                 pageLightBack: this.lightBack,
                 upArrow: false,
-                downArrow: true
+                downArrow: true,
+                shoppingCartMenuOpen: false,
+                accountMenuOpen: false
             }
         },
         methods: {
-            toggleNavbar: function toggleNavbar({ going, direction }) {
+            toggleNavbar: function ({ going, direction }) {
                 if(direction !== undefined){
                     this.pageLightBack = !this.pageLightBack;
                 }
 
             },
-            getNavAddClass: function getNavAddClass() {
+            getNavAddClass: function () {
                 return this.mobileNavOpen ? "" : this.pageLightBack ? "black" : "";
             },
             toggleMobileNavbar: function toggleMobileNavbar() {
                 this.mobileNavOpen = !this.mobileNavOpen;
             },
-            goBack: function goBack() {
-                if (this.client || !this.$routerHistory || !this.$routerHistory.hasPrevious()) {
-                    // probably ssr, or hasn't navigated yet.
+            goBack: function () {
+                if(this.backToHome){
                     this.$router.push('/');
                 }
+                else{
+                    if (this.client || !this.$routerHistory || !this.$routerHistory.hasPrevious()) {
+                        // probably ssr, or hasn't navigated yet.
+                        this.$router.push('/');
+                    }
 
-                this.$router.push(this.$routerHistory.previous().path);
+                    this.$router.push(this.$routerHistory.previous().path);
+                }
+
             },
-            toggleArrowDir: function toggleArrowDir({ going, direction }, triggerLocation) {
+            toggleArrowDir: function ({ going, direction }, triggerLocation) {
                 if(direction !== undefined){
                     if(triggerLocation === 'top'){
                         if(direction === this.$waypointMap.DIRECTION_BOTTOM){ // coming in from the top, that means that use is about to enter first slide
@@ -128,6 +190,30 @@
                         }
                     }
                 }
+            },
+            toggleShoppingCartMenu: function() {
+                this.accountMenuOpen = false;
+                this.shoppingCartMenuOpen = !this.shoppingCartMenuOpen;
+            },
+            toggleAccountMenu: function() {
+                this.shoppingCartMenuOpen = false;
+                this.accountMenuOpen = !this.accountMenuOpen;
+            },
+            getShoppingCartMenuClass: function() {
+                return this.shoppingCartMenuOpen ? 'open' : '';
+            },
+            getAccountMenuClass: function() {
+                return this.accountMenuOpen ? 'open' : '';
+            },
+            loginWithAuth0() {
+                this.$auth.loginWith('auth0');
+            },
+            logoutWithAuth0(e, logoutUrl = process.env.defaultLogoutRef) {
+                this.$auth.logout();
+                window.location.replace(process.env.auth0LogoutUrl + logoutUrl)
+            },
+            removeFromCart(item) {
+                this.$store.commit('cart/remove', item)
             },
         }
     }
