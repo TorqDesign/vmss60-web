@@ -30,6 +30,7 @@
                     </div>
                 </div>
             </div>
+            <TicketForm></TicketForm>
         </div>
     </div>
 </template>
@@ -37,10 +38,11 @@
 <script>
     import $ from 'jquery';
     import Navbar from "../../components/Navbar";
-
+    import TicketForm from "../../components/TicketForm";
+    
     export default {
         name: "index",
-        components: {Navbar},
+        components: {Navbar, TicketForm},
         head() {
             return {
                 title: 'Store' + process.env.pageTitleTail,
@@ -98,15 +100,17 @@
         },
         async beforeMount() {
             const token = await this.$auth.getToken('auth0');
-            const res = await this.$axios.get(process.env.apiBaseURL + '/api/allProducts', {
-                headers: {
-                    Authorization: token    // send the access token through the 'Authorization' header
-                }
-            });
-            this.items = res.data;
+            if (token) {
+                const res = await this.$axios.get(process.env.apiBaseURL + 'api/allProducts', {
+                    headers: {
+                        Authorization: token    // send the access token through the 'Authorization' header
+                    }
+                });
+                this.items = res.data;
+            }
         },
         methods: {
-            addToCart(item) { // TODO: authenticate products by storing cart item using an ID instead of whole object and signing the ID
+            addToCart(item) {
                 this.$store.commit('cart/add', item)
             },
             removeFromCart(item) {

@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    mode: 'spa',
     /*
     ** Headers of the page
     */
@@ -164,7 +164,7 @@ export default {
             auth0: {
                 domain: 'vmss60.auth0.com',
                 client_id: 'da66CdZisDbTvTAdF4KvT87iVx8DvwHf',
-                audience: 'https://api.vmss60.com'
+                audience: 'https://api.vmss60.com',
             }
         }
     },

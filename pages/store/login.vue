@@ -29,6 +29,27 @@
                 this.$auth.logout();
                 window.location.replace(process.env.auth0LogoutUrl)
             }
+        },
+        mounted() {
+            if (this.$route.hash) {
+                this.$auth.setToken(
+                    'auth0',
+                    `Bearer ${this.$route.hash.split('=')[1].split('&')[0]}`
+                )
+            }
+            // fetch user information from token
+            this.$auth.fetchUser();
+            // schedule a redirect depending on authentication results
+            setTimeout(() => {
+                // only redirect if the user is still here
+                if (this.$route.path.includes('/login/redirect')) {
+                    if (!this.$auth.user) {
+                        this.$router.push('/login')
+                    } else {
+                        this.$router.push('/profile')
+                    }
+                }
+            }, 1.5 * 1000)
         }
     }
 </script>
