@@ -71,7 +71,7 @@ export default {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        baseURL: 'https://staging.vmss60.com/'
+        /*baseURL: 'https://staging.vmss60.com/'*/
     },
     /*
     ** Build configuration
@@ -156,8 +156,8 @@ export default {
         redirect: {
             home: '/store/',
             //login: '/store/login/',
-            login: '/store/login/',
-            logout: '/store/login/',
+            login: false,
+            logout: false,
             callback: '/store/login/'
         },
         strategies: {
@@ -172,7 +172,8 @@ export default {
         auth0LogoutUrl: 'https://vmss60.auth0.com/v2/logout?returnTo=',
         defaultLogoutRef: 'http%3A%2F%2Flocalhost%3A3000%2Fstore%2F&client_id=da66CdZisDbTvTAdF4KvT87iVx8DvwHf',
         metaDescription: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.',
-        pageTitleTail: ' | Vincent Massey 60th Reunion | Windsor, Ontario'
+        pageTitleTail: ' | Vincent Massey 60th Reunion | Windsor, Ontario',
+        apiBaseURL: 'https://staging.vmss60.com/'
     }
 
 }
