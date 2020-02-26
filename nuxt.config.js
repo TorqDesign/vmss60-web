@@ -69,9 +69,9 @@ export default {
     ** Axios module configuration
     ** See https://axios.nuxtjs.org/options
     */
-    axios: {
-        baseURL: 'https://staging.vmss60.com/api'
-    },
+    // axios: {
+    //     baseURL: 'https://vmss60.com/api'
+    // },
     /*
     ** Build configuration
     */
