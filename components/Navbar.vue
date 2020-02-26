@@ -87,7 +87,7 @@
                         </div>
                     </li>
                     <li>
-                        <nuxt-link class="btn btn-primary float-right" to="/store/checkout">Checkout</nuxt-link>
+                        <nuxt-link class="btn btn-primary float-right" to="/store/cart">Checkout</nuxt-link>
                     </li>
                 </ul>
             </div>

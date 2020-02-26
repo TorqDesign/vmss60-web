@@ -156,8 +156,8 @@ export default {
         redirect: {
             home: '/store/',
             //login: '/store/login/',
-            login: false,
-            logout: false,
+            login: '/store/login/',
+            logout: '/store/login/',
             callback: '/store/login/'
         },
         strategies: {
