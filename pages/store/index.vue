@@ -78,9 +78,9 @@
                 ]
             }
         },
-        async mounted() {
+        async beforeMount() {
             const token = await this.$auth.getToken('auth0');
-            const res = await this.$axios.get('/allProducts', {
+            const res = await this.$axios.get('/api/allProducts', {
                 headers: {
                     Authorization: token    // send the access token through the 'Authorization' header
                 }
@@ -109,7 +109,7 @@
                 }
                 console.log(cartParsed);
                 // Use Axios to make a call to the API
-                this.$axios.post("/createCheckoutSession", {
+                this.$axios.post("/api/createCheckoutSession", {
                     headers: {
                         Authorization: token    // send the access token through the 'Authorization' header
                     },
