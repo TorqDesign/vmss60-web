@@ -57,6 +57,21 @@
                             Donate
                         </a>
                     </li>
+                    <li>
+                        <nuxt-link class="vmss60-navbar-item mobile" to="/store/cart">
+                            Shopping Cart ({{$store.state.cart.list.length}} items)
+                        </nuxt-link>
+                    </li>
+                    <li v-if="$auth.loggedIn">
+                        <button class="vmss60-navbar-item mobile" @click="logoutWithAuth0()">
+                            Logout {{$auth.user.nickname}}
+                        </button>
+                    </li>
+                    <li v-else>
+                        <button class="vmss60-navbar-item mobile" @click="loginWithAuth0()">
+                            Login
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -64,48 +79,59 @@
         <div :class="'page-move-arrow ' + getNavAddClass() + ' up'" @click="$emit('navDir', 'up')" v-if="arrow && upArrow"></div>
         <div :class="'page-move-arrow ' + getNavAddClass()" @click="$emit('navDir', 'down')" v-if="arrow && downArrow"></div>
 
-        <!-- Shopping -->
-        <div :class="'shopping-cart-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleShoppingCartMenu">
-            <div class="num-items-ind">
-                {{$store.state.cart.list.length}}
-            </div>
-        </div>
-        <div ref="shoppingCartMenu" :class="'right-menu shopping-cart-menu ' + getShoppingCartMenuClass()">
-            <div v-if="$store.state.cart.list.length > 0">
-                <ul class="m-0 p-0 list-unstyled">
-                    <li class="mt-2 mb-2"v-for="cartItem in $store.state.cart.list">
-                        <div class="row">
-                            <div class="col-12">
-                                {{cartItem.name}} - <strong>${{cartItem.price}}</strong>
-                                <div class="float-right" style="text-align: center; margin-left: 1em;">
-                                    <button class="button-link" @click="removeFromCart(item)">
-                                        &times;
-                                    </button>
-                                </div>
-                            </div>
 
-                        </div>
-                    </li>
-                    <li>
-                        <nuxt-link class="btn btn-primary float-right" to="/store/cart">Checkout</nuxt-link>
+        <!-- Click outside wrapper -->
+        <div v-click-outside="onClickOutside">
+            <!-- Shopping -->
+            <div :class="'shopping-cart-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleShoppingCartMenu">
+                <div class="num-items-ind">
+                    {{$store.state.cart.list.length}}
+                </div>
+            </div>
+            <div ref="shoppingCartMenu" :class="'right-menu shopping-cart-menu ' + getShoppingCartMenuClass()">
+                <div v-if="$store.state.cart.list.length > 0">
+                    <ul class="m-0 p-0 list-unstyled">
+                        <li class="mt-2 mb-2"v-for="cartItem in $store.state.cart.list">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{cartItem.name}} - <strong>${{cartItem.price}}</strong>
+                                    <div class="float-right" style="text-align: center; margin-left: 1em;">
+                                        <button class="button-link" @click="removeFromCart(item)">
+                                            &times;
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <hr>
+                            <p class="text-right">Your total: <strong>${{getCartTotal()}}</strong></p>
+                        </li>
+                        <li>
+                            <nuxt-link class="btn btn-primary float-right" to="/store/cart">Checkout</nuxt-link>
+                        </li>
+                    </ul>
+                </div>
+                <div v-else>
+                    Your cart is empty.<br><br>
+                    <nuxt-link class="btn btn-primary float-right" to="/store">Shop Now</nuxt-link>
+                </div>
+            </div>
+
+            <!-- Account -->
+            <div :class="'account-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleAccountMenu"></div>
+            <div ref="accountMenu" :class="'right-menu account-menu ' + getAccountMenuClass()">
+                <ul class="m-0 p-0 list-unstyled">
+                    <li v-if="$auth.loggedIn">Hello {{$auth.user.nickname}}</li>
+                    <li v-if="$auth.loggedIn"><button class="button-link" @click="logoutWithAuth0">Log Out</button></li>
+                    <li v-else>
+                        <button class="button-link" @click="loginWithAuth0">Log in</button>
                     </li>
                 </ul>
             </div>
-            <div v-else>
-                Your cart is empty.<br><br>
-                <nuxt-link class="btn btn-primary float-right" to="/store">Shop Now</nuxt-link>
-            </div>
         </div>
-        <div :class="'account-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleAccountMenu"></div>
-        <div ref="accountMenu" :class="'right-menu account-menu ' + getAccountMenuClass()">
-            <ul class="m-0 p-0 list-unstyled">
-                <li v-if="$auth.loggedIn">Hello {{$auth.user.nickname}}</li>
-                <li v-if="$auth.loggedIn"><button class="button-link" @click="logoutWithAuth0">Log Out</button></li>
-                <li v-else>
-                    <button class="button-link" @click="loginWithAuth0">Log in</button>
-                </li>
-            </ul>
-        </div>
+
 
         <div :class="'page-move-arrow ' + getNavAddClass() + ' up'" @click="$emit('navDir', 'up')" v-if="arrow && upArrow"></div>
         <div :class="'page-move-arrow ' + getNavAddClass()" @click="$emit('navDir', 'down')" v-if="arrow && downArrow"></div>
@@ -114,6 +140,7 @@
 </template>
 
 <script>
+    import vClickOutside from 'v-click-outside'
     export default {
         name: "Navbar",
         props: {
@@ -138,6 +165,9 @@
                 default: 'Back to Home'
             }
         },
+        directives: {
+            clickOutside: vClickOutside.directive
+        },
         data() {
             return {
                 mobileNavOpen: false,
@@ -145,7 +175,11 @@
                 upArrow: false,
                 downArrow: true,
                 shoppingCartMenuOpen: false,
-                accountMenuOpen: false
+                accountMenuOpen: false,
+                menuChangeQueue: {
+                    accounts: false,
+                    shoppingCart: false
+                }
             }
         },
         methods: {
@@ -153,6 +187,19 @@
                 if(direction !== undefined){
                     this.pageLightBack = !this.pageLightBack;
                 }
+
+            },
+            onClickOutside (event) {
+                //this.accountMenuOpen = this.menuChangeQueue.accounts;
+
+                if(this.accountMenuOpen){
+                    this.accountMenuOpen = false;
+                }
+
+                if(this.shoppingCartMenuOpen){
+                    this.shoppingCartMenuOpen = false;
+                }
+                console.log("hello");
 
             },
             getNavAddClass: function () {
@@ -201,6 +248,7 @@
                 }
             },
             toggleShoppingCartMenu: function() {
+                console.log("bye");
                 this.accountMenuOpen = false;
                 this.shoppingCartMenuOpen = !this.shoppingCartMenuOpen;
             },
@@ -224,6 +272,11 @@
             removeFromCart(item) {
                 this.$store.commit('cart/remove', item)
             },
+            getCartTotal(){
+                let total = 0;
+                for(let cartItem of this.$store.state.cart.list) total+=cartItem.price;
+                return Math.round(total*100)/100;
+            }
         }
     }
 </script>

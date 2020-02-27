@@ -46,6 +46,10 @@
                     </table>
                 </div>
                 <div class="col-lg-12">
+                    <hr>
+                    <h6 class="text-right">Your total: <strong>${{getCartTotal()}}</strong></h6>
+                </div>
+                <div class="col-lg-12">
                     <button class="btn btn-success float-right" @click="buy" :disabled="$store.state.cart.list.length < 1">Checkout</button>
                 </div>
             </div>
@@ -74,6 +78,11 @@
         methods: {
             removeFromCart(item) {
                 this.$store.commit('cart/remove', item)
+            },
+            getCartTotal(){
+                let total = 0;
+                for(let cartItem of this.$store.state.cart.list) total+=cartItem.price;
+                return Math.round(total*100)/100;
             },
             async buy() {
                 const token = await this.$auth.getToken('auth0');

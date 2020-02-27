@@ -25,6 +25,7 @@
     "nuxt-stripe-module": "^2.0.0",
     "recaptcha-v3": "^1.7.0",
     "sweetalert2": "^8.17.6",
+    "v-click-outside": "^3.0.1",
     "vue": "^2.6.11",
     "vue-fullpage.js": "^0.1.5",
     "vue-recaptcha-v3": "^1.7.0",
