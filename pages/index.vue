@@ -229,11 +229,11 @@
                     <!-- toggleBoth should ONLY be used when the end is light -->
                     <div id="full-page-4-text">
                         <h1>Questions?</h1>
-                        <p id="contact-desc">Feel free to use the contact form below or email <a
+                        <p id="contact-desc">Email us at <a
                                 href="mailto:masseymustangs2020@gmail.com"
                                 class="expand-link">masseymustangs2020@gmail.com</a>.
                         </p>
-                        <form id="contact-form" v-on:submit.prevent="recaptcha">
+                        <!--<form id="contact-form" v-on:submit.prevent="recaptcha">
                             <div class="form-group">
                                 <label for="nameInput">Name</label>
                                 <input type="text" class="form-control" id="nameInput" placeholder="John Smith"
@@ -256,7 +256,7 @@
                             </p>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         
-                        </form>
+                        </form>-->
                     </div>
                     <div class="vmss60-footer-desktop d-none d-xl-block">
                         <div class="quarter-circle-bottom-right">
