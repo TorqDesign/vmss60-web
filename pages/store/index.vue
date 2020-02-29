@@ -30,7 +30,6 @@
                     </div>
                 </div>
             </div>
-<!--            <TicketForm></TicketForm>-->
         </div>
     </div>
 </template>
@@ -38,11 +37,10 @@
 <script>
     import $ from 'jquery';
     import Navbar from "../../components/Navbar";
-    import TicketForm from "../../components/TicketForm";
     
     export default {
         name: "index",
-        components: {Navbar, TicketForm},
+        components: {Navbar},
         head() {
             return {
                 title: 'Store' + process.env.pageTitleTail,
@@ -133,7 +131,8 @@
                 // Use Axios to make a call to the API
                 this.$axios.post(process.env.apiBaseURL + "/createCheckoutSession", {
                     headers: {
-                        Authorization: token    // send the access token through the 'Authorization' header
+                        Authorization: token,    // send the access token through the 'Authorization' header
+                        "Content-Type": "application/json"
                     },
                     data: {
                         cart: cartParsed
