@@ -6,20 +6,23 @@
             <label>Last name</label>
             <input type="email" class="form-control" placeholder="Smith" v-model="ticketData.name.lastName">
             <label for="exampleFormControlInput1">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" v-model="ticketData.email">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+                   v-model="ticketData.email">
         </div>
         <div class="form-group">
             <label>Status</label>
             <br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="student" v-model="ticketData.friendsOfMassey">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="student"
+                       v-model="ticketData.friendsOfMassey">
                 <label class="form-check-label" for="inlineRadio1">Past student</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="friendOfMassey" v-model="ticketData.friendsOfMassey">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="friendOfMassey" v-model="ticketData.friendsOfMassey">
                 <label class="form-check-label" for="inlineRadio2">Friend of Massey</label>
             </div>
-            
+        
         </div>
         <div v-if="ticketData.friendsOfMassey === 'student'">
             <div class="form-group">
@@ -32,19 +35,21 @@
                 <label>Status</label>
                 <br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioSchool1" value="massey" v-model="ticketData.school">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadioSchool1"
+                           value="massey" v-model="ticketData.school">
                     <label class="form-check-label" for="inlineRadio1">Massey</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioSchool2" value="centennial" v-model="ticketData.school">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadioSchool2"
+                           value="centennial" v-model="ticketData.school">
                     <label class="form-check-label" for="inlineRadio2">Centennial</label>
                 </div>
-    
+            
             </div>
         </div>
         <fieldset>
             <!-- Address form -->
-        
+            
             <h2>Address</h2>
             <!-- address-line1 input-->
             <div class="control-group">
@@ -68,7 +73,8 @@
             <div class="control-group">
                 <label class="control-label">City / Town</label>
                 <div class="controls">
-                    <input id="city" name="city" type="text" placeholder="city" class="input-xlarge" v-model="ticketData.address.city">
+                    <input id="city" name="city" type="text" placeholder="city" class="input-xlarge"
+                           v-model="ticketData.address.city">
                     <p class="help-block"></p>
                 </div>
             </div>
@@ -339,15 +345,20 @@
                 </div>
             </div>
         </fieldset>
-    
-        <button class="btn btn-primary" @click="saveData">Save</button>
-
     </form>
 </template>
 
 <script>
+    import Swal from 'sweetalert2'
+
     export default {
         name: "ItemConfigurator",
+        props: {
+            order: {
+                type: Object,
+                required: true
+            }
+        },
         data() {
             return {
                 ticketData: {
@@ -370,12 +381,25 @@
                 }
             }
         },
+        mounted() {
+            if (this.order.metadata) {
+                this.ticketData = this.order.metadata
+            }
+        },
         methods: {
-            saveData() {
-            
+            async saveData() {
+                try {
+                    await this.$axios.post(process.env.apiBaseURL + '/ticket/update', {
+                        ticketMetadata: this.ticketData,
+                        ticketId: this.order._id
+                    })
+                } catch (e) {
+                    await Swal.fire('There has been an error: ' + e)
+                }
+
             }
         }
-        
+
     }
 </script>
 
