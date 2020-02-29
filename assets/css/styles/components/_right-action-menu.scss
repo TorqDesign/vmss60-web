@@ -57,6 +57,8 @@
 
   &.shopping-cart-menu {
     right: 5em;
+    max-height: 80vh;
+    overflow-y: scroll;
   }
 
   &.account-menu {
