@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <Navbar ref="navbar" @navTo="navTo" @navDir="navDir" navmode="front" arrow></Navbar>
-        <client-only>
+<!--        <client-only>-->
             <full-page ref="fullpage" id="fullpage" :options="options">
                 <div class="hero-background full-page section" id="top"
                      v-waypoint="{ active: true, callback: toggleArrowDirTop, options: intersectionOptions }"
@@ -12,8 +12,11 @@
                         <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
                         <p>Page views: {{this.counter}}</p>
                         <div class="d-none d-sm-block">
-                            <flip-countdown deadline="2020-10-09 00:00:00"
+                            <client-only>
+                                <flip-countdown deadline="2020-10-09 00:00:00"
                                             style="text-align: left; margin: 0; padding: 0"></flip-countdown>
+                            </client-only>
+                            
                         </div>
                         <div class="d-block d-sm-none">
                             <countdown :time="this.time" tag="p">
@@ -286,7 +289,8 @@
                 <!--                </div>-->
                 <!--            </div>-->
             </full-page>
-        </client-only>
+        <!-- </client-only> -->
+        
         
         <!--        <div class="container" id="contact">-->
         <!--            <div class="row-tb-margin row align-items-center justify-content-center">-->
