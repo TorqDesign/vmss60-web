@@ -100,12 +100,7 @@
                 console.log(cartParsed);
                 // Use Axios to make a call to the API
                 this.$axios.post(process.env.apiBaseURL + "/createCheckoutSession", {
-                    headers: {
-                        Authorization: token    // send the access token through the 'Authorization' header
-                    },
-                    data: {
-                        cart: cartParsed
-                    }
+                    cart: cartParsed
                 }).then((res) => {
                     console.log(res);
 

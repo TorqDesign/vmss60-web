@@ -96,15 +96,21 @@
                 ]
             }
         },
-        async beforeMount() {
-            const token = await this.$auth.getToken('auth0');
-            if (token) {
-                const res = await this.$axios.get(process.env.apiBaseURL + '/allProducts', {
-                    headers: {
-                        Authorization: token    // send the access token through the 'Authorization' header
-                    }
-                });
-                this.items = res.data;
+        async asyncData(context) {
+            const token = await context.$auth.getToken('auth0');
+            console.log(token);
+            try {
+                if (token) {
+                    const res = await context.$axios.get(process.env.apiBaseURL + '/allProducts', {
+                        headers: {
+                            Authorization: token    // send the access token through the 'Authorization' header
+                        }
+                    });
+                    // this.items = res.data;
+                    return {items: res.data}
+                }
+            } catch (e) {
+                console.log(e)
             }
         },
         methods: {

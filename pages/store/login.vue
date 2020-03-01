@@ -40,16 +40,16 @@
             // fetch user information from token
             this.$auth.fetchUser();
             // schedule a redirect depending on authentication results
-            setTimeout(() => {
-                // only redirect if the user is still here
-                if (this.$route.path.includes('/login/redirect')) {
-                    if (!this.$auth.user) {
-                        this.$router.push('/login')
-                    } else {
-                        this.$router.push('/profile')
-                    }
-                }
-            }, 1.5 * 1000)
+            // setTimeout(() => {
+            //     // only redirect if the user is still here
+            //     if (this.$route.path.includes('/login/redirect')) {
+            //         if (!this.$auth.user) {
+            //             this.$router.push('/login')
+            //         } else {
+            //             this.$router.push('/profile')
+            //         }
+            //     }
+            // }, 1.5 * 1000)
         }
     }
 </script>

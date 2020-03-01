@@ -103,30 +103,33 @@
                 tickets: []
             }
         },
-        async beforeMount(context) {
+        async asyncData(context) {
             try {
-                let res = this.$axios.get(process.env.apiBaseURL + '/user/');
-                let res2 = this.$axios.get(process.env.apiBaseURL + '/allProducts');
-                let res3 = this.$axios.get(process.env.apiBaseURL + '/ticket');
+                let res = context.$axios.get(process.env.apiBaseURL + '/user/');
+                let res2 = context.$axios.get(process.env.apiBaseURL + '/allProducts');
+                let res3 = context.$axios.get(process.env.apiBaseURL + '/ticket');
                 res = await res;
                 res2 = await res2;
                 res3 = await res3;
-                this.tickets = res3.data;
-                this.user = res.data.user;
+                // this.tickets = res3.data;
+                // this.user = res.data.user;
                 let items = {};
                 for (let item of res2.data) {
                     items[item._id] = item;
                 }
-                this.items = items;
+                // this.items = items;
+                return {tickets: res3.data, user: res.data.user, items: items}
             } catch (e) {
-                console.log(e);
-                Swal.fire({
-                    type: 'error',
-                    title: 'Unauthorized',
-                    text: 'Your session has expired and you have been logged out for security reasons.'
-                }).then(() => {
-                    this.logoutWithAuth0(null);
-                });
+                console.log("error: ", e);
+                // Swal.fire({
+                //     type: 'error',
+                //     title: 'Unauthorized',
+                //     text: 'Your session has expired and you have been logged out for security reasons.'
+                // }).then(() => {
+                //     this.logoutWithAuth0(null);
+                // });
+                context.$auth.logout();
+                // window.location.replace(context.env.auth0LogoutUrl)
             }
 
         },
