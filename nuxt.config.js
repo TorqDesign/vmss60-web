@@ -31,7 +31,7 @@ export default {
     plugins: [
         {src: '~/plugins/vue-recaptcha-v3.js', ssr: false},
         {src: '~/plugins/vue-countdown.js', mode: "client"},
-        {src: '~/plugins/vue-fullpage.js', mode: "client"},
+        // {src: '~/plugins/vue-fullpage.js', mode: "client"},
         {
             src: "~/plugins/v-waypoint.client.js",
             mode: 'client'
@@ -55,6 +55,7 @@ export default {
     modules: [
         // Doc: https://bootstrap-vue.js.org/docs/
         'bootstrap-vue/nuxt',
+        'nuxt-fullpage.js',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         '@nuxtjs/auth',
