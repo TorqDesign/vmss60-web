@@ -69,7 +69,7 @@
                                 <td>{{order._id}}</td>
                                 <td>{{items[order.itemID] ? items[order.itemID].name : ''}}</td>
                                 <td><span v-if="order.status === 'Fulfilled' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
-                                                                                      @click="configureItem(order)">Configure Now</button></span><span
+                                                                                      @click="configureItem(order)">Configure Now (doesn't work)</button></span><span
                                         v-else>{{order.status}}</span></td>
                                 <td>{{order.additional ? order.additional : 'N/A'}}</td>
                             </tr>
