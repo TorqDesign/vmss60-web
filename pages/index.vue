@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <Navbar ref="navbar" @navTo="navTo" @navDir="navDir" navmode="front" arrow></Navbar>
-<!--        <client-only>-->
+       <client-only>
             <full-page ref="fullpage" id="fullpage" :options="options">
                 <div class="hero-background full-page section" id="top"
                      v-waypoint="{ active: true, callback: toggleArrowDirTop, options: intersectionOptions }"
@@ -289,7 +289,7 @@
                 <!--                </div>-->
                 <!--            </div>-->
             </full-page>
-        <!-- </client-only> -->
+        </client-only>
         
         
         <!--        <div class="container" id="contact">-->
