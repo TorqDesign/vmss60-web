@@ -30,7 +30,6 @@
                     </div>
                 </div>
             </div>
-<!--            <TicketForm></TicketForm>-->
         </div>
     </div>
 </template>
@@ -38,11 +37,10 @@
 <script>
     import $ from 'jquery';
     import Navbar from "../../components/Navbar";
-    import TicketForm from "../../components/TicketForm";
     
     export default {
         name: "index",
-        components: {Navbar, TicketForm},
+        components: {Navbar},
         head() {
             return {
                 title: 'Store' + process.env.pageTitleTail,
@@ -98,15 +96,21 @@
                 ]
             }
         },
-        async beforeMount() {
-            const token = await this.$auth.getToken('auth0');
-            if (token) {
-                const res = await this.$axios.get(process.env.apiBaseURL + 'api/allProducts', {
-                    headers: {
-                        Authorization: token    // send the access token through the 'Authorization' header
-                    }
-                });
-                this.items = res.data;
+        async asyncData(context) {
+            const token = await context.$auth.getToken('auth0');
+            console.log(token);
+            try {
+                if (token) {
+                    const res = await context.$axios.get(process.env.apiBaseURL + '/allProducts', {
+                        headers: {
+                            Authorization: token    // send the access token through the 'Authorization' header
+                        }
+                    });
+                    // this.items = res.data;
+                    return {items: res.data}
+                }
+            } catch (e) {
+                console.log(e)
             }
         },
         methods: {
@@ -131,9 +135,10 @@
                 }
                 console.log(cartParsed);
                 // Use Axios to make a call to the API
-                this.$axios.post(process.env.apiBaseURL + "/api/createCheckoutSession", {
+                this.$axios.post(process.env.apiBaseURL + "/createCheckoutSession", {
                     headers: {
-                        Authorization: token    // send the access token through the 'Authorization' header
+                        Authorization: token,    // send the access token through the 'Authorization' header
+                        "Content-Type": "application/json"
                     },
                     data: {
                         cart: cartParsed
