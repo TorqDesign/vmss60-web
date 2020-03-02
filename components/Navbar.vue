@@ -63,6 +63,11 @@
                         </nuxt-link>
                     </li>
                     <li v-if="$auth.loggedIn">
+                    	<nuxt-link class="vmss60-navbar-item mobile" to="/account">
+                    		Account
+                    	</nuxt-link>
+                    </li>
+                    <li v-if="$auth.loggedIn">
                         <button class="vmss60-navbar-item mobile" @click="logoutWithAuth0()">
                             Logout {{$auth.user.nickname}}
                         </button>
@@ -124,6 +129,7 @@
             <div ref="accountMenu" :class="'right-menu account-menu ' + getAccountMenuClass()">
                 <ul class="m-0 p-0 list-unstyled">
                     <li v-if="$auth.loggedIn">Hello {{$auth.user.nickname}}</li>
+                    <li v-if="$auth.loggedIn"><nuxt-link class="button-link" to="/account">Account Page</nuxt-link></li>
                     <li v-if="$auth.loggedIn"><button class="button-link" @click="logoutWithAuth0">Log Out</button></li>
                     <li v-else>
                         <button class="button-link" @click="loginWithAuth0">Log in</button>
