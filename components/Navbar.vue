@@ -272,6 +272,7 @@
                 this.$auth.loginWith('auth0');
             },
             logoutWithAuth0(e, logoutUrl = process.env.defaultLogoutRef) {
+                console.log(logoutUrl);
                 this.$auth.logout();
                 window.location.replace(process.env.auth0LogoutUrl + logoutUrl)
             },

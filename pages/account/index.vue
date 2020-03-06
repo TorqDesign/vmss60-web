@@ -69,7 +69,7 @@
                                 <td>{{order._id}}</td>
                                 <td>{{items[order.itemID] ? items[order.itemID].name : ''}}</td>
                                 <td><span v-if="order.status === 'Fulfilled' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
-                                                                                      @click="configureItem(order)">Configure Now (doesn't work)</button></span><span
+                                                                                      @click="configureItem(findById(tickets, order.additional.ticketID))">Configure Now</button></span><span
                                         v-else>{{order.status}}</span></td>
                                 <td>{{order.additional ? order.additional : 'N/A'}}</td>
                             </tr>
@@ -144,25 +144,39 @@
                 this.currentItem = order;
                 this.$bvModal.show('configure-modal')
             },
-            async saveItem() {
-                try {
-                    await this.$refs.itemConfigurator.saveData();
-                } catch (e) {
-                    return await Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: `Something went wrong! ${e.toString()}`,
+            async saveItem(bvModalEvt) {
+                if (this.$refs.itemConfigurator.validate()) {
+                    try {
+                        await this.$refs.itemConfigurator.saveData();
+                        let res = this.$axios.get(process.env.apiBaseURL + '/user/');
+                        await Swal.fire({
+                            type: 'success',
+                            title: 'Data saved'
+                        });
+                        res = await res;
+                        this.user = res.data.user;
+                        console.log(this.user)
+                    } catch (e) {
+                        return await Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: `${e.toString()}`,
+                        })
+                    }
+                } else {
+                    bvModalEvt.preventDefault();
+                    await Swal.fire({
+                        type: 'warning',
+                        title: 'You must fill out all required fields'
                     })
                 }
-                await Swal.fire({
-                    icon: 'success',
-                    title: 'Data saved'
-                })
+
             },
             findById(container, id) {
+                console.log('finding by id');
                 for (let i in container) {
                     console.log(container[i], id);
-                    if (container[i].transID === id) {
+                    if (container[i]._id === id) {
                         return container[i]
                     }
                 }

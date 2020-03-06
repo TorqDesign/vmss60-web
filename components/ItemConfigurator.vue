@@ -2,9 +2,9 @@
     <form>
         <div class="form-group">
             <label>First name</label>
-            <input type="email" class="form-control" placeholder="John" v-model="ticketData.name.firstName">
+            <input type="email" class="form-control" placeholder="John" v-model="ticketData.name.firstName" required>
             <label>Last name</label>
-            <input type="email" class="form-control" placeholder="Smith" v-model="ticketData.name.lastName">
+            <input type="email" class="form-control" placeholder="Smith" v-model="ticketData.name.lastName" required>
             <label for="exampleFormControlInput1">Email address</label>
             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
                    v-model="ticketData.email">
@@ -350,6 +350,8 @@
 
 <script>
     import Swal from 'sweetalert2'
+    import _ from 'lodash'
+    import flatten from 'flat'
 
     export default {
         name: "ItemConfigurator",
@@ -378,25 +380,52 @@
                         country: ''
                     },
                     friendsOfMassey: ''
+                },
+                required: {
+                    name: {
+                        firstName: true,
+                        lastName: true
+                    },
+                    school: true,
+                    email: true,
+                    gradYear: true,
+                    address: {
+                        line1: true,
+                        line2: false,
+                        city: true,
+                        state: false,
+                        postal: true,
+                        country: true
+                    },
+                    friendsOfMassey: true
                 }
             }
         },
         mounted() {
+            this.required = flatten(this.required);
             if (this.order.metadata) {
                 this.ticketData = this.order.metadata
             }
         },
         methods: {
             async saveData() {
-                try {
-                    await this.$axios.post(process.env.apiBaseURL + '/ticket/update', {
-                        ticketMetadata: this.ticketData,
-                        ticketId: this.order._id
-                    })
-                } catch (e) {
-                    await Swal.fire('There has been an error: ' + e)
+                await this.$axios.post(process.env.apiBaseURL + '/ticket/update', {
+                    ticketMetadata: this.ticketData,
+                    ticketId: this.order._id
+                })
+            },
+            validate() {
+                const flattened = flatten(this.ticketData);
+                for (let key in this.required) {
+                    console.log(key);
+                    if (this.required[key]) {
+                        if (!flattened[key]) {
+                            console.log('validating', !flattened.key);
+                            return false;
+                        }
+                    }
                 }
-
+                return true;
             }
         }
 
