@@ -14,13 +14,13 @@
                      v-model="ticketData.email"></b-input>
         </b-form-group>
         <b-form-group label="Status *">
-            <b-form-radio-group>
+            <b-form-radio-group v-model="ticketData.friendsOfMassey">
                 <b-form-radio type="radio" name="inlineRadioOptions" id="inlineRadio1"
                               value="student"
-                              v-model="ticketData.friendsOfMassey">Former student
+                              >Former student
                 </b-form-radio>
                 <b-form-radio type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                              value="friendOfMassey" v-model="ticketData.friendsOfMassey">Friend of Massey
+                              value="friendOfMassey">Friend of Massey
                 </b-form-radio>
             </b-form-radio-group>
         </b-form-group>
@@ -32,13 +32,13 @@
             </b-form-group>
         </b-form-group>
         <b-form-group label="Status *" v-if="ticketData.friendsOfMassey === 'student'">
-            <b-form-radio-group>
+            <b-form-radio-group v-model="ticketData.school">
                 <b-form-radio type="radio" name="inlineRadioOptions2" id="inlineRadioSchool1"
                               value="massey"
-                              v-model="ticketData.school">Massey
+                              >Massey
                 </b-form-radio>
                 <b-form-radio type="radio" name="inlineRadioOptions2" id="inlineRadioSchool2"
-                              value="centennial" v-model="ticketData.school">Centennial
+                              value="centennial">Centennial
                 </b-form-radio>
             </b-form-radio-group>
         </b-form-group>

@@ -49,7 +49,7 @@
                     firstName: this.firstName,
                     lastName: this.lastName,
                     bindID: this.$route.query['user_id'],
-                    email: this.$route.query['email']
+                    email: this.$route.query['user_email']
                 })
                     .then((response) => {
                         this.$refs.successField.value = "yes";

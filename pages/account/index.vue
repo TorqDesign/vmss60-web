@@ -35,7 +35,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="ticket in tickets">
+                                    <tr v-for="ticket in this.user.tickets">
                                         <td>{{ticket._id}}</td>
                                         <td>
                                             {{items[ticket.itemID].name}}
@@ -121,7 +121,7 @@
                     items[item._id] = item;
                 }
                 // this.items = items;
-                return {tickets: res3.data, user: res.data.user, items: items}
+                return {tickets: res.data.user.tickets, user: res.data.user, items: items}
             } catch (e) {
                 console.log("error: ", e);
                 // Swal.fire({
@@ -158,6 +158,7 @@
                         });
                         res = await res;
                         this.user = res.data.user;
+                        this.tickets = res.data.user.tickets;
                         console.log(this.user)
                     } catch (e) {
                         return await Swal.fire({
