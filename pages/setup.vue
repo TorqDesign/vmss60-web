@@ -9,11 +9,11 @@
                     <form ref="infoForm" :action="`https://${this.$route.query['auth0_domain']}/continue?state=${this.$route.query['state'] || ''}`" method="post">
                         <div class="form-group">
                             <label for="firstNameInput">First Name</label>
-                            <input type="text" class="form-control" id="firstNameInput" placeholder="First Name" v-model="firstName">
+                            <input type="text" class="form-control" id="firstNameInput" placeholder="First Name" v-model="firstName" v-on:keyup.enter="submitInfo">
                         </div>
                         <div class="form-group">
                             <label for="lastNameInput">Last Name</label>
-                            <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" v-model="lastName">
+                            <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" v-model="lastName" v-on:keyup.enter="submitInfo">
                         </div>
                         <input type="hidden" name="success" ref="successField">
                         <button type="button" class="btn btn-primary float-right" @click="submitInfo">Submit</button>
@@ -33,6 +33,19 @@
             return {
                 firstName: "",
                 lastName: "",
+            }
+        },
+        head() {
+            return {
+                title: 'Account Setup' + process.env.pageTitleTail,
+                meta: [
+                    // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: process.env.metaDescription
+                    }
+                ]
             }
         },
         methods: {
