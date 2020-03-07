@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <Navbar ref="navbar" @navTo="navTo" @navDir="navDir" navmode="front" arrow></Navbar>
-        <client-only>
+       <client-only>
             <full-page ref="fullpage" id="fullpage" :options="options">
                 <div class="hero-background full-page section" id="top"
                      v-waypoint="{ active: true, callback: toggleArrowDirTop, options: intersectionOptions }"
@@ -12,8 +12,11 @@
                         <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
                         <p>Page views: {{this.counter}}</p>
                         <div class="d-none d-sm-block">
-                            <flip-countdown deadline="2020-10-09 00:00:00"
+                            <client-only>
+                                <flip-countdown deadline="2020-10-09 00:00:00"
                                             style="text-align: left; margin: 0; padding: 0"></flip-countdown>
+                            </client-only>
+                            
                         </div>
                         <div class="d-block d-sm-none">
                             <countdown :time="this.time" tag="p">
@@ -198,7 +201,7 @@
                             discount
                             group rates for this reunion. Each hotel has unique instructions for redeeming this special
                             rate, so please follow the link below for more information.</p>
-                        <nuxt-link to="/hotels" class="section-action-button">View hotels →</nuxt-link>
+                        <nuxt-link to="/hotels" class="section-action-button" id="hotel-link">View hotels →</nuxt-link>
                     </div>
                 </div>
                 
@@ -217,7 +220,7 @@
                                 from Friday evening throughout the entire day of Saturday. Check out a detailed listing
                                 of
                                 events below.</p>
-                            <nuxt-link to="/events" class="section-action-button">Check them out →</nuxt-link>
+                            <nuxt-link to="/events" class="section-action-button" id="event-link">Check out our events →</nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -287,6 +290,7 @@
                 <!--            </div>-->
             </full-page>
         </client-only>
+        
         
         <!--        <div class="container" id="contact">-->
         <!--            <div class="row-tb-margin row align-items-center justify-content-center">-->
@@ -369,13 +373,13 @@
         },
         head() {
             return {
-                title: 'Home | Vincent Massey 60th Reunion | Windsor, Ontario',
+                title: 'Home' + process.env.pageTitleTail,
                 meta: [
                     // hid is used as unique identifier. Do not use `vmid` for it as it will not work
                     {
                         hid: 'description',
                         name: 'description',
-                        content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.'
+                        content: process.env.metaDescription
                     }
                 ],
                 link: [

@@ -1,7 +1,7 @@
 .vmss60-navbar {
   position: fixed;
   width: 100%;
-  z-index: 999;
+  z-index: $navZ;
   top: 2em;
 }
 
@@ -12,7 +12,7 @@
   top: 2em;
   background-image: url(~assets/images/menu.svg);
   display: none;
-  z-index: 999
+  z-index: $navZ;
 }
 
 /*noinspection CssUnknownTarget,CssUnknownTarget,CssUnknownTarget*/
@@ -27,7 +27,7 @@
   top: 1em;
   background-image: url(~assets/images/back.svg);
   display: none;
-  z-index: 999;
+  z-index: $navZ;
   &.black {
     background-image: url(~assets/images/back_black.svg);
   }
@@ -51,6 +51,7 @@
   outline: none;
   font-size: 1.2em;
   font-weight: bold;
+  display: inline-block;
 
   &:hover {
     color: rgba(255, 255, 255, 0.75);
@@ -125,7 +126,7 @@
       margin-left: 2em;
 
       li{
-        margin-bottom: 1em;
+        margin-bottom: 0;
         text-align: right;
       }
     }
@@ -144,7 +145,7 @@
   position: fixed;
   height: 100vh;
   width: 100vw;
-  z-index: 998;
+  z-index: $navZ - 1;
   background: rgba(0,0,0,0.75);
   opacity: 0;
   transition: opacity ease 0.25s;
@@ -152,5 +153,6 @@
 
   &.open{
     opacity: 1;
+    pointer-events: initial;
   }
 }

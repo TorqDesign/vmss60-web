@@ -19,6 +19,10 @@
                         <p>Band names to be announced!</p>
                     </div>
                     <div class="schedule-box">
+                        <h6>Music and Dancing of the Decades</h6>
+                        <p>Lorem ipsom dolor</p>
+                    </div>
+                    <div class="schedule-box">
                         <h6>Decade Rooms</h6>
                     </div>
                 </div>
@@ -49,13 +53,13 @@
         components: {Navbar},
         head() {
             return {
-                title: 'Events | Vincent Massey 60th Reunion | Windsor, Ontario',
+                title: 'Events' + process.env.pageTitleTail,
                 meta: [
                     // hid is used as unique identifier. Do not use `vmid` for it as it will not work
                     {
                         hid: 'description',
                         name: 'description',
-                        content: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.'
+                        content: process.env.metaDescription
                     }
                 ]
             }

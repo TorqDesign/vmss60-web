@@ -31,12 +31,14 @@ export default {
     plugins: [
         {src: '~/plugins/vue-recaptcha-v3.js', ssr: false},
         {src: '~/plugins/vue-countdown.js', mode: "client"},
-        {src: '~/plugins/vue-fullpage.js', mode: "client"},
+        // {src: '~/plugins/vue-fullpage.js', mode: "client"},
         {
             src: "~/plugins/v-waypoint.client.js",
             mode: 'client'
         },
         { mode: 'client', src: '~plugins/vue-router-back-button.client.js' },
+        { src: '~/plugins/vuex-persistedstate.client.js', mode: 'client' },
+        { src: '~/plugins/v-click-outside.client.js', mode: 'client' }
     ],
     /*
     ** Nuxt.js dev-modules
@@ -53,20 +55,26 @@ export default {
     modules: [
         // Doc: https://bootstrap-vue.js.org/docs/
         'bootstrap-vue/nuxt',
+        'nuxt-fullpage.js',
         // Doc: https://axios.nuxtjs.org/usage
-        // '@nuxtjs/axios',
+        '@nuxtjs/axios',
+        '@nuxtjs/auth',
         ['nuxt-gmaps', {
             key: 'AIzaSyC_sWhSGaT5rxzZXeYtiQpNMmoJhCC1glE',
             //you can use libraries: ['places']
         }],
+        ['nuxt-stripe-module', {
+            version: 'v3',
+            publishableKey: 'pk_test_vpi8zOYHwSCBPUpj4C5DQkNT00VL4HeoMn',
+        }]
     ],
     /*
     ** Axios module configuration
     ** See https://axios.nuxtjs.org/options
     */
-    // axios: {
-    //     baseURL: 'https://vmss60.com/api'
-    // },
+    axios: {
+        /*baseURL: 'https://staging.vmss60.com/'*/
+    },
     /*
     ** Build configuration
     */
@@ -111,6 +119,7 @@ export default {
         //         ['@babel/plugin-transform-runtime']
         //     ]
         // }
+        transpile: ['vuex-persist']
     },
     /*
   ** Router configuration
@@ -131,7 +140,7 @@ export default {
                             resolve(findEl(hash, ++x || 1))
                         }, 100)
                     })
-            }
+            };
 
             if (to.hash) {
                 let el = await findEl(to.hash)
@@ -144,6 +153,30 @@ export default {
 
             return {x: 0, y: 0}
         }
+    },
+    auth: {
+        redirect: {
+            home: '/store/',
+            //login: '/store/login/',
+            login: '/store/login/',
+            logout: false,
+            callback: '/store/login/'
+        },
+        strategies: {
+            auth0: {
+                domain: 'vmss60.auth0.com',
+                client_id: 'da66CdZisDbTvTAdF4KvT87iVx8DvwHf',
+                audience: 'https://api.vmss60.com',
+            }
+        }
+    },
+    env: {
+        auth0LogoutUrl: 'https://vmss60.auth0.com/v2/logout?returnTo=',
+        defaultLogoutRef: process.env.DEFAULT_LOGOUT_REF,
+        metaDescription: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.',
+        pageTitleTail: ' | Vincent Massey 60th Reunion | Windsor, Ontario',
+        apiBaseURL: process.env.API_BASE_URL,
+        auth0ClientID: process.env.AUTH0_CLIENT_ID,
+        // apiBaseURL: 'https://staging.vmss60.com/api'
     }
-
 }
