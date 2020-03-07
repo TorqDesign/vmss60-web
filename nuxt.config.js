@@ -66,7 +66,7 @@ export default {
         }],
         ['nuxt-stripe-module', {
             version: 'v3',
-            publishableKey: 'pk_test_vpi8zOYHwSCBPUpj4C5DQkNT00VL4HeoMn',
+            publishableKey: process.env.STRIPE_PUBLIC_KEY,
         }]
     ],
     /*

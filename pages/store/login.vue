@@ -1,7 +1,17 @@
 <template>
     <div>
-        <button @click="loginWithAuth0">Log In</button>
-        <button @click="logoutWithAuth0">Log Out</button>
+        <div v-if="!$auth.loggedIn" class="container" style="padding-top: 75px; min-height: 100vh">
+            <h2>Please login</h2>
+            <p>An account is required to access this page.</p>
+            <b-button variant="primary" @click="loginWithAuth0">Log In</b-button>
+        </div>
+        <div v-else class="container" style="padding-top: 75px; min-height: 100vh">
+            <h2>Logged In</h2>
+            <p>You have successfully logged in. Please wait a moment to be redirected.<br>Not working?</p>
+            <nuxt-link class="btn btn-primary" to="/">Go to Home</nuxt-link>
+        </div>
+
+<!--        <button @click="logoutWithAuth0">Log Out</button>-->
     </div>
 </template>
 
