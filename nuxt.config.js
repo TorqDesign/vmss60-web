@@ -144,7 +144,7 @@ export default {
             };
 
             if (to.hash) {
-                let el = await findEl(to.hash)
+                let el = await findEl(to.hash);
                 if ('scrollBehavior' in document.documentElement.style) {
                     return window.scrollTo({top: el.offsetTop, behavior: 'smooth'})
                 } else {
@@ -157,7 +157,7 @@ export default {
     },
     auth: {
         redirect: {
-            home: '/store/',
+            home: '/',
             //login: '/store/login/',
             login: '/store/login/',
             logout: false,

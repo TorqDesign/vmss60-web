@@ -62,6 +62,9 @@
     export default {
         name: "checkout",
         components: {Navbar},
+        middleware: [
+            'auth'
+        ],
         head() {
             return {
                 title: 'Checkout' + process.env.pageTitleTail,

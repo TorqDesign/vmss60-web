@@ -42,6 +42,9 @@
     export default {
         name: "index",
         components: {Navbar},
+        middleware: [
+            'auth'
+        ],
         head() {
             return {
                 title: 'Store' + process.env.pageTitleTail,
