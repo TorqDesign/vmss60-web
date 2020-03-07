@@ -275,7 +275,7 @@
                 console.log(logoutUrl);
                 this.$store.commit('cart/resetState');
                 this.$auth.logout();
-                window.location.replace(process.env.auth0LogoutUrl + logoutUrl)
+                window.location.replace(process.env.auth0LogoutUrl + logoutUrl + '&client_id=' + process.env.auth0ClientID)
             },
             removeFromCart(item) {
                 this.$store.commit('cart/remove', item)
