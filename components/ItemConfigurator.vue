@@ -368,7 +368,7 @@
         mounted() {
             this.required = flatten(this.required);
             if (this.order.metadata) {
-                this.ticketData = this.order.metadata
+                this.ticketData = _.cloneDeep(this.order.metadata)
             }
         },
         methods: {
@@ -377,6 +377,11 @@
                     ticketMetadata: this.ticketData,
                     ticketId: this.order._id
                 })
+            },
+            resetOnClose() {
+                if (this.order.metadata) {
+                    this.ticketData = _.cloneDeep(this.order.metadata)
+                }
             },
             validate() {
                 if (this.ticketData.friendsOfMassey === 'friendOfMassey') {
