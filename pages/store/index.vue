@@ -98,7 +98,7 @@
         },
         async asyncData(context) {
             const token = await context.$auth.getToken('auth0');
-            console.log(token);
+            //console.log(token);
             try {
                 if (token) {
                     const res = await context.$axios.get(process.env.apiBaseURL + '/allProducts', {
