@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    mode: 'spa',
     /*
     ** Headers of the page
     */
@@ -172,11 +172,10 @@ export default {
     },
     env: {
         auth0LogoutUrl: 'https://vmss60.auth0.com/v2/logout?returnTo=',
-        defaultLogoutRef: 'https%3A%2F%2Fstaging.vmss60.com%2Fstore%3Fclient_id%3Dda66CdZisDbTvTAdF4KvT87iVx8DvwHf',
+       // defaultLogoutRef: 'https%3A%2F%2Fstaging.vmss60.com%2Fstore%3Fclient_id%3Dda66CdZisDbTvTAdF4KvT87iVx8DvwHf',
         metaDescription: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.',
         pageTitleTail: ' | Vincent Massey 60th Reunion | Windsor, Ontario',
         // apiBaseURL: 'https://staging.vmss60.com/api',
-        apiBaseURL: 'http://localhost:3005'
+        //apiBaseURL: 'http://localhost:3005'
     }
-
 }
