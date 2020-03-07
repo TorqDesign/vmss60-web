@@ -273,6 +273,7 @@
             },
             logoutWithAuth0(e, logoutUrl = process.env.defaultLogoutRef) {
                 console.log(logoutUrl);
+                this.$store.commit('cart/resetState');
                 this.$auth.logout();
                 window.location.replace(process.env.auth0LogoutUrl + logoutUrl)
             },

@@ -102,8 +102,8 @@
                 this.$axios.post(process.env.apiBaseURL + "/createCheckoutSession", {
                     cart: cartParsed
                 }).then((res) => {
+                    this.$store.commit('cart/resetState');
                     console.log(res);
-
                     this.$stripe.import().redirectToCheckout({
                         sessionId: res.data.id
                     }).then((res) => {

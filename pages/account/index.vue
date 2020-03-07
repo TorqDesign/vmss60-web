@@ -68,7 +68,7 @@
                             <tr v-for="order in user.orders">
                                 <td>{{order._id}}</td>
                                 <td>{{items[order.itemID] ? items[order.itemID].name : ''}}</td>
-                                <td><span v-if="order.status === 'Fulfilled' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
+                                <td><span v-if="order.status === 'Not Configured' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
                                                                                       @click="configureItem(findById(tickets, order.additional.ticketID))">Configure Now</button></span><span
                                         v-else>{{order.status}}</span></td>
                                 <td>{{order.additional ? order.additional : 'N/A'}}</td>
