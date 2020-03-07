@@ -1,5 +1,5 @@
 export default {
-    mode: 'spa',
+    mode: 'universal',
     /*
     ** Headers of the page
     */
@@ -175,7 +175,7 @@ export default {
         defaultLogoutRef: process.env.DEFAULT_LOGOUT_REF,
         metaDescription: 'Welcoming 60 years of alumni back to Vincent Massey Secondary School in Windsor, Ontario on October 9 & 10, 2020.',
         pageTitleTail: ' | Vincent Massey 60th Reunion | Windsor, Ontario',
-        apiBaseURL: process.env.API_BASE_URL,
-        //apiBaseURL: 'http://localhost:3005'
+        // apiBaseURL: process.env.API_BASE_URL,
+        apiBaseURL: 'http://localhost:3005'
     }
 }

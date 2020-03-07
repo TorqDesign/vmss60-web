@@ -37,7 +37,10 @@
                                     <tbody>
                                     <tr v-for="ticket in tickets">
                                         <td>{{ticket._id}}</td>
-                                        <td>{{items[ticket.itemID].name}}</td>
+                                        <td>
+                                            {{items[ticket.itemID].name}}
+                                            <img class="img-fluid" :src="items[ticket.itemID].image">
+                                        </td>
                                         <td>{{items[ticket.itemID].description}}</td>
                                         <td><button class="btn btn-warning" @click="configureItem(ticket)">Edit</button></td>
 <!--                                        <td><span v-if="findById(user.orders, ticket.orderID).status === 'Fulfilled'"><button class="btn btn-warning" @click="configureItem(ticket)">Configure Now</button></span><span v-else>{{findById(user.orders, ticket.orderID).status}}</span></td>-->
@@ -59,19 +62,19 @@
                             <thead>
                             <tr>
                                 <th>Order ID</th>
+                                <th>Image</th>
                                 <th>Item</th>
                                 <th>Status</th>
-                                <th>Additional</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="order in user.orders">
                                 <td>{{order._id}}</td>
+                                <td><img class="img-fluid" :src="items[order.itemID].image"></td>
                                 <td>{{items[order.itemID] ? items[order.itemID].name : ''}}</td>
                                 <td><span v-if="order.status === 'Not Configured' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
                                                                                       @click="configureItem(findById(tickets, order.additional.ticketID))">Configure Now</button></span><span
                                         v-else>{{order.status}}</span></td>
-                                <td>{{order.additional ? order.additional : 'N/A'}}</td>
                             </tr>
                             </tbody>
                         </table>
