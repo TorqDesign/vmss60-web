@@ -5,7 +5,9 @@
         <div class="container" style="padding-top: 75px; min-height: 100vh">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Store</h2>
+                    <h2>Tickets and Merchandise</h2>
+                    <b>Please note that we will be continuously adding items to this store.</b>
+                    <p>Each time a new item is added, we will send a link to the Vincent Massey Alumni & Friends Facebook page.</p>
                 </div>
                 <div class="col-lg-12">
                     <div v-if="$auth.loggedIn">
@@ -25,8 +27,28 @@
                         </div>
                     </div>
                     <div v-else>
-                        To serve you better, we require all customers to create an account before shopping.<br><br>
-                        <button class="btn btn-primary" @click="loginWithAuth0">Create one now</button>
+                        <h4>Reunion Tickets</h4>
+                        <b>We strongly recommended reunion tickets to be purchased online as this gives us a better indication of the number of people who will be in attendance.</b> Please note that tickets for the golf outing and dinner banquet will be available for online purchase next week.
+                        <br>
+                        <br>
+                        <ol>
+                            <li>Tickets can be purchased online <button class="btn btn-primary" @click="loginWithAuth0">Please click here to set up an account or login</button></li>
+                            <li>In person registration (Monday, Oct 5th / 2020 - Massey School office 5pm-8pm). <b>Limited tickets will be available.</b></li>
+                            <li>In person late registration (Friday, Oct 9th / 2020 - Massey Library 4:00 pm onward). <b>Limited tickets will be available.</b></li>
+                        </ol>
+                        If you have any questions, please email us at <a href="mailto:masseymustangs2020@gmail.com" class="expand-link">masseymustangs2020@gmail.com</a>.
+                        <br>
+                        <br>
+                        <h4>Merchandise</h4>
+                        Stay tuned as we develop new items for sale!
+<!--                        There are also three different options to purchase merchandise:-->
+<!--                        <h6>On this website for pickup at event</h6>-->
+<!--                        <p>If you would like to purchase merchandise for pickup at the event, you can do so in the store on this website. To serve you better, we require all customers to create an account before shopping, so please click the button below.</p>-->
+<!--                        <button class="btn btn-primary" @click="loginWithAuth0">Login or Sign up</button>-->
+<!--                        <h6>Purchase for delivery now</h6>-->
+<!--                        <p>If you would like to purchase merchandise for delivery to you now, we will have a Entripy store for you available April 30th. Please keep an eye out for announcements and check back frequently!</p>-->
+<!--                        <h6>Buy at the event</h6>-->
+<!--                        <p>There will be a limited amount of merchandise available for purchase at the event. Prices may vary.</p>-->
                     </div>
                 </div>
             </div>
@@ -42,9 +64,6 @@
     export default {
         name: "index",
         components: {Navbar},
-        middleware: [
-            'auth'
-        ],
         head() {
             return {
                 title: 'Store' + process.env.pageTitleTail,
