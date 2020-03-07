@@ -141,7 +141,7 @@
         methods: {
             logoutWithAuth0(e, logoutUrl = process.env.defaultLogoutRef) {
                 this.$auth.logout();
-                window.location.replace(process.env.auth0LogoutUrl + logoutUrl)
+                window.location.replace(process.env.auth0LogoutUrl + logoutUrl + '&client_id=' + process.env.auth0ClientID)
             },
             configureItem(order) {
                 this.currentItem = order;
