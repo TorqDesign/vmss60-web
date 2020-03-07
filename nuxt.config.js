@@ -165,7 +165,7 @@ export default {
     },
     auth: {
         redirect: {
-            home: '/',
+            home: '/store/',
             //login: '/store/login/',
             login: '/store/login/',
             logout: false,
