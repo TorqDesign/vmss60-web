@@ -83,7 +83,7 @@
             </div>
         
         </div>
-        <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem">
+        <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem" @cancel="cancelChangeItem">
             <ItemConfigurator :order="currentItem" ref="itemConfigurator"></ItemConfigurator>
         </b-modal>
     </div>
@@ -184,6 +184,13 @@
                         return container[i]
                     }
                 }
+            },
+            async cancelChangeItem() {
+                console.log('cancel and close');
+                this.$refs.itemConfigurator.resetOnClose();
+                // let res = this.$axios.get(process.env.apiBaseURL + '/user/');
+                // res = await res;
+                // this.user = res.data.user;
             }
         }
     }

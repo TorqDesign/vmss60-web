@@ -368,7 +368,7 @@
         mounted() {
             this.required = flatten(this.required);
             if (this.order.metadata) {
-                this.ticketData = this.order.metadata
+                this.ticketData = _.cloneDeep(this.order.metadata)
             }
         },
         methods: {
@@ -378,7 +378,22 @@
                     ticketId: this.order._id
                 })
             },
+            resetOnClose() {
+                if (this.order.metadata) {
+                    this.ticketData = _.cloneDeep(this.order.metadata)
+                }
+            },
             validate() {
+                if (this.ticketData.friendsOfMassey === 'friendOfMassey') {
+                    console.log('changed validate');
+                    this.required.school = false;
+                    this.required.gradYear = false;
+                    this.ticketData.school = '';
+                    this.ticketData.gradYear = '';
+                } else {
+                    this.required.school = true;
+                    this.required.gradYear = true;
+                }
                 const flattened = flatten(this.ticketData);
                 for (let key in this.required) {
                     console.log(key);
