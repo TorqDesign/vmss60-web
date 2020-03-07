@@ -2,8 +2,8 @@
     <div>
         <div v-if="!$auth.loggedIn" class="container" style="padding-top: 75px; min-height: 100vh">
             <h2>Please login</h2>
-            <p>An account is required to access this page.</p>
-            <b-button variant="primary" @click="loginWithAuth0">Log In</b-button>
+            <p>An account is required to access this page. To serve you better, we require all customers to create an account before shopping.</p>
+            <b-button variant="outline-success" @click="loginWithAuth0">Create Account</b-button> <b-button variant="outline-primary" @click="loginWithAuth0">Log In</b-button>
         </div>
         <div v-else class="container" style="padding-top: 75px; min-height: 100vh">
             <h2>Logged In</h2>

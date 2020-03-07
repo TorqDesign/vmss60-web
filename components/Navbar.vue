@@ -110,7 +110,7 @@
                                 <div class="col-12">
                                     {{cartItem.name}} - <strong>${{cartItem.price}}</strong>
                                     <div class="float-right" style="text-align: center; margin-left: 1em;">
-                                        <button class="button-link" @click="removeFromCart(item)">
+                                        <button class="button-link" @click="removeFromCart(cartItem)">
                                             &times;
                                         </button>
                                     </div>
@@ -214,8 +214,6 @@
                 if(this.shoppingCartMenuOpen){
                     this.shoppingCartMenuOpen = false;
                 }
-                console.log("hello");
-
             },
             getNavAddClass: function () {
                 return this.mobileNavOpen ? "" : this.pageLightBack ? "black" : "";
@@ -263,7 +261,6 @@
                 }
             },
             toggleShoppingCartMenu: function() {
-                console.log("bye");
                 this.accountMenuOpen = false;
                 this.shoppingCartMenuOpen = !this.shoppingCartMenuOpen;
             },
@@ -281,7 +278,7 @@
                 this.$auth.loginWith('auth0');
             },
             logoutWithAuth0(e, logoutUrl = process.env.defaultLogoutRef) {
-                console.log(logoutUrl);
+                //console.log(logoutUrl);
                 this.$store.commit('cart/resetState');
                 this.$auth.logout();
                 window.location.replace(process.env.auth0LogoutUrl + logoutUrl + '&client_id=' + process.env.auth0ClientID)

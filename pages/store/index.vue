@@ -42,6 +42,9 @@
     export default {
         name: "index",
         components: {Navbar},
+        middleware: [
+            'auth'
+        ],
         head() {
             return {
                 title: 'Store' + process.env.pageTitleTail,
@@ -111,7 +114,7 @@
                     return {items: res.data}
                 }
             } catch (e) {
-                console.log(e)
+                throw e;
             }
         },
         methods: {
@@ -128,18 +131,18 @@
             },
             async buy() {
                 const token = await this.$auth.getToken('auth0');
-                console.log(token);
+                //console.log(token);
 
                 let cartParsed = {};
                 for (let i = 0; i < this.$store.state.cart.list.length; i++) {
-                    console.log(i);
+                    //console.log(i);
                     if (this.$store.state.cart.list[i]['_id'] in cartParsed) {
                         cartParsed[this.$store.state.cart.list[i]['_id']]++;
                     } else {
                         cartParsed[this.$store.state.cart.list[i]['_id']] = 1
                     }
                 }
-                console.log(cartParsed);
+                //console.log(cartParsed);
                 // Use Axios to make a call to the API
                 this.$axios.post(process.env.apiBaseURL + "/createCheckoutSession", {
                     headers: {
@@ -150,12 +153,12 @@
                         cart: cartParsed
                     }
                 }).then((res) => {
-                    console.log(res);
+                    //console.log(res);
 
                     this.$stripe.import().redirectToCheckout({
                         sessionId: res.data.id
                     }).then((res) => {
-                        console.log(res);
+                        //console.log(res);
                     })
                 });
             },

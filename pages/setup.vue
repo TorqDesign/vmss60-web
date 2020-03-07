@@ -56,7 +56,7 @@
                         this.$refs.infoForm.submit();
                     })
                     .catch((error) => {
-                        console.log(error);
+                        this.$sentry.captureException(error)
                         Swal.fire({
                             type: 'error',
                             title: 'Error',

@@ -385,7 +385,7 @@
             },
             validate() {
                 if (this.ticketData.friendsOfMassey === 'friendOfMassey') {
-                    console.log('changed validate');
+                    //console.log('changed validate');
                     this.required.school = false;
                     this.required.gradYear = false;
                     this.ticketData.school = '';
@@ -396,10 +396,10 @@
                 }
                 const flattened = flatten(this.ticketData);
                 for (let key in this.required) {
-                    console.log(key);
+                    //console.log(key);
                     if (this.required[key]) {
                         if (!flattened[key]) {
-                            console.log('validating', !flattened.key);
+                            //console.log('validating', !flattened.key);
                             return false;
                         }
                     }
