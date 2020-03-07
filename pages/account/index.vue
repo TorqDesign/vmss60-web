@@ -123,7 +123,7 @@
                 // this.items = items;
                 return {tickets: res.data.user.tickets, user: res.data.user, items: items}
             } catch (e) {
-                console.log("error: ", e);
+                context.$sentry.captureException(e);
                 // Swal.fire({
                 //     type: 'error',
                 //     title: 'Unauthorized',
@@ -159,7 +159,7 @@
                         res = await res;
                         this.user = res.data.user;
                         this.tickets = res.data.user.tickets;
-                        console.log(this.user)
+                        //console.log(this.user)
                     } catch (e) {
                         return await Swal.fire({
                             type: 'error',
@@ -177,16 +177,16 @@
 
             },
             findById(container, id) {
-                console.log('finding by id');
+                //console.log('finding by id');
                 for (let i in container) {
-                    console.log(container[i], id);
+                    //console.log(container[i], id);
                     if (container[i]._id === id) {
                         return container[i]
                     }
                 }
             },
             async cancelChangeItem() {
-                console.log('cancel and close');
+                //console.log('cancel and close');
                 this.$refs.itemConfigurator.resetOnClose();
                 // let res = this.$axios.get(process.env.apiBaseURL + '/user/');
                 // res = await res;

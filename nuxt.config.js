@@ -67,7 +67,8 @@ export default {
         ['nuxt-stripe-module', {
             version: 'v3',
             publishableKey: process.env.STRIPE_PUBLIC_KEY,
-        }]
+        }],
+        '@nuxtjs/sentry'
     ],
     /*
     ** Axios module configuration
@@ -75,6 +76,10 @@ export default {
     */
     axios: {
         /*baseURL: 'https://staging.vmss60.com/'*/
+    },
+    sentry: {
+        dsn: 'https://7e89dae622884d56949e9d19f34ef22d@sentry.io/3967186', // Enter your project's DSN here
+        config: {}, // Additional config
     },
     /*
     ** Build configuration
@@ -145,11 +150,14 @@ export default {
 
             if (to.hash) {
                 let el = await findEl(to.hash);
-                if ('scrollBehavior' in document.documentElement.style) {
-                    return window.scrollTo({top: el.offsetTop, behavior: 'smooth'})
-                } else {
-                    return window.scrollTo(0, el.offsetTop)
+                if(el){
+                    if ('scrollBehavior' in document.documentElement.style) {
+                        return window.scrollTo({top: el.offsetTop, behavior: 'smooth'})
+                    } else {
+                        return window.scrollTo(0, el.offsetTop)
+                    }
                 }
+
             }
 
             return {x: 0, y: 0}

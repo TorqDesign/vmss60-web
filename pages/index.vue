@@ -403,7 +403,7 @@
                         type: 'success',
                     })
                 }).fail(error => {
-                    console.log(error);
+                    this.$sentry.captureException(error);
                     Swal.fire({
                         title: 'There was an error!',
                         type: 'error',
@@ -419,29 +419,40 @@
                         text: 'To ensure your contact request is received and processed, please fill our your message, name, and email.'
                     })
                 } else {
-                    console.log(this.$recaptcha);
+                    //console.log(this.$recaptcha);
                     this.$recaptcha('homepage').then((token) => {
-                        console.log(token);
+                        //console.log(token);
                         this.submitContactForm(token)
                     })
                 }
             },
             toggleNavbar: function toggleNavbar({going, direction}) {
-                this.$refs.navbar.toggleNavbar({going: going, direction: direction});
+                if(this.$refs.navbar){
+                    this.$refs.navbar.toggleNavbar({going: going, direction: direction});
+                }
+
             },
             toggleArrowDirTop: function toggleArrowDir({going, direction}) {
-                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'top');
+                if(this.$refs.navbar){
+                    this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'top');
+                }
             },
             toggleArrowDirEnd: function toggleArrowDir({going, direction}) {
-                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'end');
+                if(this.$refs.navbar) {
+                    this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'end');
+                }
             },
             toggleBothTop: function toggleBoth({going, direction}) {
-                this.$refs.navbar.toggleNavbar({going: going, direction: direction});
-                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'top');
+                if(this.$refs.navbar){
+                    this.$refs.navbar.toggleNavbar({going: going, direction: direction});
+                    this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'top');
+                }
             },
             toggleBothEnd: function toggleBoth({going, direction}) {
-                this.$refs.navbar.toggleNavbar({going: going, direction: direction});
-                this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'end');
+                if(this.$refs.navbar){
+                    this.$refs.navbar.toggleNavbar({going: going, direction: direction});
+                    this.$refs.navbar.toggleArrowDir({going: going, direction: direction}, 'end');
+                }
             },
             navTo: function navTo(location) {
                 this.$refs.fullpage.api.moveTo(location);
