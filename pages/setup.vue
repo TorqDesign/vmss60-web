@@ -48,7 +48,8 @@
                 this.$axios.post(process.env.apiBaseURL + '/provisionUser', {
                     firstName: this.firstName,
                     lastName: this.lastName,
-                    bindID: this.$route.query['user_id']
+                    bindID: this.$route.query['user_id'],
+                    email: this.$route.query['email']
                 })
                     .then((response) => {
                         this.$refs.successField.value = "yes";

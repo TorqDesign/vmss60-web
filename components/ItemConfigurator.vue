@@ -1,19 +1,19 @@
 <template>
     <b-form>
         <p><b>All fields with * are required</b></p>
-        <b-form-group label="First name*">
+        <b-form-group label="First name *">
             <b-input type="email" class="form-control" placeholder="John" v-model="ticketData.name.firstName"
                      required></b-input>
         </b-form-group>
-        <b-form-group label="Last name*">
+        <b-form-group label="Last name* ">
             <b-input type="email" class="form-control" placeholder="Smith" v-model="ticketData.name.lastName"
                      required></b-input>
         </b-form-group>
-        <b-form-group label="Email*">
+        <b-form-group label="Email *">
             <b-input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
                      v-model="ticketData.email"></b-input>
         </b-form-group>
-        <b-form-group label="Status*">
+        <b-form-group label="Status *">
             <b-form-radio-group>
                 <b-form-radio type="radio" name="inlineRadioOptions" id="inlineRadio1"
                               value="student"
@@ -31,7 +31,7 @@
                 </b-select>
             </b-form-group>
         </b-form-group>
-        <b-form-group label="Status*">
+        <b-form-group label="Status *" v-if="ticketData.friendsOfMassey === 'student'">
             <b-form-radio-group>
                 <b-form-radio type="radio" name="inlineRadioOptions2" id="inlineRadioSchool1"
                               value="massey"
@@ -43,7 +43,7 @@
             </b-form-radio-group>
         </b-form-group>
         <b-form-fieldset>
-            <b-form-group label="Address Line 1*">
+            <b-form-group label="Address Line 1 *">
                 <b-input name="address-line1" type="text" placeholder="Street address, P.O. box, company name, c/o"
                          class="input-xlarge" v-model="ticketData.address.line1"></b-input>
             </b-form-group>
@@ -51,7 +51,7 @@
                 <b-input name="address-line2" type="text" placeholder="Apartment, suite , unit, building, floor, etc."
                          class="input-xlarge" v-model="ticketData.address.line2"></b-input>
             </b-form-group>
-            <b-form-group label="City/Town*">
+            <b-form-group label="City/Town *">
                 <b-input name="city" type="text" placeholder="city/town"
                          class="input-xlarge" v-model="ticketData.address.city"></b-input>
             </b-form-group>
@@ -59,11 +59,11 @@
                 <b-input name="state" type="text" placeholder="State or province"
                          class="input-xlarge" v-model="ticketData.address.state"></b-input>
             </b-form-group>
-            <b-form-group label="Postal Code*">
+            <b-form-group label="Postal Code *">
                 <b-input name="postal" type="text" placeholder="postal code"
                          class="input-xlarge" v-model="ticketData.address.postal"></b-input>
             </b-form-group>
-            <b-form-group label="Country*">
+            <b-form-group label="Country *">
                 <b-select v-model="ticketData.address.country">
                     <option value="" selected="selected">(please select a country)</option>
                     <option value="AF">Afghanistan</option>
