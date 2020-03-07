@@ -37,6 +37,7 @@
 <script>
     import $ from 'jquery';
     import Navbar from "../../components/Navbar";
+    import Swal from 'sweetalert2';
     
     export default {
         name: "index",
@@ -115,7 +116,12 @@
         },
         methods: {
             addToCart(item) {
-                this.$store.commit('cart/add', item)
+                this.$store.commit('cart/add', item);
+                Swal.fire({
+                    type: 'success',
+                    title: 'Success',
+                    text: item.name + ' has been added to your cart!'
+                })
             },
             removeFromCart(item) {
                 this.$store.commit('cart/remove', item)
