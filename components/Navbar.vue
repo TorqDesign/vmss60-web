@@ -21,6 +21,10 @@
                     Contact
                 </button>
                 <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
+                <nuxt-link :class="'vmss60-navbar-item ' + getNavAddClass()" target="_blank" to="/store">
+                    Store
+                </nuxt-link>
+                <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
                 <a :class="'vmss60-navbar-item ' + getNavAddClass()" target="_blank" href="https://donorbox.org/vmss60">
                     Donate
                 </a>
@@ -51,6 +55,11 @@
                         <button class="vmss60-navbar-item mobile" @click="$emit('navTo','contact')">
                             Contact
                         </button>
+                    </li>
+                    <li>
+                        <nuxt-link class="vmss60-navbar-item mobile" to="/store">
+                            Store
+                        </nuxt-link>
                     </li>
                     <li>
                         <a class="vmss60-navbar-item mobile" target="_blank" href="https://donorbox.org/vmss60">
