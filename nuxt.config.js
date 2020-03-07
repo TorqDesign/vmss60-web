@@ -1,3 +1,4 @@
+require('dotenv').config();
 export default {
     mode: 'universal',
     /*
@@ -43,7 +44,7 @@ export default {
     /*
     ** Nuxt.js dev-modules
     */
-    buildModules: ['@nuxtjs/google-analytics'],
+    buildModules: ['@nuxtjs/google-analytics', '@nuxtjs/dotenv'],
 
     googleAnalytics: {
         id: 'UA-157210382-1'
@@ -65,7 +66,7 @@ export default {
         }],
         ['nuxt-stripe-module', {
             version: 'v3',
-            publishableKey: 'pk_test_vpi8zOYHwSCBPUpj4C5DQkNT00VL4HeoMn',
+            publishableKey: process.env.STRIPE_PUBLIC_KEY,
         }]
     ],
     /*

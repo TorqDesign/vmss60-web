@@ -37,6 +37,7 @@
 <script>
     import $ from 'jquery';
     import Navbar from "../../components/Navbar";
+    import Swal from 'sweetalert2';
     
     export default {
         name: "index",
@@ -98,7 +99,7 @@
         },
         async asyncData(context) {
             const token = await context.$auth.getToken('auth0');
-            console.log(token);
+            //console.log(token);
             try {
                 if (token) {
                     const res = await context.$axios.get(process.env.apiBaseURL + '/allProducts', {
@@ -115,7 +116,12 @@
         },
         methods: {
             addToCart(item) {
-                this.$store.commit('cart/add', item)
+                this.$store.commit('cart/add', item);
+                Swal.fire({
+                    type: 'success',
+                    title: 'Success',
+                    text: item.name + ' has been added to your cart!'
+                })
             },
             removeFromCart(item) {
                 this.$store.commit('cart/remove', item)

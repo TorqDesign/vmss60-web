@@ -21,7 +21,7 @@
                     Contact
                 </button>
                 <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
-                <nuxt-link :class="'vmss60-navbar-item ' + getNavAddClass()" target="_blank" to="/store">
+                <nuxt-link :class="'vmss60-navbar-item ' + getNavAddClass()" to="/store">
                     Store
                 </nuxt-link>
                 <div class="vmss60-navbar-line-container"><div :class="'vmss60-navbar-line ' + getNavAddClass()"></div></div>
