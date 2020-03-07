@@ -379,6 +379,16 @@
                 })
             },
             validate() {
+                if (this.ticketData.friendsOfMassey === 'friendOfMassey') {
+                    console.log('changed validate');
+                    this.required.school = false;
+                    this.required.gradYear = false;
+                    this.ticketData.school = '';
+                    this.ticketData.gradYear = '';
+                } else {
+                    this.required.school = true;
+                    this.required.gradYear = true;
+                }
                 const flattened = flatten(this.ticketData);
                 for (let key in this.required) {
                     console.log(key);
