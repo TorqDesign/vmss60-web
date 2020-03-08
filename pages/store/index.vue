@@ -182,6 +182,8 @@
                 });
             },
             loginWithAuth0() {
+                // console.log(this.$auth.$storage.setUniversal());
+                this.$auth.$storage.setUniversal('redirect', '/store/');
                 this.$auth.loginWith('auth0');
             }
         }
