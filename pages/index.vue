@@ -6,8 +6,8 @@
                 <div class="hero-background full-page section" id="top"
                      v-waypoint="{ active: true, callback: toggleArrowDirTop, options: intersectionOptions }"
                      data-anchor="home">
-                    <img src="https://static.vmss60.com/bigmlogo.png" alt="logo" class="img-fluid d-none d-xl-block" style="width: 150px; position: absolute; top: 5em; left: 14em">
-                    <img src="https://static.vmss60.com/masseycrest.svg" alt="logo" class="img-fluid d-none d-xl-block" style="width: 150px; position: absolute; top: 5em; right: 14em">
+                    <img src="https://static.vmss60.com/bigmlogo.png" alt="logo" class="img-fluid d-none d-xl-block" style="height: 100px; position: absolute; top: 2vh; left: 7vw">
+                    <img src="https://static.vmss60.com/masseycrest.svg" alt="logo" class="img-fluid d-none d-xl-block" style="height: 100px; position: absolute; top: 2vh; right: 7vw; transform: translateX(-50%)">
                     <div class="hero">
                         <h1>VMSS 60th Reunion</h1>
                         <h6>October 9th &amp; 10th / 2020</h6>
