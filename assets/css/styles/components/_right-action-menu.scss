@@ -1,7 +1,7 @@
 .account-icon-wrapper {
   position: fixed;
   right: 1.5em;
-  top: 2em;
+  top: 1em;
   z-index: $navZ + 1;
   height: 2.5em;
   width: 2.5em;
@@ -18,7 +18,7 @@
 .shopping-cart-icon-wrapper {
   position: fixed;
   right: 5em; /*  1em spacing + 2.5em width of account + 1.5em from right*/
-  top: 2em;
+  top: 1em;
   z-index: $navZ + 1;
   height: 2.5em;
   width: 2.5em;
@@ -34,7 +34,7 @@
 
 .right-menu {
   position: fixed;
-  top: 5em;
+  top: 4em;
 
   height: 0;
   display: none;
@@ -63,6 +63,15 @@
 
   &.account-menu {
     right: 1.5em;
+  }
+}
+
+@media (min-width: 992px) {
+  .account-icon-wrapper, .shopping-cart-icon-wrapper {
+    top: 2em;
+  }
+  .right-menu {
+    top: 5em;
   }
 }
 
