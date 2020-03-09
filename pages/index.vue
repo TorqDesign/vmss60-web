@@ -371,6 +371,8 @@
             $.get("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/stat-counter-frgvt/service/stat-counter/incoming_webhook/stat-increment-and-respond").then(response => {
                 // console.log(response)
                 this.counter = parseInt(response.$numberLong)
+            }).fail(error => {
+                this.$sentry.captureException(error);
             })
         },
         head() {
@@ -409,7 +411,7 @@
                     Swal.fire({
                         title: 'There was an error!',
                         type: 'error',
-                        text: `Code: ${error.status}, Error: ${error.statusText}`
+                        html: this.$vmss60.generateErrorString(this.$route, 'Unable to send submit your message.', 'index/submitContactForm')
                     })
                 })
             },

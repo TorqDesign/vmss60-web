@@ -97,7 +97,7 @@
         <!-- Click outside wrapper -->
         <div v-click-outside="onClickOutside">
             <!-- Shopping -->
-            <div :class="'shopping-cart-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleShoppingCartMenu">
+            <div :class="'shopping-cart-icon-wrapper ' + getRightMenuClass() + ' '+ getNavAddClass()" @click="toggleShoppingCartMenu">
                 <div class="num-items-ind">
                     {{$store.state.cart.list.length}}
                 </div>
@@ -134,7 +134,7 @@
             </div>
 
             <!-- Account -->
-            <div :class="'account-icon-wrapper d-none d-lg-flex ' + getNavAddClass()" @click="toggleAccountMenu"></div>
+            <div :class="'account-icon-wrapper ' + getRightMenuClass() + ' ' + getNavAddClass()" @click="toggleAccountMenu"></div>
             <div ref="accountMenu" :class="'right-menu account-menu ' + getAccountMenuClass()">
                 <ul class="m-0 p-0 list-unstyled">
                     <li v-if="$auth.loggedIn">Hello {{$auth.user.nickname}}</li>
@@ -217,6 +217,9 @@
             },
             getNavAddClass: function () {
                 return this.mobileNavOpen ? "" : this.pageLightBack ? "black" : "";
+            },
+            getRightMenuClass: function () {
+                return this.navmode === 'front' ? 'd-none d-lg-flex' : 'd-flex';
             },
             toggleMobileNavbar: function toggleMobileNavbar() {
                 this.mobileNavOpen = !this.mobileNavOpen;
