@@ -39,7 +39,8 @@ export default {
         },
         { mode: 'client', src: '~plugins/vue-router-back-button.client.js' },
         { src: '~/plugins/vuex-persistedstate.client.js', mode: 'client' },
-        { src: '~/plugins/v-click-outside.client.js', mode: 'client' }
+        { src: '~/plugins/v-click-outside.client.js', mode: 'client' },
+        { src: '~/plugins/utils.js'}
     ],
     /*
     ** Nuxt.js dev-modules

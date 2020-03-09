@@ -54,7 +54,7 @@
                     Swal.fire({
                         type: 'error',
                         title: 'Error',
-                        text: 'Invalid URL. Try closing your browser and logging in again. If the issue persists, please email vmss60dev@gmail.com.'
+                        html: this.$vmss60.generateErrorString(this.$route, 'Invalid URL.', 'setup/submitInfo')
                     });
                     return;
                 }
@@ -69,11 +69,11 @@
                         this.$refs.infoForm.submit();
                     })
                     .catch((error) => {
-                        this.$sentry.captureException(error)
+                        this.$sentry.captureException(error);
                         Swal.fire({
                             type: 'error',
                             title: 'Error',
-                            text: 'We\'re having trouble activating your account. Please try again later.'
+                            html: this.$vmss60.generateErrorString(this.$route, 'Unable to activate your account.', 'setup/provisionUser')
                         });
                     });
             }

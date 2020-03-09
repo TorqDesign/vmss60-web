@@ -59,6 +59,7 @@
 
 <script>
     import Navbar from '../../components/Navbar';
+    import Swal from 'sweetalert2';
     export default {
         name: "checkout",
         components: {Navbar},
@@ -111,7 +112,21 @@
                         sessionId: res.data.id
                     }).then((res) => {
                         //console.log(res);
-                    })
+                    }).catch((err) => {
+                        this.$sentry.captureException(err);
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Error!',
+                            html: this.$vmss60.generateErrorString(this.$route, 'Unable to redirect to checkout.', 'store/index/redirectToCheckout')
+                        })
+                    });
+                }).catch((err) => {
+                    this.$sentry.captureException(err);
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Error!',
+                        html: this.$vmss60.generateErrorString(this.$route, 'Unable to create a checkout session.', 'store/cart/createCheckoutSession')
+                    });
                 });
 
             }

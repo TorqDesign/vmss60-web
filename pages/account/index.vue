@@ -174,10 +174,11 @@
                         this.tickets = res.data.user.tickets;
                         //console.log(this.user)
                     } catch (e) {
+                        this.$sentry.captureException(e);
                         return await Swal.fire({
                             type: 'error',
-                            title: 'Oops...',
-                            text: `${e.toString()}`,
+                            title: 'Error',
+                            html: this.$vmss60.generateErrorString(this.$route, 'Unable to save item data.', 'account/index/saveItem'),
                         })
                     }
                 } else {

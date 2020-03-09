@@ -11,6 +11,9 @@
                 </div>
                 <div class="col-lg-12">
                     <div v-if="$auth.loggedIn">
+                        <div v-if="error">
+                            <p v-html="error"></p>
+                        </div>
                         <div class="store-item-flex-grid">
                             <div class="card" style="width: 20rem; margin: 10px;" v-for="item in items">
                                 <img :src="item.image" class="card-img-top" alt="...">
@@ -79,44 +82,8 @@
         },
         data() {
             return {
-                items: [
-                    // {
-                    //     name: 'Event Ticket',
-                    //     description: 'Ticket for entry into main reunion event. Lots of fun. Please spend money.',
-                    //     image: 'https://developer.apple.com/wwdc19/images/wwdc19-og-twitter.jpg',
-                    //     price: 40
-                    // },
-                    // {
-                    //     name: 'T-Shirt',
-                    //     description: 'cotton shirt',
-                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                    //     price: 24.99
-                    // },
-                    // {
-                    //     name: 'T-Shirt',
-                    //     description: 'cotton shirt',
-                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                    //     price: 24
-                    // },
-                    // {
-                    //     name: 'T-Shirt',
-                    //     description: 'cotton shirt',
-                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                    //     price: 24
-                    // },
-                    // {
-                    //     name: 'T-Shirt',
-                    //     description: 'cotton shirt',
-                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                    //     price: 24
-                    // },
-                    // {
-                    //     name: 'T-Shirt',
-                    //     description: 'cotton shirt',
-                    //     image: 'https://bananarepublic.gap.com/webcontent/0014/248/421/cn14248421.jpg',
-                    //     price: 24
-                    // }
-                ]
+                items: [],
+                error: ''
             }
         },
         async asyncData(context) {
@@ -133,7 +100,8 @@
                     return {items: res.data}
                 }
             } catch (e) {
-                throw e;
+                context.$sentry.captureException(e);
+                return {error: context.app.$vmss60.generateErrorString(context.route, 'Unable to retrieve store items.', 'store/index/retrieveItems')}
             }
         },
         methods: {
@@ -147,39 +115,6 @@
             },
             removeFromCart(item) {
                 this.$store.commit('cart/remove', item)
-            },
-            async buy() {
-                const token = await this.$auth.getToken('auth0');
-                //console.log(token);
-
-                let cartParsed = {};
-                for (let i = 0; i < this.$store.state.cart.list.length; i++) {
-                    //console.log(i);
-                    if (this.$store.state.cart.list[i]['_id'] in cartParsed) {
-                        cartParsed[this.$store.state.cart.list[i]['_id']]++;
-                    } else {
-                        cartParsed[this.$store.state.cart.list[i]['_id']] = 1
-                    }
-                }
-                //console.log(cartParsed);
-                // Use Axios to make a call to the API
-                this.$axios.post(process.env.apiBaseURL + "/createCheckoutSession", {
-                    headers: {
-                        Authorization: token,    // send the access token through the 'Authorization' header
-                        "Content-Type": "application/json"
-                    },
-                    data: {
-                        cart: cartParsed
-                    }
-                }).then((res) => {
-                    //console.log(res);
-
-                    this.$stripe.import().redirectToCheckout({
-                        sessionId: res.data.id
-                    }).then((res) => {
-                        //console.log(res);
-                    })
-                });
             },
             loginWithAuth0() {
                 // console.log(this.$auth.$storage.setUniversal());
