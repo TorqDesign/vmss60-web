@@ -29,7 +29,7 @@
                 <div class="col-md-6">
                     <h5>Saturday Oct 10th</h5>
                     <div class="schedule-box">
-                        <h6>Golf Outing and Brunch (Morning)</h6>
+                        <h6>Golf Outing</h6>
                     </div>
                     <div class="schedule-box">
                         <h6>Windsor-Essex County Tours</h6>
