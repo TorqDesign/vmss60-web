@@ -87,7 +87,7 @@
         
         </div>
         <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem" @cancel="cancelChangeItem">
-            <TicketConfigurator :order="currentItem" ref="itemConfigurator" v-if="currentItem.type === 'ticket'"></TicketConfigurator>
+            <TicketConfigurator :order="currentItem" ref="itemConfigurator" v-if="currentItem.type === 'event'"></TicketConfigurator>
             <ItemConfigurator :order="currentItem" :schema="items[currentItem['itemID']]['configuration']" ref="itemConfigurator" v-else-if="currentItem && items[currentItem['itemID']]"></ItemConfigurator>
         </b-modal>
     </div>
