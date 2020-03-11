@@ -26,7 +26,7 @@
                                     {{cartItem.description}}
                                 </td>
                                 <td>
-                                    <strong>${{cartItem.price}}</strong>
+                                    <strong>${{cartItem.customerPrice}}</strong>
                                 </td>
                                 <td>
                                     <div style="text-align: center;">
@@ -85,7 +85,7 @@
             },
             getCartTotal(){
                 let total = 0;
-                for(let cartItem of this.$store.state.cart.list) total+=cartItem.price;
+                for(let cartItem of this.$store.state.cart.list) total+=cartItem.customerPrice;
                 return Math.round(total*100)/100;
             },
             async buy() {
