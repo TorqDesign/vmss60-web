@@ -21,7 +21,7 @@
                                     <div style="margin-top: auto;">
                                         <h5 class="card-title">{{item.name}}</h5>
                                         <p class="card-text">{{item.description}}</p>
-                                        <p><b>${{item.customerPrice}}</b></p>
+                                        <p><b>${{item.customerPrice.toFixed(2) + " " + item.priceUnit}}</b></p>
                                         <button @click="addToCart(item)" class="btn btn-primary" style="width: 100%">Add to cart</button>
                                     </div>
 
