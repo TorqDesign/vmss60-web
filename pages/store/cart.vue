@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Your Cart</h2>
-                    <p>If you have any questions or concerns, or need assistance, please email us at <a class="expand-link" href="mailto:masseymustangs2020@gmail.com?subject=Hotel book assistance">masseymustangs2020@gmail.com</a></p>
+                    <p>If you have any questions or concerns, or need assistance, please email us at <a class="expand-link" href="mailto:masseymustangs2020@gmail.com?subject=Store purchasing assistance">masseymustangs2020@gmail.com</a></p>
                 </div>
                 <div class="col-lg-12">
                     <table class="table">
