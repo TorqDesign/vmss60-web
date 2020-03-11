@@ -72,9 +72,12 @@
                                 <td>{{order._id}}</td>
                                 <td><img class="img-fluid" :src="items[order.itemID].image"></td>
                                 <td>{{items[order.itemID] ? items[order.itemID].name : ''}}</td>
-                                <td><span v-if="order.status === 'Not Configured' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
-                                                                                      @click="configureItem(findById(tickets, order.additional.ticketID))">Configure Now</button></span><span
-                                        v-else>{{order.status}}</span></td>
+                                <td class="text-center"><span v-if="order.status === 'Not Configured' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
+                                                                                      @click="configureItem(findById(tickets, order.additional.ticketID))">Configure Now</button></span>
+                                    <span v-else-if="(order.statusNum <= 1)">
+                                        {{order.statusNum > 0 ? 'Configured ' : ''}}<button class="btn btn-primary" @click="configureItem(findById(user.orders, order._id))">{{order.statusNum < 1 ? 'Configure Now' : 'Edit'}}</button>
+                                    </span>
+                                    <span v-else>{{order.status}}</span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -84,7 +87,8 @@
         
         </div>
         <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem" @cancel="cancelChangeItem">
-            <ItemConfigurator :order="currentItem" ref="itemConfigurator"></ItemConfigurator>
+            <TicketConfigurator :order="currentItem" ref="itemConfigurator" v-if="currentItem.type === 'ticket'"></TicketConfigurator>
+            <ItemConfigurator :order="currentItem" :schema="items[currentItem['itemID']]['configuration']" ref="itemConfigurator" v-else-if="currentItem && items[currentItem['itemID']]"></ItemConfigurator>
         </b-modal>
     </div>
 </template>
@@ -92,11 +96,12 @@
 <script>
     import Navbar from '../../components/Navbar';
     import Swal from 'sweetalert2';
+    import TicketConfigurator from "../../components/TicketConfigurator";
     import ItemConfigurator from "../../components/ItemConfigurator";
 
     export default {
         name: "index",
-        components: {Navbar, ItemConfigurator},
+        components: {ItemConfigurator, Navbar, TicketConfigurator},
         middleware: 'auth',
         data() {
             return {
@@ -150,6 +155,7 @@
 
         },
         mounted() {
+
         },
         methods: {
             logoutWithAuth0(e, logoutUrl = process.env.defaultLogoutRef) {
@@ -158,37 +164,51 @@
             },
             configureItem(order) {
                 this.currentItem = order;
-                this.$bvModal.show('configure-modal')
+                this.$bvModal.show('configure-modal');
             },
             async saveItem(bvModalEvt) {
-                if (this.$refs.itemConfigurator.validate()) {
-                    try {
-                        await this.$refs.itemConfigurator.saveData();
-                        let res = this.$axios.get(process.env.apiBaseURL + '/user/');
-                        await Swal.fire({
-                            type: 'success',
-                            title: 'Data saved'
-                        });
-                        res = await res;
-                        this.user = res.data.user;
-                        this.tickets = res.data.user.tickets;
-                        //console.log(this.user)
-                    } catch (e) {
-                        this.$sentry.captureException(e);
-                        return await Swal.fire({
-                            type: 'error',
-                            title: 'Error',
-                            html: this.$vmss60.generateErrorString(this.$route, 'Unable to save item data.', 'account/index/saveItem'),
-                        })
+                bvModalEvt.preventDefault();
+                try {
+                    await this.$refs.itemConfigurator.validate();
+                }
+                catch(e){
+                    let errorBody = '<p>Unable to submit the form due to the following reason(s):</p><ul class="list-unstyled">';
+                    for(let error of e){
+                        errorBody += '<li><strong>' + error.message + '</strong></li>'
                     }
-                } else {
-                    bvModalEvt.preventDefault();
+                    errorBody += '</ul>';
+
                     await Swal.fire({
                         type: 'warning',
-                        title: 'You must fill out all required fields'
-                    })
+                        title: 'Error',
+                        html: errorBody
+                    });
+                    return;
                 }
 
+                try {
+                    await this.$refs.itemConfigurator.saveData();
+                    let res = this.$axios.get(process.env.apiBaseURL + '/user/');
+                    await Swal.fire({
+                        type: 'success',
+                        title: 'Data saved'
+                    });
+                    res = await res;
+                    this.user = res.data.user;
+                    this.tickets = res.data.user.tickets;
+
+                    // close the modal
+                    this.$nextTick(() => {
+                        this.$bvModal.hide('modal-prevent-closing')
+                    })
+                } catch (e) {
+                    this.$sentry.captureException(e);
+                    return await Swal.fire({
+                        type: 'error',
+                        title: 'Error',
+                        html: this.$vmss60.generateErrorString(this.$route, e.message || 'Unable to save item data.', 'account/index/saveItem')
+                    })
+                }
             },
             findById(container, id) {
                 //console.log('finding by id');
@@ -198,10 +218,14 @@
                         return container[i]
                     }
                 }
+                return -1;
             },
             async cancelChangeItem() {
                 //console.log('cancel and close');
-                this.$refs.itemConfigurator.resetOnClose();
+                if(this.$refs.itemConfigurator){
+                    this.$refs.itemConfigurator.resetOnClose();
+                }
+
                 // let res = this.$axios.get(process.env.apiBaseURL + '/user/');
                 // res = await res;
                 // this.user = res.data.user;
