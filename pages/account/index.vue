@@ -88,7 +88,7 @@
             </div>
         
         </div>
-        <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem" @cancel="cancelChangeItem" ref="bvModal">
+        <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem" @cancel="cancelChangeItem">
             <TicketConfigurator :order="currentItem" ref="itemConfigurator" v-if="currentItem.type === 'event'"></TicketConfigurator>
             <ItemConfigurator :order="currentItem" :schema="items[currentItem['itemID']]['configuration']" ref="itemConfigurator" v-else-if="currentItem && items[currentItem['itemID']]"></ItemConfigurator>
         </b-modal>
@@ -176,7 +176,6 @@
                 catch(e){
                     let errorBody = '<p>Unable to submit the form due to the following reason(s):</p><ul class="list-unstyled">';
                     for(let error of e){
-                        console.log(error)
                         errorBody += '<li><strong>' + error.message + '</strong></li>'
                     }
                     errorBody += '</ul>';
@@ -201,7 +200,7 @@
                     this.tickets = res.data.user.tickets;
 
                     // close the modal
-                    this.$refs.bvModal.hide('headerclose')
+                    this.$bvModal.hide('configure-modal')
                 } catch (e) {
                     this.$sentry.captureException(e);
                     return await Swal.fire({
