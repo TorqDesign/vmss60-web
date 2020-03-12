@@ -72,10 +72,12 @@
                                 <td>{{order._id}}</td>
                                 <td><img class="img-fluid" :src="items[order.itemID].image"></td>
                                 <td>{{items[order.itemID] ? items[order.itemID].name : ''}}</td>
-                                <td class="text-center"><span v-if="order.status === 'Not Configured' && items[order.itemID].type === 'ticket'"><button class="btn btn-warning"
-                                                                                      @click="configureItem(findById(tickets, order.additional.ticketID))">Configure Now</button></span>
+                                <td class="text-center">
+                                    <span v-if="(order.statusNum <= 1) && items[order.itemID].type === 'ticket'">
+                                        {{order.statusNum > 0 ? 'Configured ' : ''}}<button :class="'btn btn-'+(order.statusNum > 0 ? 'primary' : 'warning')" @click="configureItem(findById(tickets, order.additional.ticketID))">{{order.statusNum < 1 ? 'Configure Now' : 'Edit'}}</button>
+                                    </span>
                                     <span v-else-if="(order.statusNum <= 1)">
-                                        {{order.statusNum > 0 ? 'Configured ' : ''}}<button class="btn btn-primary" @click="configureItem(findById(user.orders, order._id))">{{order.statusNum < 1 ? 'Configure Now' : 'Edit'}}</button>
+                                        {{order.statusNum > 0 ? 'Configured ' : ''}}<button :class="'btn btn-'+(order.statusNum > 0 ? 'primary' : 'warning')" @click="configureItem(findById(user.orders, order._id))">{{order.statusNum < 1 ? 'Configure Now' : 'Edit'}}</button>
                                     </span>
                                     <span v-else>{{order.status}}</span></td>
                             </tr>
@@ -86,7 +88,7 @@
             </div>
         
         </div>
-        <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem" @cancel="cancelChangeItem">
+        <b-modal id="configure-modal" title="Item Configurator" @ok="saveItem" @cancel="cancelChangeItem" ref="bvModal">
             <TicketConfigurator :order="currentItem" ref="itemConfigurator" v-if="currentItem.type === 'event'"></TicketConfigurator>
             <ItemConfigurator :order="currentItem" :schema="items[currentItem['itemID']]['configuration']" ref="itemConfigurator" v-else-if="currentItem && items[currentItem['itemID']]"></ItemConfigurator>
         </b-modal>
@@ -199,9 +201,7 @@
                     this.tickets = res.data.user.tickets;
 
                     // close the modal
-                    this.$nextTick(() => {
-                        this.$bvModal.hide('modal-prevent-closing')
-                    })
+                    this.$refs.bvModal.hide('headerclose')
                 } catch (e) {
                     this.$sentry.captureException(e);
                     return await Swal.fire({
