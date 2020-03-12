@@ -108,7 +108,7 @@
                         <li class="mt-2 mb-2"v-for="cartItem in $store.state.cart.list">
                             <div class="row">
                                 <div class="col-12">
-                                    {{cartItem.name}} - <strong>${{cartItem.price}}</strong>
+                                    {{cartItem.name}} - <strong>${{cartItem.customerPrice.toFixed(2)}}</strong>
                                     <div class="float-right" style="text-align: center; margin-left: 1em;">
                                         <button class="button-link" @click="removeFromCart(cartItem)">
                                             &times;
@@ -291,8 +291,8 @@
             },
             getCartTotal(){
                 let total = 0;
-                for(let cartItem of this.$store.state.cart.list) total+=cartItem.price;
-                return Math.round(total*100)/100;
+                for(let cartItem of this.$store.state.cart.list) total+=cartItem.customerPrice;
+                return total.toFixed(2);
             }
         }
     }
