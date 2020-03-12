@@ -26,7 +26,7 @@
                                     {{cartItem.description}}
                                 </td>
                                 <td>
-                                    <strong>${{(cartItem.customerPrice + 0).toFixed(2)}}</strong>
+                                    <strong>${{cartItem.customerPrice}}</strong>
                                 </td>
                                 <td>
                                     <div style="text-align: center;">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-lg-12">
                     <hr>
-                    <h6 class="text-right">Your total: <strong>${{(getCartTotal() + 0).toFixed(2)}}</strong></h6>
+                    <h6 class="text-right">Your total: <strong>${{getCartTotal()}}</strong></h6>
                 </div>
                 <div class="col-lg-12">
                     <button class="btn btn-success float-right" @click="buy" :disabled="$store.state.cart.list.length < 1">Checkout</button>
@@ -86,7 +86,7 @@
             getCartTotal(){
                 let total = 0;
                 for(let cartItem of this.$store.state.cart.list) total+=cartItem.customerPrice;
-                return Math.round(total*100)/100;
+                return total.toFixed(2)
             },
             async buy() {
                 const token = await this.$auth.getToken('auth0');
