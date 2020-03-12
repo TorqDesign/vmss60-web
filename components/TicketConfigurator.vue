@@ -52,7 +52,7 @@
                          class="input-xlarge" v-model="ticketData.address.line2"></b-input>
             </b-form-group>
             <b-form-group label="City/Town *">
-                <b-input name="city" type="text" placeholder="city/town"
+                <b-input name="city" type="text" placeholder="City/town"
                          class="input-xlarge" v-model="ticketData.address.city"></b-input>
             </b-form-group>
             <b-form-group label="State/Province">
@@ -65,7 +65,7 @@
             </b-form-group>
             <b-form-group label="Country *">
                 <b-select v-model="ticketData.address.country">
-                    <option value="" selected="selected">(please select a country)</option>
+                    <option value="" selected="selected">(Please select a country)</option>
                     <option value="AF">Afghanistan</option>
                     <option value="AL">Albania</option>
                     <option value="DZ">Algeria</option>
@@ -399,10 +399,11 @@
                     //console.log(key);
                     if (this.required[key]) {
                         if (!flattened[key]) {
-                            //console.log('validating', !flattened.key);
+                            console.log('validating', !flattened.key);
                             return new Promise((resolve, reject) => {
-                                return reject(['Please fill out all required fields!']);
+                                return reject([{message: 'Please fill out all required fields!'}]);
                             });
+                            // throw new Error(['Please fill out all required fields!'])
                         }
                     }
                 }

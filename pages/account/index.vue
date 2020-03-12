@@ -174,7 +174,8 @@
                 catch(e){
                     let errorBody = '<p>Unable to submit the form due to the following reason(s):</p><ul class="list-unstyled">';
                     for(let error of e){
-                        errorBody += '<li><strong>' + error.message + '</strong></li>'
+                        console.log(e);
+                        errorBody += '<li><strong>' + e.message + '</strong></li>'
                     }
                     errorBody += '</ul>';
 
