@@ -26,7 +26,7 @@
                                     {{cartItem.description}}
                                 </td>
                                 <td>
-                                    <strong>${{cartItem.customerPrice}}</strong>
+                                    <strong>${{cartItem.customerPrice.toFixed(2)}}</strong>
                                 </td>
                                 <td>
                                     <div style="text-align: center;">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-lg-12">
                     <hr>
-                    <h6 class="text-right">Your total: <strong>${{getCartTotal()}}</strong></h6>
+                    <h6 class="text-right">Your total: <strong>${{getCartTotal().toFixed(2)}}</strong></h6>
                 </div>
                 <div class="col-lg-12">
                     <button class="btn btn-success float-right" @click="buy" :disabled="$store.state.cart.list.length < 1">Checkout</button>
