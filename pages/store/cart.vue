@@ -87,7 +87,7 @@
             getCartTotal(){
                 let total = 0;
                 for(let cartItem of this.$store.state.cart.list) total+=cartItem.customerPrice;
-                return Math.round(total*100)/100;
+                return total.toFixed(2)
             },
             async buy() {
                 const token = await this.$auth.getToken('auth0');
