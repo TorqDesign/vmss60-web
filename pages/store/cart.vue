@@ -47,6 +47,7 @@
                 </div>
                 <div class="col-lg-12">
                     <hr>
+                    <h6 class="text-right">NOTE: After you complete checkout and payment, you will be taken to your account dashboard. You MUST configure your items by clicking the yellow 'Configure Now' button.</h6>
                     <h6 class="text-right">Your total: <strong>${{getCartTotal()}}</strong></h6>
                 </div>
                 <div class="col-lg-12">
