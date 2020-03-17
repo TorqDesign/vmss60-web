@@ -57,6 +57,7 @@ export default {
     modules: [
         // Doc: https://bootstrap-vue.js.org/docs/
         'bootstrap-vue/nuxt',
+        'nuxt-polyfill',
         'nuxt-fullpage.js',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
@@ -81,6 +82,14 @@ export default {
     sentry: {
         dsn: 'https://7e89dae622884d56949e9d19f34ef22d@sentry.io/3967186', // Enter your project's DSN here
         config: {}, // Additional config
+    },
+    polyfill: {
+        features: [
+            {
+                require: 'intersection-observer',
+                detect: () => 'IntersectionObserver' in window,
+            }
+        ]
     },
     /*
     ** Build configuration
