@@ -10,10 +10,11 @@
                     <img src="https://static.vmss60.com/masseycrest.svg" alt="logo" class="img-fluid d-none d-xl-block" style="height: 100px; position: absolute; top: 2vh; right: 7vw; transform: translateX(-50%)">
                     <div class="hero">
                         <h1>VMSS 60th Reunion</h1>
-                        <h6>October 9th &amp; 10th / 2020</h6>
+                        <h6>Postponed until further notice</h6>
+                        <!--<h6>October 9th &amp; 10th / 2020</h6>-->
                         <p>(To be held at Vincent Massey S.S. &amp; Caboto Club)</p>
                         <p>Page views: {{this.counter}}</p>
-                        <div class="d-none d-sm-block">
+                        <!--<div class="d-none d-sm-block">
                             <client-only>
                                 <flip-countdown deadline="2020-10-09 00:00:00"
                                             style="text-align: left; margin: 0; padding: 0"></flip-countdown>
@@ -26,7 +27,7 @@
                                     props.minutes }} minutes, {{ props.seconds }} seconds.</p>
                                 </template>
                             </countdown>
-                        </div>
+                        </div>-->
                         <!-- Begin Mailchimp Signup Form -->
                         <style type="text/css">
                             #mc_embed_signup{background:none; clear:left; font-family: "Open Sans", sans-serif; width:100%;}
