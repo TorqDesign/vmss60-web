@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-lg-12">
                     <!--<button class="btn btn-success float-right" @click="buy" :disabled="$store.state.cart.list.length < 1">Checkout</button>-->
-                    <p class="text-right">Due to the ongoing COVID-19 situation, we have disabled our online store. We apologize for the inconvenience.</p>
+                    <p class="text-right">Due to the ongoing COVID-19 pandemic, we have temporarily disabled our online store. We apologize for the inconvenience.</p>
                     <button class="btn btn-success float-right" disabled>Checkout</button>
                 </div>
             </div>
@@ -86,7 +86,7 @@
             Swal.fire({
                 type: 'error',
                 title: 'Sorry',
-                text: 'Due to the ongoing COVID-19 situation, we have disabled our online store. We apologize for the inconvenience.'
+                text: 'Due to the ongoing COVID-19 pandemic, we have temporarily disabled our online store. We apologize for the inconvenience.'
             })
         },
         methods: {
