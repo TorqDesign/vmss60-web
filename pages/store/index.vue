@@ -6,7 +6,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Tickets and Merchandise</h2>
-                    <b>Please note that we will be continuously adding items to this store.</b>
+                    <strong>Due to the ongoing COVID-19 pandemic, we have temporarily disabled our online store. We apologize for the inconvenience.</strong><br><br>
+                    <strong>Please note that we will be continuously adding items to this store.</strong>
                     <p>Each time a new item is added, we will send a link to the Vincent Massey Alumni & Friends Facebook page.</p>
                 </div>
                 <div class="col-lg-12">
