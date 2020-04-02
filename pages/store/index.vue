@@ -88,6 +88,9 @@
             }
         },
         async asyncData(context) {
+            // DISABLES STORE
+            return {};
+
             const token = await context.$auth.getToken('auth0');
             //console.log(token);
             try {
@@ -118,6 +121,14 @@
                 this.$store.commit('cart/remove', item)
             },
             loginWithAuth0() {
+                // DISABLES STORE
+                Swal.fire({
+                    type: 'error',
+                    title: 'Sorry',
+                    text: 'Due to the ongoing COVID-19 pandemic, we have temporarily disabled our online store. We apologize for the inconvenience.'
+                });
+                return;
+
                 // console.log(this.$auth.$storage.setUniversal());
                 this.$auth.$storage.setUniversal('redirect', '/store/');
                 this.$auth.loginWith('auth0');
