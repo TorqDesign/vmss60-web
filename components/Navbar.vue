@@ -156,6 +156,8 @@
 
 <script>
     import vClickOutside from 'v-click-outside'
+    import Swal from 'sweetalert2'
+
     export default {
         name: "Navbar",
         props: {
@@ -278,6 +280,14 @@
                 return this.accountMenuOpen ? 'open' : '';
             },
             loginWithAuth0() {
+                // DISABLES STORE
+                Swal.fire({
+                    type: 'error',
+                    title: 'Sorry',
+                    text: 'Due to the ongoing COVID-19 pandemic, we have temporarily disabled our online store. We apologize for the inconvenience.'
+                });
+                return;
+
                 this.$auth.loginWith('auth0');
             },
             logoutWithAuth0(e, logoutUrl = process.env.defaultLogoutRef) {

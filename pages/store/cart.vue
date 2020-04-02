@@ -83,6 +83,7 @@
             }
         },
         mounted() {
+            // DISABLES STORE
             Swal.fire({
                 type: 'error',
                 title: 'Sorry',
