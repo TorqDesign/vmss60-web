@@ -1,4 +1,4 @@
-# VMSS 60 Web
+# [VMSS 60 Web](https://vmss60-dev.netlify.app)
 
 Web interface for the website of the Vincent Massey Secondary School 50th anniversary reunion.
 
