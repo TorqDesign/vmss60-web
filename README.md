@@ -1,4 +1,5 @@
 # [VMSS 60 Web](https://vmss60-dev.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/38f73512-7dae-4a61-99f6-4dbecbbf557a/deploy-status)](https://app.netlify.com/sites/vmss60-dev/deploys)
 
 Web interface for the website of the Vincent Massey Secondary School 60th anniversary reunion.
 
